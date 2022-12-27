@@ -18,7 +18,7 @@ with open('style.css')as f:
 def get_data(query1):
     if query1 == 'Transactions Overview':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/5954ddc8-9cdf-47cc-b4cb-a67a0d05f75b/data/latest')
-    elif query == 'Daily Transactions Data':
+    elif query1 == 'Daily Transactions Data':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/28aad408-cba3-4560-9235-7a5026a5cd1b/data/latest')
         
     return None
