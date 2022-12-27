@@ -16,12 +16,14 @@ with open('style.css')as f:
 # Data Sources
 @st.cache(ttl=600)
 def get_data(query1):
-    if query1 == 'Trnsactions Overview':
+    if query1 == 'Transactions Overview':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/5954ddc8-9cdf-47cc-b4cb-a67a0d05f75b/data/latest')
+    elif query == 'Transactions Daily':
+        return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/4e0c69ff-9395-43c1-af49-f590f864d339/data/latest')
         
     return None
 
-transactions_overview = get_data('Trnsactions Overview')
+transactions_overview = get_data('Transactions Overview')
 
 # chain Analysis
 st.subheader('Overview')
