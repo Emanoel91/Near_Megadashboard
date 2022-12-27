@@ -23,7 +23,7 @@ def get_data(query1):
 
 transactions_overview = get_data('Trnsactions Overview')
 
-# Single chain Analysis
+# chain Analysis
 st.subheader('Overview')
 df = transactions_overview
 c1, c2 = st.columns(2)
@@ -40,4 +40,6 @@ with c2:
         st.metric(label='Average Transaction Count per Block', value=df['Average Transaction Count per Block'].round(3))
         st.metric(label='Total Tx Receivers Count', value=df['Total Tx Receivers Count'].round(4))
         st.metric(label='Average Transactions Count per Receiver', value=df['Average Transactions Count per Receiver'].round(5))
+        
+st.subheader('Daily Transactions Analysis')
     
