@@ -49,7 +49,7 @@ with c2:
 st.subheader('2️⃣ Daily Transactions Analysis')
 df = Daily_Transactions_Data
 
-fig = px.area(df, x='DAY', y='Transactions Count', title='Daily Transactions Count')
+fig = px.area(df, x='Date', y='Transactions Count', title='Daily Transactions Count')
 fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Transactions Count')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
