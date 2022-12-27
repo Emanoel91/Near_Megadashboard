@@ -10,7 +10,7 @@ st.title('Near Ⓜegadashboard')
 c1, c2, c3 = st.columns(3)
 
 c1.image(Image.open('Images/flipsidecrypto-logo.png'))
-c2.image(Image.open('Images/near2-logo.JPG'))
+c2.image(Image.open('Images/near2-logo.png'))
 c3.image(Image.open('Images/near-logo.JPG'))
 
 st.write("")
