@@ -24,9 +24,8 @@ def get_data(query1):
 transactions_overview = get_data('Trnsactions Overview')
 
 # Single chain Analysis
-
-    st.subheader('Overview')
-    def = transactions_overview.query1()
+    subtab_overview = st.tabs(['Transactions Overview'])
+    with subtab_overview:
     c1, c2 = st.columns(2)
     with c1:
         st.metric(label='Blocks Count', value=df['Blocks Count'])
