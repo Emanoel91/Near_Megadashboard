@@ -1,4 +1,4 @@
-# Libraries
+er# Libraries
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -33,7 +33,7 @@ with c1:
         st.metric(label='Successful Transactions', value=df['Successful Transactions'].round(2))
         st.metric(label='Total Blocks Count', value=df['Total Blocks Count'].round(3))
         st.metric(label='Total Tx Senders Count', value=df['Total Tx Senders Count'].round(4))
-        st.metric(label='Average Transactions Count per Receiver', value=df['Average Transactions Count per Receiver'].round(5))
+        st.metric(label='Average Transactions Count per Sender', value=df['Average Transactions Count per Sender'].round(5))
 with c2:
         st.metric(label='Average Success Rate', value=df['Average Success Rate'])
         st.metric(label='Failed Transactions', value=df['Failed Transactions'].round(2))
