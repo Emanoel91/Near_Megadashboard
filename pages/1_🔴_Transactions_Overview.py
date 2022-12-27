@@ -11,6 +11,12 @@ theme_plotly = None # None or streamlit
 st.set_page_config(page_title='Transactions Overview - Near Megadashboard', page_icon=':bar_chart:', layout='wide')
 st.title('🔴 Transactions Overview')
 
+# Cover
+c1, c2 = st.columns(3)
+
+c1.image(Image.open('Images/near4-logo.JPG'))
+c2.image(Image.open('Images/chain1-logo.JPG'))
+
 # Style
 with open('style.css')as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html = True)
