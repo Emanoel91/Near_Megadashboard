@@ -42,7 +42,7 @@ c1, c2, c3 = st.columns(3)
 with c1:
     st.info('**Developer/Analyst: [@Astiran91](https://twitter.com/Astiran91)**', icon="📌")
 with c2:
-    st.info('**Data: [Flipside Crypto](https://flipsidecrypto.xyz/)**', icon="📚")
+    st.info('**Database: [Flipside Crypto](https://flipsidecrypto.xyz/)**', icon="📚")
 with c3:
-    st.info('**Data: [MetricsDao](https://metricsdao.xyz/)**', icon="💡")
+    st.info('**Provided for: [MetricsDao](https://metricsdao.xyz/)**', icon="💡")
 
