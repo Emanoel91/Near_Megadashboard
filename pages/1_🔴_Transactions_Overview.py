@@ -29,7 +29,7 @@ transactions_overview = get_data('Transactions Overview')
 Daily_Transactions_Data = get_data('Daily Transactions Data')
 
 # chain Analysis
-st.subheader('Overview')
+st.subheader('1️⃣ Overview')
 df = transactions_overview
 c1, c2 = st.columns(2)
     
@@ -46,7 +46,7 @@ with c2:
         st.metric(label='Total Tx Receivers Count', value=df['Total Tx Receivers Count'].round(4))
         st.metric(label='Average Transactions Count per Receiver', value=df['Average Transactions Count per Receiver'].round(5))
         
-st.subheader('Daily Transactions Analysis')
+st.subheader('2️⃣ Daily Transactions Analysis')
 df = Daily_Transactions_Data
 
 fig = px.area(df, x='DAY', y='Transactions Count', title='Daily Transactions Count')
