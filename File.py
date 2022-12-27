@@ -7,7 +7,7 @@ st.set_page_config(page_title='Dashboard Name', page_icon=':bar_chart:', layout=
 st.title('Dashboard Name')
 
 # Content
-c1, c2 = st.columns(2)
+c1, c2, c3 = st.columns(3)
 
 c1.image(Image.open('Images/flipsidecrypto-logo.png'))
 c2.image(Image.open('Images/near-logo.png'))
