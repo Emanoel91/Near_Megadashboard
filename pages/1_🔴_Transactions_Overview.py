@@ -12,7 +12,7 @@ st.set_page_config(page_title='Transactions Overview - Near Megadashboard', page
 st.title('🔴 Transactions Overview')
 
 # Cover
-c1, c2 = st.columns(3)
+c1, c2 = st.columns(2)
 
 c1.image(Image.open('Images/near4-logo.JPG'))
 c2.image(Image.open('Images/chain1-logo.JPG'))
