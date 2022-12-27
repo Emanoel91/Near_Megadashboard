@@ -27,10 +27,10 @@ transactions_overview = get_data('Trnsactions Overview')
 df = transactions_overview.query1()
 c1, c2 = st.columns(2)
     
-    with c1:
+with c1:
         st.metric(label='Blocks Count', value=df['Blocks Count'])
         st.metric(label='Transactions Count', value=df['Transactions Count'].round(2))
-    with c2:
+with c2:
         st.metric(label='Tx Receivers Count', value=df['Tx Receivers Count'])
         st.metric(label='Tx Senders Count', value=df['Tx Senders Count'].round(2))
     
