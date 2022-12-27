@@ -4,7 +4,7 @@ from PIL import Image
 
 # Layout
 st.set_page_config(page_title='Near Megadashboard', page_icon=':bar_chart:', layout='wide')
-st.title('Near Megadashboard')
+st.title('Near Ⓜegadashboard')
 
 # Content
 c1, c2, c3 = st.columns(3)
