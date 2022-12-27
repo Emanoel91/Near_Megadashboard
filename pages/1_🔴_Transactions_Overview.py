@@ -27,6 +27,7 @@ transactions_overview = get_data('Trnsactions Overview')
     subtab_overview, subtab_amount = st.tabs(['Transactions Overview','amount'])
     with subtab_overview:
     c1, c2 = st.columns(2)
+    
     with c1:
         st.metric(label='Blocks Count', value=df['Blocks Count'])
         st.metric(label='Transactions Count', value=df['Transactions Count'].round(2))
