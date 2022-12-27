@@ -24,7 +24,7 @@ def get_data(query1):
 transactions_overview = get_data('Trnsactions Overview')
 
 # Single chain Analysis
-    subtab_overview = st.tabs(['Transactions Overview'])
+    subtab_overview, subtab_amount = st.tabs(['Transactions Overview','amount'])
     with subtab_overview:
     c1, c2 = st.columns(2)
     with c1:
