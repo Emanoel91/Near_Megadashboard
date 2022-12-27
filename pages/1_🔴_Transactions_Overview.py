@@ -18,12 +18,13 @@ with open('style.css')as f:
 def get_data(query1):
     if query1 == 'Transactions Overview':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/5954ddc8-9cdf-47cc-b4cb-a67a0d05f75b/data/latest')
-    elif query == 'Transactions Daily':
-        return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/4e0c69ff-9395-43c1-af49-f590f864d339/data/latest')
+    elif query == 'Daily Transactions Data':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/28aad408-cba3-4560-9235-7a5026a5cd1b/data/latest')
         
     return None
 
 transactions_overview = get_data('Transactions Overview')
+Daily_Transactions_Data = get_data('Daily Transactions Data')
 
 # chain Analysis
 st.subheader('Overview')
@@ -44,4 +45,22 @@ with c2:
         st.metric(label='Average Transactions Count per Receiver', value=df['Average Transactions Count per Receiver'].round(5))
         
 st.subheader('Daily Transactions Analysis')
+df = Daily_Transactions_Data
+
+    fig = px.area(df, x='day', y='Transactions Count', title='Daily Transactions Count')
+    fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Transactions Count')
+    st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+
+
+
+
+
+
+
+
+
+
+
+
     
