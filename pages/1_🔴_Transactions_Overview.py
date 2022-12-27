@@ -26,12 +26,14 @@ transactions_overview = get_data('Trnsactions Overview')
 # Single chain Analysis
 st.subheader('Overview')
 df = transactions_overview
-c1, c2 = st.columns(2)
+c1, c2, c3 = st.columns(3)
     
 with c1:
         st.metric(label='Blocks Count', value=df['Blocks Count'])
         st.metric(label='Transactions Count', value=df['Transactions Count'].round(2))
+        st.metric(label='Total Transactions Count per Receiver', value=df['Total Transactions Count per Receiver'].round(3))
 with c2:
         st.metric(label='Tx Receivers Count', value=df['Tx Receivers Count'])
         st.metric(label='Tx Senders Count', value=df['Tx Senders Count'].round(2))
+        st.metric(label='Total Transactions Count per Sender', value=df['Total Transactions Count per Sender'].round(3))
     
