@@ -24,7 +24,7 @@ def get_data(query1):
 transactions_overview = get_data('Trnsactions Overview')
 
 # Single chain Analysis
-df = transactions_daily.query1()
+df = transactions_overview.query1()
 c1, c2 = st.columns(2)
     
 with c1:
