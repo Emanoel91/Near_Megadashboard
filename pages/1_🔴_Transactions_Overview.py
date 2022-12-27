@@ -5,6 +5,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 import plotly.subplots as sp
 
+theme_plotly = None # None or streamlit
+
 # Layout
 st.set_page_config(page_title='Transactions Overview - Near Megadashboard', page_icon=':bar_chart:', layout='wide')
 st.title('🔴 Transactions Overview')
