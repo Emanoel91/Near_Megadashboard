@@ -63,17 +63,18 @@ st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 df = Status_of_Transactions
 
-fig = go.Figure()
-for i in options:
-fig.add_trace(go.Scatter(
-name=i,
-x=df.query("Status == @i")['Date'],
-y=df.query("Status == @i")['Transactions Count'],
-mode='lines',
-stackgroup='one',
-groupnorm='percent'))
 fig.update_layout(title='Status of Transactions')
-st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
+        fig = go.Figure()
+        for i in df['Status'].unique():
+            fig.add_trace(go.Scatter(
+                name=i,
+                x=df.query("Status == @i")['Date'],
+                y=df.query("Status == @i")['Transactions Count'],
+                mode='lines',
+                stackgroup='one',
+                groupnorm='percent'
 
 df = Daily_Transactions_Data
 
