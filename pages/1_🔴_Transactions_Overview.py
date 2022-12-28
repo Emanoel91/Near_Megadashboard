@@ -81,21 +81,4 @@ for i in df['Status'].unique():
                 y=df.query("Status == @i")['Transactions Count'],
                 mode='lines',
                 stackgroup='one',
-                groupnorm='percent'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
+                groupnorm='percent'  
