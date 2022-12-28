@@ -61,6 +61,14 @@ fig = px.area(df, x='Date', y='Transactions Count', title='Daily Transactions Co
 fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Transactions Count')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
+fig = sp.make_subplots(specs=[[{'secondary_y': True}]])
+    fig.add_trace(go.Bar(x=df['Date'], y=df['Average Transactions Count per Sender'], name='TX per Sender'), secondary_y=False)
+    fig.add_trace(go.Line(x=df['Date'], y=df['Average Transactions Count per Receiver'], name='TX per Receiver'), secondary_y=True)
+    fig.update_layout(title_text='Average Transactions Count per User')
+    fig.update_yaxes(title_text='', secondary_y=False)
+    fig.update_yaxes(title_text='', secondary_y=True)
+    st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
 df = Status_of_Transactions
 
 fig.update_layout(title='Status of Transactions')
@@ -75,15 +83,7 @@ for i in df['Status'].unique():
                 stackgroup='one',
                 groupnorm='percent'
 
-df = Daily_Transactions_Data
 
-fig = sp.make_subplots(specs=[[{'secondary_y': True}]])
-    fig.add_trace(go.Bar(x=df['Date'], y=df['Average Transactions Count per Sender'], name='TX per Sender'), secondary_y=False)
-    fig.add_trace(go.Line(x=df['Date'], y=df['Average Transactions Count per Receiver'], name='TX per Receiver'), secondary_y=True)
-    fig.update_layout(title_text='Average Transactions Count per User')
-    fig.update_yaxes(title_text='', secondary_y=False)
-    fig.update_yaxes(title_text='', secondary_y=True)
-    st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 
 
