@@ -73,4 +73,12 @@ fig.update_yaxes(title_text='', secondary_y=False)
 fig.update_yaxes(title_text='', secondary_y=True)
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
+fig = sp.make_subplots(specs=[[{'secondary_y': True}]])
+fig.add_trace(go.Bar(x=df['Date'], y=df['Tx Senders Count'], name='TX Senders Count'), secondary_y=False)
+fig.add_trace(go.Line(x=df['Date'], y=df['Tx Receivers Count'], name='TX Receivers Count'), secondary_y=True)
+fig.update_layout(title_text='Number of Transaction Senders/Receivers')
+fig.update_yaxes(title_text='', secondary_y=False)
+fig.update_yaxes(title_text='', secondary_y=True)
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
   
