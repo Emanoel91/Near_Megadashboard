@@ -55,6 +55,12 @@ with c2:
         st.metric(label='Average Transactions Count per Receiver', value=df['Average Transactions Count per Receiver'].round(5))
         
 st.subheader('2️⃣ Daily Transactions Analysis')
+df = Status_of_Transactions
+
+fig = px.bar(df, x='Date', y='Transactions Count', color='Status', title='Status of Transactions', log_y=True)
+fig.update_layout(showlegend=False, xaxis_title=None, yaxis_title='TXs Count', xaxis={'categoryorder':'total ascending'})
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
 df = Daily_Transactions_Data
 
 fig = px.area(df, x='Date', y='Transactions Count', title='Daily Transactions Count')
