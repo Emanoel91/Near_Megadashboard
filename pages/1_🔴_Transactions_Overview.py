@@ -29,12 +29,15 @@ def get_data(query1):
     elif query1 == 'Daily Transactions Data':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/28aad408-cba3-4560-9235-7a5026a5cd1b/data/latest')
     elif query1 == 'Status of Transactions':
-              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/accec9ec-512b-4a63-9170-80b37e53e242/data/latest')    
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/accec9ec-512b-4a63-9170-80b37e53e242/data/latest') 
+    elif query1 == 'Statistical Data: Number of Transactions':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/e31e9f16-3294-4104-8514-bc071c400c0d/data/latest')
     return None
 
 transactions_overview = get_data('Transactions Overview')
 Daily_Transactions_Data = get_data('Daily Transactions Data')
 Status_of_Transactions = get_data('Status of Transactions')
+Statistical_Data_Number_of_Transactions = get_data('Statistical Data: Number of Transactions')
 
 # NEAR Analysis
 st.subheader('1️⃣ Overview')
@@ -61,10 +64,31 @@ fig = px.bar(df, x='Date', y='Transactions Count', color='Status', title='Status
 fig.update_layout(showlegend=False, xaxis_title=None, yaxis_title='TXs Count', xaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
+df = Statistical_Data_Number_of_Transactions
+c1, c2, c3, c4 = st.columns(4)
+    
+with c1:
+        fig = px.area(df, x='Status', y='Maximum', title='Statistical Data: Maximum')
+        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+with c2:
+        fig = px.area(df, x='Status', y='Average', title='Statistical Data: Average')
+        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+with c3:
+        fig = px.area(df, x='Status', y='Median', title='Statistical Data: Median')
+        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+with c4:
+        fig = px.area(df, x='Status', y='Minimum', title='Statistical Data: Minimum')
+        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+
 df = Daily_Transactions_Data
 
 fig = px.area(df, x='Date', y='Transactions Count', title='Daily Transactions Count')
-fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Transactions Count')
+fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='TXs Count')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 fig = px.area(df, x='Date', y='Blocks Count', title='Daily Blocks Count')
