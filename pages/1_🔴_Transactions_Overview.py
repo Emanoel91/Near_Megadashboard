@@ -8,7 +8,7 @@ from PIL import Image
 
 theme_plotly = None # None or streamlit
 
-# Layout
+# Structure
 st.set_page_config(page_title='Transactions Overview - Near Megadashboard', page_icon=':bar_chart:', layout='wide')
 st.title('🔴 Transactions Overview')
 
@@ -17,24 +17,26 @@ c1 , c2 = st.columns(2)
 
 c1.image(Image.open('Images/chain1-logo.JPG'))
 
-# Style
+# dash_style
 with open('style.css')as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html = True)
 
-# Data Sources
+# flipside API
 @st.cache(ttl=600)
 def get_data(query1):
     if query1 == 'Transactions Overview':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/5954ddc8-9cdf-47cc-b4cb-a67a0d05f75b/data/latest')
     elif query1 == 'Daily Transactions Data':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/28aad408-cba3-4560-9235-7a5026a5cd1b/data/latest')
-        
+    elif query1 == 'Status of Transactions':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/accec9ec-512b-4a63-9170-80b37e53e242/data/latest')    
     return None
 
 transactions_overview = get_data('Transactions Overview')
 Daily_Transactions_Data = get_data('Daily Transactions Data')
+Status_of_Transactions = get_data('Status of Transactions')
 
-# chain Analysis
+# NEAR Analysis
 st.subheader('1️⃣ Overview')
 df = transactions_overview
 c1, c2 = st.columns(2)
@@ -59,6 +61,22 @@ fig = px.area(df, x='Date', y='Transactions Count', title='Daily Transactions Co
 fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Transactions Count')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
+df = Status_of_Transactions
+
+fig.update_layout(title='Status of Transactions')
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)         
+fig = go.Figure()
+for i in options:
+fig.add_trace(go.Scatter(
+name=i,
+x=df.query1("Status == @i")['Date'],
+y=df.query1("Status == @i")['Transactions Count'],
+mode='lines',
+stackgroup='one',
+groupnorm='percent'
+
+df = Daily_Transactions_Data
+
 fig = sp.make_subplots(specs=[[{'secondary_y': True}]])
 fig.add_trace(go.Bar(x=df['Date'], y=df['Average Transactions Count per Sender'], name='TX per Sender'), secondary_y=False)
 fig.add_trace(go.Line(x=df['Date'], y=df['Average Transactions Count per Receiver'], name='TX per Receiver'), secondary_y=True)
@@ -66,6 +84,7 @@ fig.update_layout(title_text='Average Transactions Count per User')
 fig.update_yaxes(title_text='', secondary_y=False)
 fig.update_yaxes(title_text='', secondary_y=True)
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
 
 
 
