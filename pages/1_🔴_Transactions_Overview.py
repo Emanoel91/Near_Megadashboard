@@ -64,8 +64,7 @@ st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 df = Status_of_Transactions
 
 fig.update_layout(title='Status of Transactions')
-st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
-        
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)    
         fig = go.Figure()
         for i in df['Status'].unique():
             fig.add_trace(go.Scatter(
