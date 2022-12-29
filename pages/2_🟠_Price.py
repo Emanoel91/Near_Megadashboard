@@ -25,9 +25,12 @@ with open('style.css')as f:
 def get_data(query2):
     if query2 == 'NEAR Price per Day':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/326e787e-b447-450a-8c2a-6ae94facc396/data/latest')
+    elif query1 == 'Range of Price Changes':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/326e787e-b447-450a-8c2a-6ae94facc396/data/latest')
     return None
 
 NEAR_Price_per_Day = get_data('NEAR Price per Day')
+Range_of_Price_Changes = get_data('Range of Price Changes')
 
 # NEAR Price Analysis
 
@@ -37,4 +40,9 @@ fig = px.area(df, x='Date', y='Price', color='CRITERIA', title='NEAR Price per D
 fig.update_layout(showlegend=False, xaxis_title=None, yaxis_title='Price:🟢Max 🔴Avg 🔵Min')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
+df = Range_of_Price_Changes
+
+fig = px.area(df, x='Date', y='RoPC', title='Range of Price Changes', log_y=False)
+fig.update_layout(showlegend=False, xaxis_title=None, yaxis_title=None)
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
   
