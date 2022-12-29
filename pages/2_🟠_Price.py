@@ -20,6 +20,21 @@ c1.image(Image.open('Images/near4-logo.JPG'))
 # dash_style
 with open('style.css')as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html = True)
+# flipside API
+@st.cache(ttl=600)
+def get_data(query2):
+    if query2 == 'NEAR Price per Day':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/326e787e-b447-450a-8c2a-6ae94facc396/data/latest')
+    return None
 
+NEAR_Price_per_Day = get_data('NEAR Price per Day')
+
+# NEAR Price Analysis
+
+df = NEAR_Price_per_Day
+        
+fig = px.bar(df, x='Date', y='Average', title='NEAR Price per Day', log_y=False)
+fig.update_layout(showlegend=False, xaxis_title=None, yaxis_title='Price', xaxis={'categoryorder':'total ascending'})
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
   
