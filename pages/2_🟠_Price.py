@@ -54,8 +54,8 @@ df = NEAR_Price
 c1, c2, c3 = st.columns(3)
     
 with c1:
-        st.metric(label='Current Price', value=df['Current Price'])
+        st.metric(label='Current Price', value=df['🔹 Current Price'])
 with c2:
-        st.metric(label='ATH', value=df['ATH'])
+        st.metric(label='ATH', value=df['🔹 ATH'])
 with c3:
-        st.metric(label='Max RoPC', value=df['Max RoPC'])  
+        st.metric(label='Max RoPC', value=df['🔹 Max RoPC'])  
