@@ -26,7 +26,7 @@ def get_data(query2):
     if query2 == 'NEAR Price per Day':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/326e787e-b447-450a-8c2a-6ae94facc396/data/latest')
     elif query2 == 'Range of Price Changes':
-              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/326e787e-b447-450a-8c2a-6ae94facc396/data/latest')
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/6644dd6a-7aaf-4e0e-84d5-bd39f6a6c47c/data/latest')
     return None
 
 NEAR_Price_per_Day = get_data('NEAR Price per Day')
