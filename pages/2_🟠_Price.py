@@ -42,7 +42,7 @@ st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 df = Range_of_Price_Changes
 
-fig = px.area(df, x='Date', y='RoPC', title='Range of Price Changes', log_y=False)
+fig = px.bar(df, x='Date', y='RoPC', title='Range of Price Changes', log_y=False)
 fig.update_layout(showlegend=False, xaxis_title=None, yaxis_title=None)
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
   
