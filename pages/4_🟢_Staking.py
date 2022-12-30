@@ -10,7 +10,7 @@ theme_plotly = None # None or streamlit
 
 # Structure
 st.set_page_config(page_title='Staking - Near Megadashboard', page_icon=':bar_chart:', layout='wide')
-st.title('🟡 Staking')
+st.title('🟢 Staking')
 
 # Cover
 c1 , c2 = st.columns(2)
