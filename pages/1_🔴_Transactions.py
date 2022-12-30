@@ -9,8 +9,8 @@ from PIL import Image
 theme_plotly = None # None or streamlit
 
 # Structure
-st.set_page_config(page_title='Transactions Overview - Near Megadashboard', page_icon=':bar_chart:', layout='wide')
-st.title('🔴 Transactions Overview')
+st.set_page_config(page_title='Transactions - Near Megadashboard', page_icon=':bar_chart:', layout='wide')
+st.title('🔴 Transactions')
 
 # Cover
 c1 , c2 = st.columns(2)
