@@ -15,7 +15,7 @@ st.title('🔵 Swap')
 # Cover
 c1 , c2 = st.columns(2)
 
-c1.image(Image.open('Images/swap.JPG'))
+c1.image(Image.open('Images/swap2.JPG'))
 
 # dash_style
 with open('style.css')as f:
