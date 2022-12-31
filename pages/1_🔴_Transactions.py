@@ -158,9 +158,9 @@ df = Total_Average_Transactions_Fee
 c1, c2 = st.columns(2)
     
 with c1:
-        st.metric(label='Total Transactions Fee', value=df['Total Transactions Fee($NEAR)'])            
+        st.metric(label='Total Transactions Fee($NEAR)', value=df['Total Transactions Fee'])            
         
 with c2:
-        st.metric(label='Averag Transactions Fee', value=df['Averag Transactions Fee($NEAR)'])
+        st.metric(label='Averag Transactions Fee($NEAR)', value=df['Averag Transactions Fee'])
 
   
