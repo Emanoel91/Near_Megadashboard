@@ -73,6 +73,20 @@ fig = px.bar(df, x='Date', y='Transactions Count', color='Status', title='Status
 fig.update_layout(showlegend=False, xaxis_title=None, yaxis_title='TXs Count', xaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
+fig.update_layout(title='Status of Transactions(%Normalized)')
+            st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+            
+            fig = go.Figure()
+            for i in options:
+                fig.add_trace(go.Scatter(
+                    name=i,
+                    x=df.query("Status == @i")['Date'],
+                    y=df.query("Status == @i")['Transactions Count'],
+                    mode='lines',
+                    stackgroup='one',
+                    groupnorm='percent'
+                ))
+
 df = Statistical_Data_Number_of_Transactions
 c1, c2, c3, c4 = st.columns(4)
     
