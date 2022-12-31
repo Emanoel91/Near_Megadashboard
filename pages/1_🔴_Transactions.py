@@ -78,8 +78,8 @@ fig = go.Figure()
       for i in options:
           fig.add_trace(go.Scatter(
                     name=i,
-                    x=df.query1("Status")['Date'],
-                    y=df.query1("Status")['Transactions Count'],
+                    x=df.query1['Date'],
+                    y=df.query1['Transactions Count'],
                     mode='lines',
                     stackgroup='one',
                     groupnorm='percent'
