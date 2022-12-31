@@ -38,6 +38,8 @@ def get_data(query1):
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/a6ff61aa-4d96-4c53-912f-9c922e7926e7/data/latest')
     elif query1 == 'Transaction Fees':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/b688e249-b644-4040-8059-d8c7cea2d258/data/latest')
+    elif query1 == 'Total/Average Transactions Fee':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/9c150e27-bdf1-440c-bc44-244d2a7851b5/data/latest')
     return None
 
 transactions_overview = get_data('Transactions Overview')
@@ -47,6 +49,7 @@ Statistical_Data_Number_of_Transactions = get_data('Statistical Data: Number of 
 Top_20_TX_Signers_Base_on_Transactions_Count = get_data('Top 20 TX Signers Base on Transactions Count')
 Top_20_TX_Receivers_Base_on_Transactions_Count = get_data('Top 20 TX Receivers Base on Transactions Count')
 Transaction_Fees = get_data('Transaction Fees')
+Total_Average_Transactions_Fee = get_data('Total/Average Transactions Fee')
 
 # NEAR Analysis
 st.subheader('1️⃣ Overview')
@@ -150,5 +153,14 @@ df = Transaction_Fees
 fig = px.area(df, x='Date', y='Transactions Fee', title='Daily Transaction Fees')
 fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Fee($NEAR)')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+df = Total_Average_Transactions_Fee
+c1, c2 = st.columns(2)
+    
+with c1:
+        st.metric(label='Total Transactions Fee', value=df['Total Transactions Fee($NEAR)'])            
+        
+with c2:
+        st.metric(label='Averag Transactions Fee', value=df['Averag Transactions Fee($NEAR)'])
 
   
