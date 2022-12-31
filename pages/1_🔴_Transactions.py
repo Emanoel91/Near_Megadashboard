@@ -133,7 +133,7 @@ df = Top_20_TX_Receivers_Base_on_Transactions_Count
         
 with c2:
         fig = px.bar(df, x='TX Receiver', y='TXs Count', color='TXs Count', title='Top 20 TX Receivers Base on Transactions Count')
-        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='')
+        fig.update_layout(showlegend=False, xaxis_title=None, yaxis_title='Fees [USD]', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
   
