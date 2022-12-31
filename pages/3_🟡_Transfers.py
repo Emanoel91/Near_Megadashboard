@@ -105,6 +105,21 @@ with c2:
         fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='$NEAR')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
+df = Top_20_Senders_Based_on_Sending_Count
+c1, c2 = st.columns(2)
+    
+with c1:
+        fig = px.bar(df, x='Sender', y='Sending Count', color='Sending Count', title='Top 20 Senders Based on Sending Count')
+        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
+df = Top_20_Receivers_based_on_Receiving_Count
+with c2:
+        fig = px.bar(df, x='Receiver', y='Receiving Count', color='Receiving Count', title='Top 20 Receivers based on Receiving Count')
+        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)                
+
+        
 
 
 
