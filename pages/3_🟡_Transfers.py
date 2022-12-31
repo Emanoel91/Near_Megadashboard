@@ -69,11 +69,11 @@ with c2:
 st.subheader('2️⃣ Daily Transfers')
 df = Transfers
 
-fig = px.bar(df, x='Date', y='Transfers Volume', color='STATUS', title='Daily Transfers Volume(🔴Failed 🟢Successful)', log_y=False)
+fig = px.bar(df, x='Date', y='Transfers Volume', color='STATUS', title='Daily Transfers Volume(🔴Failed 🔵Successful)', log_y=False)
 fig.update_layout(showlegend=False, xaxis_title=None, legend_title='STATUS', yaxis_title='$NEAR', xaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
-fig = px.bar(df, x='Date', y='Transfers Count', color='STATUS', title='Daily Transfers Count(🔴Failed 🟢Successful)', log_y=False)
+fig = px.bar(df, x='Date', y='Transfers Count', color='STATUS', title='Daily Transfers Count(🔴Failed 🔵Successful)', log_y=False)
 fig.update_layout(showlegend=False, xaxis_title=None, legend_title='STATUS', yaxis_title='', xaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
