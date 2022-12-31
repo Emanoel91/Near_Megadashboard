@@ -84,14 +84,3 @@ with c1:
         fig.update_layout(legend_title='Status', legend_y=0.5)
         fig.update_traces(textinfo='percent+label', textposition='inside')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
-with c2:
-        
-
-
-
-
-
-
-
-
-
