@@ -90,6 +90,20 @@ fig.update_yaxes(title_text='', secondary_y=False)
 fig.update_yaxes(title_text='', secondary_y=True)
 st.plotly_chart(fig, use_container_width=False, theme=theme_plotly)
 
+st.subheader('3️⃣ Top Addresses')
+df = Top_20_Senders_based_on_Sending_Volume
+c1, c2 = st.columns(2)
+    
+with c1:
+        fig = px.bar(df, x='Sender', y='Sending Volume', color='Sending Volume', title='Top 20 Senders based on Sending Volume')
+        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='$NEAR')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
+df = Top_20_Receivers_based_on_Receiving_Volume
+with c2:
+        fig = px.bar(df, x='Receiver', y='Receiving Volume', color='Receiving Volume', title='Top 20 Receivers based on Receiving Volume')
+        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='$NEAR')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 
 
