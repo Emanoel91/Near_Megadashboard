@@ -77,18 +77,19 @@ fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Status', yax
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 fig = go.Figure()
-            for i in df['Status'].unique():
-                fig.add_trace(go.Scatter(
-                    name=i,
-                    x=df.query("Status == @i")['Date'],
-                    y=df.query("Status == @i")['Transactions Count'],
-                    mode='lines',
-                    stackgroup='one',
-                    groupnorm='percent'
-                ))
-            fig.update_layout(title='Daily Status of Transactions(%Normalized)')
-            st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
-            
+for i in df['Status'].unique():
+    fig.add_trace(go.Scatter(
+        name=i,
+        x=df.query("Status == @i")['Date'],
+        y=df.query("Status == @i")['Transactions Count'],
+        mode='lines',
+        stackgroup='one',
+        groupnorm='percent'
+     ))
+fig.update_layout(title='Daily Status of Transactions(%Normalized)')
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
+    
 fig = px.pie(df, values='Transactions Count', names='Status', title='Total Transactions Share')
 fig.update_layout(legend_title='Status', legend_y=0.5)
 fig.update_traces(textinfo='percent+label', textposition='inside')
