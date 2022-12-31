@@ -72,15 +72,15 @@ with c1:
         fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 with c2:
-        fig = px.bar(df, x='Status', y='Average', color='Average', title='Statistical Data: Average')
+        fig = px.bar(df, x='Status', y='Average', color='Average', title='Average # of daily TXs')
         fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 with c3:
-        fig = px.bar(df, x='Status', y='Median', color='Median', title='Statistical Data: Median')
+        fig = px.bar(df, x='Status', y='Median', color='Median', title='Median # of daily TXs')
         fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 with c4:
-        fig = px.bar(df, x='Status', y='Minimum', color='Minimum', title='Statistical Data: Minimum')
+        fig = px.bar(df, x='Status', y='Minimum', color='Minimum', title='Minimum TX Count in a Day')
         fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
