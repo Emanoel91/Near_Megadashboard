@@ -86,14 +86,14 @@ with c1:
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 with c2:
    fig = go.Figure()
-   for i in df['Status'].unique():
+   for i in df['STATUS'].unique():
        fig.add_trace(go.Scatter(
            name=i,
-           x=df.query("Status == @i")['Date'],
-           y=df.query("Status == @i")['Transactions Count'],
+           x=df.query("STATUS == @i")['Date'],
+           y=df.query("STATUS == @i")['Transfers Count'],
            mode='lines',
            stackgroup='one',
            groupnorm='percent'
         ))
-   fig.update_layout(title='Status of Transactions(%Normalized)')
+   fig.update_layout(title='Status of Transfers(%Normalized)')
    st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
