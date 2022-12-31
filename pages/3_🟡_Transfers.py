@@ -65,6 +65,13 @@ with c1:
 with c2:
         st.metric(label='Total Transfers Count', value=df['Transfers Count'])
         st.metric(label='Unique Senders Count', value=df['Senders Count'].round(2))
+        
+st.subheader('2️⃣ Daily Transfers')
+df = Transfers
+
+fig = px.bar(df, x='Date', y='Transfers Volume', color='STATUS', title='Daily Transfers Volume', log_y=False)
+fig.update_layout(showlegend=False, xaxis_title=None, legend_title='STATUS', yaxis_title='$NEAR', xaxis={'categoryorder':'total ascending'})
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 
 
