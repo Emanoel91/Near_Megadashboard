@@ -70,7 +70,7 @@ st.subheader('2️⃣ Daily Transactions')
 df = Status_of_Transactions
 
 fig = px.bar(df, x='Date', y='Transactions Count', color='Status', title='Status of Transactions', log_y=False)
-fig.update_layout(showlegend=False, xaxis_title=None, yaxis_title='TXs Count', xaxis={'categoryorder':'total ascending'})
+fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Status', yaxis_title='TXs Count', xaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 fig = px.pie(df, values='Transactions Count', names='Status', title='Total Transactions Share')
