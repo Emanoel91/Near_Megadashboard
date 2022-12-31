@@ -32,12 +32,18 @@ def get_data(query1):
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/accec9ec-512b-4a63-9170-80b37e53e242/data/latest') 
     elif query1 == 'Statistical Data: Number of Transactions':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/e31e9f16-3294-4104-8514-bc071c400c0d/data/latest')
+    elif query1 == 'Top 20 TX Signers Base on Transactions Count':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/99663018-9ec2-4e00-a827-3078fcaa7761/data/latest')
+    elif query1 == 'Top 20 TX Receivers Base on Transactions Count':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/a6ff61aa-4d96-4c53-912f-9c922e7926e7/data/latest')
     return None
 
 transactions_overview = get_data('Transactions Overview')
 Daily_Transactions_Data = get_data('Daily Transactions Data')
 Status_of_Transactions = get_data('Status of Transactions')
 Statistical_Data_Number_of_Transactions = get_data('Statistical Data: Number of Transactions')
+Top_20_TX_Signers_Base_on_Transactions_Count = get_data('Top 20 TX Signers Base on Transactions Count')
+Top_20_TX_Receivers_Base_on_Transactions_Count = get_data('Top 20 TX Receivers Base on Transactions Count')
 
 # NEAR Analysis
 st.subheader('1️⃣ Overview')
@@ -114,5 +120,20 @@ fig.update_layout(title_text='Number of Transaction Senders/Receivers')
 fig.update_yaxes(title_text='', secondary_y=False)
 fig.update_yaxes(title_text='', secondary_y=True)
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+df = Top_20_TX_Signers_Base_on_Transactions_Count
+c1, c2 = st.columns(2)
+    
+with c1:
+        fig = px.bar(df, x='TX Signer', y='TXs Count', color='TXs Count', title='Top 20 TX Signers Base on Transactions Count')
+        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
+df = Top_20_TX_Receivers_Base_on_Transactions_Count       
+        
+with c2:
+        fig = px.bar(df, x='TX Receiver', y='TXs Count', color='TXs Count', title='Top 20 TX Receivers Base on Transactions Count')
+        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
   
