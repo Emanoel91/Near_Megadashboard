@@ -84,8 +84,8 @@ for i in options:
                     stackgroup='one',
                     groupnorm='percent'
                 ))
-            fig.update_layout(title='Status of Transactions(%Normalized)')
-            st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+          fig.update_layout(title='Status of Transactions(%Normalized)')
+          st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
             
 df = Statistical_Data_Number_of_Transactions
