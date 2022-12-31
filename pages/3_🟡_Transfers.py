@@ -85,18 +85,7 @@ with c1:
         fig.update_traces(textinfo='percent+label', textposition='inside')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 with c2:
-        fig = go.Figure()
-        for i in df['STATUS'].unique():
-            fig.add_trace(go.Scatter(
-                name=i,
-                x=df.query("STATUS == @i")['Date'],
-                y=df.query("STATUS == @i")['Transfers Count'],
-                mode='lines',
-                stackgroup='one',
-                groupnorm='percent'
-            ))
-        fig.update_layout(title='Status of Transfers(%Normalized)')
-        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
 
 
 
