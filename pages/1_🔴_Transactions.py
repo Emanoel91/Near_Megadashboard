@@ -75,7 +75,7 @@ st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 
 fig = go.Figure()
-      for i in options:
+for i in options:
           fig.add_trace(go.Scatter(
                     name=i,
                     x=df.query1['Date'],
