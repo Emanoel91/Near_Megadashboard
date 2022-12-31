@@ -36,6 +36,8 @@ def get_data(query1):
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/99663018-9ec2-4e00-a827-3078fcaa7761/data/latest')
     elif query1 == 'Top 20 TX Receivers Base on Transactions Count':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/a6ff61aa-4d96-4c53-912f-9c922e7926e7/data/latest')
+    elif query1 == 'Transaction Fees':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/b688e249-b644-4040-8059-d8c7cea2d258/data/latest')
     return None
 
 transactions_overview = get_data('Transactions Overview')
@@ -44,6 +46,7 @@ Status_of_Transactions = get_data('Status of Transactions')
 Statistical_Data_Number_of_Transactions = get_data('Statistical Data: Number of Transactions')
 Top_20_TX_Signers_Base_on_Transactions_Count = get_data('Top 20 TX Signers Base on Transactions Count')
 Top_20_TX_Receivers_Base_on_Transactions_Count = get_data('Top 20 TX Receivers Base on Transactions Count')
+Transaction_Fees = get_data('Transaction Fees')
 
 # NEAR Analysis
 st.subheader('1️⃣ Overview')
@@ -135,5 +138,12 @@ with c2:
         fig = px.bar(df, x='TX Receiver', y='TXs Count', color='TXs Count', title='Top 20 TX Receivers Base on Transactions Count')
         fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
+st.subheader('3️⃣ Transaction Fees')
+df = Transaction_Fees
+
+fig = px.area(df, x='Date', y='Transactions Fee', title='Daily Transaction Fees')
+fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Fee($NEAR)')
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
   
