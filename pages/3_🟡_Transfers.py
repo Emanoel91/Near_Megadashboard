@@ -119,6 +119,7 @@ with c2:
         fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)                
 
+st.subheader('4️⃣ Classifications')        
 df = Classification_of_Transfers_Based_on_Volume
 c1, c2, c3 = st.columns(3)
     
