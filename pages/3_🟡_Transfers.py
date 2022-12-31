@@ -77,15 +77,26 @@ fig = px.bar(df, x='Date', y='Transfers Count', color='STATUS', title='Daily Tra
 fig.update_layout(showlegend=False, xaxis_title=None, legend_title='STATUS', yaxis_title='', xaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
-fig = px.pie(df, values='Transfers Volume', names='STATUS', title='Share of Transfers Volume')
-fig.update_layout(legend_title='Status', legend_y=0.5)
-fig.update_traces(textinfo='percent+label', textposition='inside')
-st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+c1, c2 = st.columns(2)
     
-fig = px.pie(df, values='Transfers Count', names='STATUS', title='Share of Transfers Count')
-fig.update_layout(legend_title='Status', legend_y=0.5)
-fig.update_traces(textinfo='percent+label', textposition='inside')
-st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+with c1:    
+        fig = px.pie(df, values='Transfers Count', names='STATUS', title='Share of Transfers Count')
+        fig.update_layout(legend_title='Status', legend_y=0.5)
+        fig.update_traces(textinfo='percent+label', textposition='inside')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+with c2:
+        fig = go.Figure()
+        for i in df['Status'].unique():
+            fig.add_trace(go.Scatter(
+                name=i,
+                x=df.query3("STATUS == @i")['Date'],
+                y=df.query3("STATUS == @i")['Transfers Count'],
+                mode='lines',
+                stackgroup='one',
+                groupnorm='percent'
+            ))
+        fig.update_layout(title='Status of Transfers(%Normalized)')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 
 
