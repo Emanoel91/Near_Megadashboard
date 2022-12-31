@@ -89,7 +89,7 @@ with c1:
            stackgroup='one',
            groupnorm='percent'
         ))
-   fig.update_layout(title='Daily Status of Transactions(%Normalized)')
+   fig.update_layout(title='Status of Transactions(%Normalized)')
    st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 with c2:         
    fig = px.pie(df, values='Transactions Count', names='Status', title='Total Transactions Share')
