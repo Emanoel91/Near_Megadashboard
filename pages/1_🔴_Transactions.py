@@ -42,6 +42,8 @@ def get_data(query1):
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/9c150e27-bdf1-440c-bc44-244d2a7851b5/data/latest')
     elif query1 == 'Top 20 TX Signers Based on Paid Fees':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/7f93109f-26e2-4472-b1b7-933920522958/data/latest')
+    elif query1 == 'Statistical Data: Daily Transaction Fees':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/8ee9bda4-fdbb-4e85-a2fb-1b472131d536/data/latest')
     return None
 
 transactions_overview = get_data('Transactions Overview')
@@ -53,6 +55,7 @@ Top_20_TX_Receivers_Base_on_Transactions_Count = get_data('Top 20 TX Receivers B
 Transaction_Fees = get_data('Transaction Fees')
 Total_Average_Transactions_Fee = get_data('Total/Average Transactions Fee')
 Top_20_TX_Signers_Based_on_Paid_Fees = get_data('Top 20 TX Signers Based on Paid Fees')
+Statistical_Data_Daily_Transaction_Fees = get_data('Statistical Data: Daily Transaction Fees')
 
 # NEAR Analysis
 st.subheader('1️⃣ Overview')
@@ -183,11 +186,19 @@ with c2:
         st.metric(label='Averag Transactions Fee($NEAR)', value=df['Averag Transactions Fee'])
         
 df = Top_20_TX_Signers_Based_on_Paid_Fees
-
-fig = px.bar(df, x='TX Signer', y='Transactions Fee', title='Top 20 TX Signers Based on Paid Fees')
-fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='$NEAR')
-st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
-
+c1, c2 = st.columns(2)
+    
+with c1:
+        fig = px.bar(df, x='TX Signer', y='Transactions Fee', title='Top 20 TX Signers Based on Paid Fees')
+        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='$NEAR')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
+df = Statistical_Data_Daily_Transaction_Fees
+with c2:
+        fig = px.bar(df, x='CRITERIA', y='Fee', color='Fee', title='Statistical Data: Daily Transaction Fees')
+        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+    
 
 
 
