@@ -196,7 +196,7 @@ with c1:
 df = Statistical_Data_Daily_Transaction_Fees
 with c2:
         fig = px.bar(df, x='CRITERIA', y='Fee', color='Fee', title='Statistical Data: Daily Transaction Fees')
-        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='')
+        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='$NEAR')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
     
 
