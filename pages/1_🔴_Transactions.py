@@ -68,7 +68,7 @@ df = Statistical_Data_Number_of_Transactions
 c1, c2, c3, c4 = st.columns(4)
     
 with c1:
-        fig = px.bar(df, x='Status', y='Maximum', color='Maximum', title='Statistical Data: Maximum')
+        fig = px.bar(df, x='Status', y='Maximum', color='Maximum', title='Maximum TX Count in a Day')
         fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 with c2:
