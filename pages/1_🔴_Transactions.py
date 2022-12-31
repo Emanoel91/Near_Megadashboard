@@ -73,7 +73,7 @@ fig = px.bar(df, x='Date', y='Transactions Count', color='Status', title='Status
 fig.update_layout(showlegend=False, xaxis_title=None, yaxis_title='TXs Count', xaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
-fig = px.pie(df, values='Transactions Count', names='Status', title='Total Transactions Count')
+fig = px.pie(df, values='Transactions Count', names='Status', title='Total Transactions Share')
 fig.update_layout(legend_title='Status', legend_y=0.5)
 fig.update_traces(textinfo='percent+label', textposition='inside')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
