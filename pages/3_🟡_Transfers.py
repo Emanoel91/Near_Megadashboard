@@ -77,6 +77,16 @@ fig = px.bar(df, x='Date', y='Transfers Count', color='STATUS', title='Daily Tra
 fig.update_layout(showlegend=False, xaxis_title=None, legend_title='STATUS', yaxis_title='', xaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
+fig = px.pie(df, values='Transfers Volume', names='STATUS', title='Share of Transfers Volume')
+   fig.update_layout(legend_title='Status', legend_y=0.5)
+   fig.update_traces(textinfo='percent+label', textposition='inside')
+   st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+    
+fig = px.pie(df, values='Transfers Count', names='Status', title='Share of Transfers Count')
+   fig.update_layout(legend_title='Status', legend_y=0.5)
+   fig.update_traces(textinfo='percent+label', textposition='inside')
+   st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
 
 
 
