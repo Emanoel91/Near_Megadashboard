@@ -79,8 +79,8 @@ fig = go.Figure()
 for i in options:
     fig.add_trace(go.Scatter(
         name=i,
-        x=df.query("Status == @i")['Date'],
-        y=df.query("Status == @i")['Transactions Count'],
+        x=df.query1("Status == @i")['Date'],
+        y=df.query1("Status == @i")['Transactions Count'],
         mode='lines',
         stackgroup='one',
         groupnorm='percent'
