@@ -74,7 +74,7 @@ fig.update_layout(showlegend=False, xaxis_title=None, yaxis_title='TXs Count', x
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 fig = px.pie(df, values='Transactions Count', names='Status', title='Total Transactions Count')
-fig.update_layout(legend_title='Wallet Type', legend_y=0.5)
+fig.update_layout(legend_title='Status', legend_y=0.5)
 fig.update_traces(textinfo='percent+label', textposition='inside')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
