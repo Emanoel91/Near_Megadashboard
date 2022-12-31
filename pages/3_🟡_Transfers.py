@@ -83,7 +83,7 @@ fig.update_traces(textinfo='percent+label', textposition='inside')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 fig = sp.make_subplots(specs=[[{'secondary_y': True}]])
-fig.add_trace(go.Bar(x=df['Date'], y=df['Senders Count'], name='Senders'), secondary_y=False)
+fig.add_trace(go.Line(x=df['Date'], y=df['Senders Count'], name='Senders'), secondary_y=False)
 fig.add_trace(go.Line(x=df['Date'], y=df['Receivers Count'], name='Receivers'), secondary_y=True)
 fig.update_layout(title_text='Number of Unique Senders/Receivers')
 fig.update_yaxes(title_text='', secondary_y=False)
