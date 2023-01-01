@@ -99,7 +99,6 @@ with c2:
 
         
 st.subheader('3️⃣ Classifications')
-df = Daily_Swaps
 
 c1, c2, c3 = st.columns(3)
 df = Classification_of_Swaps_Based_on_Volume
@@ -112,7 +111,7 @@ with c1:
         
 df = Classification_of_Swappers_Total_Swap_Size        
 with c2:  
-        fig = px.pie(df, values='Swappers Count', names='CLASS', title='Classification  of Swappers Total Swap Size')
+        fig = px.pie(df, values='Swappers Count', names='CLASS', title='Classification of Swappers Total Swap Size')
         fig.update_layout(legend_title='CLASS', legend_y=0.5)
         fig.update_traces(textinfo='percent+label', textposition='inside')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
@@ -123,7 +122,26 @@ with c3:
         fig.update_layout(legend_title='CLASS', legend_y=0.5)
         fig.update_traces(textinfo='percent+label', textposition='inside')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
+c1, c2, c3 = st.columns(3)
+df = Classification_of_Swaps_Based_on_Volume
+
+with c1:      
+        fig = px.bar(df, x='CLASS', y='SWAPS', color='CLASS', title='', log_y=False)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='CLASS', yaxis_title='Number of Swaps', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
+df = Classification_of_Swappers_Total_Swap_Size        
+with c2:  
+        fig = px.bar(df, x='CLASS', y='Swappers Count', color='CLASS', title='', log_y=False)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='CLASS', yaxis_title='Number of Swappers', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
     
+df = Classification_of_Swappers_Average_Swap_Size    
+with c3: 
+        fig = px.bar(df, x='CLASS', y='Swappers Count', color='CLASS', title='', log_y=False)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='CLASS', yaxis_title='Number of Swappers', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
     
     
     
