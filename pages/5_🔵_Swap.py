@@ -199,7 +199,10 @@ with c4:
         fig.update_layout(showlegend=False, xaxis_title=None, legend_title='DEX', yaxis_title='Swappers', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)  
 
-st.subheader('6️⃣ Token in vs. Token out') 
+st.subheader('6️⃣ Swapped Tokens') 
+c1 , c2 = st.columns(2)
+
+c1.image(Image.open('Images/Swapped Tokens.png'))
 
 df = Tokens
 fig = px.bar(df, x='Token', y='Buying Volume', color='Buying Volume', title='Total Buying Volume By Token', log_y=True)
