@@ -46,6 +46,8 @@ def get_data(query1):
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/76e4ef3f-4cdf-4750-a5b7-7cdb109181aa/data/latest')
     elif query1 == 'Swaps Hitmap: Hour of Day':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/82bce493-8d9d-433e-afbd-6093cc4be799/data/latest')
+    elif query1 == 'Tokens':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/e1a2e763-dfe2-467a-81a1-b30a43d6666f/data/latest')
     return None
 
 Swap_Overview = get_data('Swap Overview')
@@ -59,6 +61,7 @@ Token_in = get_data('Token in')
 Token_out = get_data('Token out')
 Swaps_Hitmap_Day_of_Week = get_data('Swaps Hitmap: Day of Week')    
 Swaps_Hitmap_Hour_of_Day = get_data('Swaps Hitmap: Hour of Day') 
+Tokens = get_data('Tokens')
 
 # Swap Analysis
 st.subheader('1️⃣ Overview')
@@ -212,5 +215,14 @@ df = Token_out
 fig = px.bar(df, x='Token Out', y='Swaps Volume', color='Token Out', title='Distribution of Tokens Based on Buying Volume', log_y=False)
 fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Token Out', yaxis_title='Volume($USD)', xaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+df = Tokens
+        fig = sp.make_subplots(specs=[[{'secondary_y': True}]])
+        fig.add_trace(go.Bar(x=df['Token'], y=df['Buying Volume'], name='Total Buying Volume'), secondary_y=False)
+        fig.add_trace(go.Line(x=df['Token'], y=df['Selling Volume'], name='Total Selling Volume'), secondary_y=True)
+        fig.update_layout(title_text='Swaps Volume By Volume')
+        fig.update_yaxes(title_text='$USD', secondary_y=False)
+        fig.update_yaxes(title_text='$USD', secondary_y=True)
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
               
