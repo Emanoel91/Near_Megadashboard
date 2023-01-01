@@ -217,12 +217,12 @@ fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Token Out', 
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 df = Tokens
-        fig = sp.make_subplots(specs=[[{'secondary_y': True}]])
-        fig.add_trace(go.Bar(x=df['Token'], y=df['Buying Volume'], name='Total Buying Volume'), secondary_y=False)
-        fig.add_trace(go.Line(x=df['Token'], y=df['Selling Volume'], name='Total Selling Volume'), secondary_y=True)
-        fig.update_layout(title_text='Swaps Volume By Volume')
-        fig.update_yaxes(title_text='$USD', secondary_y=False)
-        fig.update_yaxes(title_text='$USD', secondary_y=True)
-        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+fig = sp.make_subplots(specs=[[{'secondary_y': True}]])
+fig.add_trace(go.Bar(x=df['Token'], y=df['Buying Volume'], name='Total Buying Volume'), secondary_y=False)
+fig.add_trace(go.Line(x=df['Token'], y=df['Selling Volume'], name='Total Selling Volume'), secondary_y=True)
+fig.update_layout(title_text='Swaps Volume By Volume')
+fig.update_yaxes(title_text='$USD', secondary_y=False)
+fig.update_yaxes(title_text='$USD', secondary_y=True)
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
               
