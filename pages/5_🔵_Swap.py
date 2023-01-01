@@ -167,6 +167,9 @@ with c4:
         fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Swap Type', yaxis_title='Swappers', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)        
 
-    
-    
+st.subheader('5️⃣ Near DEXs')        
+c1 , c2 = st.columns(2)
+
+c1.image(Image.open('Images/ref_finance.png'))    
+c2.image(Image.open('Images/jumbo.png'))       
               
