@@ -232,8 +232,8 @@ st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 st.subheader('7️⃣ Swaps Pattern')
 df = Swaps_Hitmap_Day_of_Week
 fig = px.density_heatmap(df, x='HOUR', y='Day Name', z='Swaps Count', histfunc='avg', title='Heatmap of Swaps', nbinsx=24)
-fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title=None, xaxis={'dtick': 1}, coloraxis_colorbar=dict(title='Transactions'))
-fig.update_yaxes(categoryorder='array', categoryarray=week_days)
+fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title=None, xaxis={'dtick': 1}, coloraxis_colorbar=dict(title='Swaps Count'))
+fig.update_yaxes(categoryorder='array', categoryarray=Swaps_Hitmap_Day_of_Week)
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 
