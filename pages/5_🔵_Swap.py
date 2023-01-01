@@ -173,6 +173,7 @@ c1 , c2 = st.columns(2)
 c1.image(Image.open('Images/ref_finance.png'))    
 c2.image(Image.open('Images/jumbo.png'))  
 
+c1 , c2, c3, c4 = st.columns(4)
 df = Near_DEXs
 
 with c1:      
