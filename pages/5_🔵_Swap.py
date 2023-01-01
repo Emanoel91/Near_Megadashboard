@@ -66,8 +66,8 @@ df = Swap_Overview
 c1, c2, c3 = st.columns(3)
     
 with c1:
-        st.metric(label='Swaps Volume', value=df['Swaps Volume'])
-        st.metric(label='Average Swap Volume', value=df['Average Swap Volume'].round(2))
+        st.metric(label='Swaps Volume($USD)', value=df['Swaps Volume'])
+        st.metric(label='Average Swap Volume($USD)', value=df['Average Swap Volume'].round(2))
 with c2:
         st.metric(label='Swaps Count', value=df['Swaps Count'])
         st.metric(label='Number of Token In', value=df['Number of Token In'].round(2))
