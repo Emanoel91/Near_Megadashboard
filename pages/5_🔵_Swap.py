@@ -241,6 +241,19 @@ fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title=None, xaxis={
 fig.update_yaxes(categoryorder='array', categoryarray=Swaps_Hitmap_Day_of_Week)
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
+c1 , c2 = st.columns(2)
+df = Near_DEXs
+
+with c1:      
+        fig = px.bar(df, x='Day Name', y='Swaps Volume', color='Day Name', title='Swaps Volume Over Days of Week', log_y=False)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Day Name', yaxis_title='$USD', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+               
+with c2:  
+        fig = px.bar(df, x='Day Name', y='Swaps Count', color='Day Name', title='Swaps Count Over Days of Week', log_y=False)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Day Name', yaxis_title='$USD', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
 
 
               
