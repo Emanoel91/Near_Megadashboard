@@ -204,16 +204,13 @@ c1 , c2 = st.columns(2)
 
 c1.image(Image.open('Images/swap3.JPG'))    
 
-df = Token_in
-
-fig = px.bar(df, x='Token In', y='Swaps Volume', color='Token In', title='Distribution of Tokens Based on Selling Volume', log_y=False)
-fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Token In', yaxis_title='Volume($USD)', xaxis={'categoryorder':'total ascending'})
-st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
-
-df = Token_out
-
-fig = px.bar(df, x='Token Out', y='Swaps Volume', color='Token Out', title='Distribution of Tokens Based on Buying Volume', log_y=False)
-fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Token Out', yaxis_title='Volume($USD)', xaxis={'categoryorder':'total ascending'})
+df = Tokens
+fig = sp.make_subplots(specs=[[{'secondary_y': True}]])
+fig.add_trace(go.Bar(x=df['Token'], y=df['Buying Volume'], name='Total Buying Volume'), secondary_y=False)
+fig.add_trace(go.Line(x=df['Token'], y=df['Selling Volume'], name='Total Selling Volume'), secondary_y=True)
+fig.update_layout(title_text='Swaps Volume By Volume')
+fig.update_yaxes(title_text='$USD', secondary_y=False)
+fig.update_yaxes(title_text='$USD', secondary_y=True)
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 
