@@ -85,6 +85,10 @@ with c1:
         fig.update_layout(showlegend=False, xaxis_title=None, legend_title='', yaxis_title='$USD', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 with c2:         
-        fig = px.area(df, x='Date', y='Swaps Count', title='Daily Swaps Count', log_y=False)
-        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='', yaxis_title='', xaxis={'categoryorder':'total ascending'})
+        fig = sp.make_subplots(specs=[[{'secondary_y': True}]])
+        fig.add_trace(go.Bar(x=df['Date'], y=df['Swaps Count'], name='Swaps'), secondary_y=False)
+        fig.add_trace(go.Line(x=df['Date'], y=df['Swappers Count'], name='Swappers'), secondary_y=True)
+        fig.update_layout(title_text='Number of Swaps & Swappers')
+        fig.update_yaxes(title_text='', secondary_y=False)
+        fig.update_yaxes(title_text='', secondary_y=True)
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
