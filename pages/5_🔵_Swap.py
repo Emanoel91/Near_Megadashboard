@@ -20,3 +20,57 @@ c1.image(Image.open('Images/swap2.JPG'))
 # dash_style
 with open('style.css')as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html = True)
+    
+# flipside API
+@st.cache(ttl=600)
+def get_data(query1):
+    if query1 == 'Swap Overview':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/4dcac99e-fc75-4106-9c95-4365ff45485c/data/latest')
+    elif query1 == 'Daily Swaps':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/6f485435-f301-4138-8efc-91bac8b57143/data/latest')
+    elif query1 == 'Classification of Swaps Based on Volume':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/ec6dcf38-a6e4-4c24-9690-6ba7133d71b3/data/latest') 
+    elif query1 == 'Classification of Swappers Total Swap Size':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/8a8e7ee2-ec3b-4469-8b7a-82101f76e1f9/data/latest')
+    elif query1 == 'Classification of Swappers Average Swap Size':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/0467f64c-aac5-468c-9966-8687ebb7a37c/data/latest')
+    elif query1 == 'Swap Type':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/2ffc1972-04fe-4465-823f-83c65b3ca291/data/latest')
+    elif query1 == 'Near DEXs':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/17afcd87-c684-4201-ae2d-ecaacad35a29/data/latest')
+    elif query1 == 'Token in':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/9d5e4d09-a51e-4189-aaf8-188de1ca7dac/data/latest')
+    elif query1 == 'Token out':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/fe3fd77d-227a-451b-ac39-7b5fd8061dca/data/latest')
+    elif query1 == 'Swaps Hitmap: Day of Week':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/76e4ef3f-4cdf-4750-a5b7-7cdb109181aa/data/latest')
+    elif query1 == 'Swaps Hitmap: Hour of Day':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/82bce493-8d9d-433e-afbd-6093cc4be799/data/latest')
+    return None
+
+Swap_Overview = get_data('Swap Overview')
+Daily_Swaps = get_data('Daily Swaps')
+Classification_of_Swaps_Based_on_Volume = get_data('Classification of Swaps Based on Volume')
+Classification_of_Swappers_Total_Swap_Size = get_data('Classification of Swappers Total Swap Size')
+Classification_of_Swappers_Average_Swap_Size = get_data('Classification of Swappers Average Swap Size')
+Swap_Type = get_data('Swap Type')
+Near_DEXs = get_data('Near DEXs')
+Token_in = get_data('Token in')
+Token_out = get_data('Token out')
+Swaps_Hitmap_Day_of_Week = get_data('Swaps Hitmap: Day of Week')    
+Swaps_Hitmap_Hour_of_Day = get_data('Swaps Hitmap: Hour of Day') 
+
+# Swap Analysis
+st.subheader('1️⃣ Overview')
+df = Swap_Overview
+c1, c2, c3 = st.columns(3)
+    
+with c1:
+        st.metric(label='Swaps Volume', value=df['Swaps Volume'])
+        st.metric(label='Average Swap Volume', value=df['Average Swap Volume'].round(2))
+with c2:
+        st.metric(label='Swaps Count', value=df['Swaps Count'])
+        st.metric(label='Number of Token In', value=df['Number of Token In'].round(2))
+with c3:
+        st.metric(label='Swappers Count', value=df['Swappers Count'])
+        st.metric(label='Number of Token Out', value=df['Number of Token Out'].round(2))
