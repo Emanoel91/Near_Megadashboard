@@ -199,8 +199,8 @@ with c4:
 st.subheader('6️⃣ Token in vs. Token out')        
 df = Token_in
 
-fig = px.bar(df, x='Token In', y='Swaps Volume', color='Token In', title='Distribution of Tokens in Based on Swap Volume', log_y=False)
-fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Token In', yaxis_title='Swap Volume($USD)', xaxis={'categoryorder':'total ascending'})
+fig = px.bar(df, x='Token In', y='Swaps Volume', color='Token In', title='Distribution of Tokens Based on Selling Volume', log_y=False)
+fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Token In', yaxis_title='Volume($USD)', xaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
               
