@@ -48,6 +48,10 @@ def get_data(query1):
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/82bce493-8d9d-433e-afbd-6093cc4be799/data/latest')
     elif query1 == 'Tokens':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/e1a2e763-dfe2-467a-81a1-b30a43d6666f/data/latest')
+    elif query1 == 'Swaps on each Day':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/265935c6-c05e-4dcf-965b-ebaaf6dd919c/data/latest')
+    elif query1 == 'Swaps on each Hour':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/e4e3ce3c-e694-4132-a0cd-7f0bba0695ea/data/latest')    
     return None
 
 Swap_Overview = get_data('Swap Overview')
@@ -62,6 +66,8 @@ Token_out = get_data('Token out')
 Swaps_Hitmap_Day_of_Week = get_data('Swaps Hitmap: Day of Week')    
 Swaps_Hitmap_Hour_of_Day = get_data('Swaps Hitmap: Hour of Day') 
 Tokens = get_data('Tokens')
+Swaps_on_each_Day = get_data('Swaps on each Day')
+Swaps_on_each_Hour = get_data('Swaps on each Hour')
 
 # Swap Analysis
 st.subheader('1️⃣ Overview')
@@ -242,18 +248,29 @@ fig.update_yaxes(categoryorder='array', categoryarray=Swaps_Hitmap_Day_of_Week)
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 c1 , c2 = st.columns(2)
-df = Near_DEXs
+df = Swaps_on_each_Day
 
 with c1:      
-        fig = px.bar(df, x='Day Name', y='Swaps Volume', color='Day Name', title='Swaps Volume Over Days of Week', log_y=False)
+        fig = px.bar(df, x='Day Name', y='Total Swaps Volume', color='Day Name', title='Total Swaps Volume Over Days of Week', log_y=False)
         fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Day Name', yaxis_title='$USD', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
                
 with c2:  
-        fig = px.bar(df, x='Day Name', y='Swaps Count', color='Day Name', title='Swaps Count Over Days of Week', log_y=False)
+        fig = px.bar(df, x='Day Name', y='Total Swaps Count', color='Day Name', title='Total Swaps Count Over Days of Week', log_y=False)
         fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Day Name', yaxis_title='$USD', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
+c1 , c2 = st.columns(2)
+df = Swaps_on_each_Hour
 
+with c1:      
+        fig = px.bar(df, x='Hour', y='Total Swaps Volume', color='Hour', title='Total Swaps Volume Over Days of Week', log_y=False)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Hour', yaxis_title='$USD', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+               
+with c2:  
+        fig = px.bar(df, x='Hour', y='Total Swaps Count', color='Hour', title='Total Swaps Count Over Days of Week', log_y=False)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Hour', yaxis_title='$USD', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
               
