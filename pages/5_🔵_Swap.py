@@ -178,22 +178,22 @@ c1, c2, c3, c4 = st.columns(4)
 df = Near_DEXs
 
 with c1:      
-        fig = px.bar(df, x='DEX', y='Swaps Volume', color='DEX', title='Total Volume of Swaps By Type', log_y=False)
+        fig = px.bar(df, x='DEX', y='Swaps Volume', color='DEX', title='Total Volume of Swaps By DEX', log_y=False)
         fig.update_layout(showlegend=False, xaxis_title=None, legend_title='DEX', yaxis_title='$USD', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
                
 with c2:  
-        fig = px.bar(df, x='DEX', y='Average Swap Volume', color='DEX', title='Average Swap Volume By Type', log_y=False)
+        fig = px.bar(df, x='DEX', y='Average Swap Volume', color='DEX', title='Average Swap Volume By DEX', log_y=False)
         fig.update_layout(showlegend=False, xaxis_title=None, legend_title='DEX', yaxis_title='$USD', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
 with c3: 
-        fig = px.bar(df, x='DEX', y='Swaps Count', color='DEX', title='Total Number of Swaps By Type', log_y=False)
+        fig = px.bar(df, x='DEX', y='Swaps Count', color='DEX', title='Total Number of Swaps By DEX', log_y=False)
         fig.update_layout(showlegend=False, xaxis_title=None, legend_title='DEX', yaxis_title='Swaps', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
 with c4: 
-        fig = px.bar(df, x='DEX', y='Swappers Count', color='DEX', title='Total Number of Swappers By Type', log_y=False)
+        fig = px.bar(df, x='DEX', y='Swappers Count', color='DEX', title='Total Number of Swappers By DEX', log_y=False)
         fig.update_layout(showlegend=False, xaxis_title=None, legend_title='DEX', yaxis_title='Swappers', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)        
               
