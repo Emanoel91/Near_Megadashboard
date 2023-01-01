@@ -200,14 +200,33 @@ with c4:
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)  
 
 st.subheader('6️⃣ Token in vs. Token out') 
-c1 , c2 = st.columns(2)
-
-c1.image(Image.open('Images/swap3.JPG'))    
 
 df = Tokens
 fig = px.bar(df, x='Token', y='Buying Volume', color='Buying Volume', title='Total Buying Volume By Token', log_y=True)
 fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Token', yaxis_title='$USD', xaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly) 
+
+fig = px.bar(df, x='Token', y='Selling Volume', color='Selling Volume', title='Total Selling Volume By Token', log_y=True)
+fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Token', yaxis_title='$USD', xaxis={'categoryorder':'total ascending'})
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly) 
+
+fig = px.bar(df, x='Token', y='Buying Count', color='Buying Count', title='Total Buying Count By Token', log_y=True)
+fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Token', yaxis_title='$USD', xaxis={'categoryorder':'total ascending'})
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly) 
+
+fig = px.bar(df, x='Token', y='Selling Count', color='Selling Count', title='Total Selling Count By Token', log_y=True)
+fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Token', yaxis_title='$USD', xaxis={'categoryorder':'total ascending'})
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly) 
+
+fig = px.bar(df, x='Token', y='Buyers Count', color='Buyers Count', title='Total Buyers Count By Token', log_y=True)
+fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Token', yaxis_title='$USD', xaxis={'categoryorder':'total ascending'})
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly) 
+
+fig = px.bar(df, x='Token', y='Sellers Count', color='Sellers Count', title='Total Sellers Count By Token', log_y=True)
+fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Token', yaxis_title='$USD', xaxis={'categoryorder':'total ascending'})
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+
 
 
 
