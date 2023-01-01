@@ -206,8 +206,8 @@ c1.image(Image.open('Images/swap3.JPG'))
 
 df = Tokens
 fig = px.bar(df, x='Token', y='Buying Volume', color='Buying Volume', title='Total Buying Volume By Token', log_y=True)
-        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Token', yaxis_title='$USD', xaxis={'categoryorder':'total ascending'})
-        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly) 
+fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Token', yaxis_title='$USD', xaxis={'categoryorder':'total ascending'})
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly) 
 
 
 
