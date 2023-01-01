@@ -206,8 +206,8 @@ c1.image(Image.open('Images/swap3.JPG'))
 
 df = Tokens
 fig = sp.make_subplots(specs=[[{'secondary_y': True}]])
-fig.add_trace(go.Bar(x=df['Token'], y=df['Buying Volume'], name='Total Buying Volume'), secondary_y=False)
-fig.add_trace(go.Line(x=df['Token'], y=df['Selling Volume'], name='Total Selling Volume'), secondary_y=True)
+fig.add_trace(go.Bar(x=df['Buying Volume'], y=df['Token'], name='Total Buying Volume'), secondary_y=False)
+fig.add_trace(go.Line(x=df['Selling Volume'], y=df['Token'], name='Total Selling Volume'), secondary_y=True)
 fig.update_layout(title_text='Swaps Volume By Volume')
 fig.update_yaxes(title_text='$USD', secondary_y=False)
 fig.update_yaxes(title_text='$USD', secondary_y=True)
