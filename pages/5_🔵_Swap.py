@@ -74,3 +74,17 @@ with c2:
 with c3:
         st.metric(label='Swappers Count', value=df['Swappers Count'])
         st.metric(label='Number of Token Out', value=df['Number of Token Out'].round(2))
+        
+st.subheader('2️⃣ Daily Swaps')
+df = Daily_Swaps
+
+c1, c2 = st.columns(2)
+
+with c1:
+        fig = px.area(df, x='Date', y='Swaps Volume', color='', title='Daily Swaps Volume', log_y=False)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='', yaxis_title='$USD', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+with c2:         
+        fig = px.area(df, x='Date', y='Swaps Count', color='', title='Daily Swaps Count', log_y=False)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='', yaxis_title='', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
