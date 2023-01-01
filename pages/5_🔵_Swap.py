@@ -278,12 +278,12 @@ with c2:
 
 df = Swaps_Hitmap_Hour_of_Day
 fig = px.density_heatmap(df, x='Day', y='Hour', z='Swaps Count', histfunc='avg', title='Swaps Count Hitmap, Days of Month vs. Hours of Day', nbinsx=24)
-fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title=None, xaxis={'dtick': 1}, coloraxis_colorbar=dict(title='Swaps Count'))
+fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title=None, xaxis={'dtick': 1}, yaxis={'dtick': 1}, coloraxis_colorbar=dict(title='Swaps Count'))
 fig.update_yaxes(categoryorder='array', categoryarray=Swaps_Hitmap_Hour_of_Day)
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 fig = px.density_heatmap(df, x='Day', y='Hour', z='Swaps Volume', histfunc='avg', title='Swaps Volume Hitmap, Days of Month vs. Hours of Day', nbinsx=24)
-fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title=None, xaxis={'dtick': 1}, coloraxis_colorbar=dict(title='Swaps Volume($USD)'))
+fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title=None, xaxis={'dtick': 1}, yaxis={'dtick': 1}, coloraxis_colorbar=dict(title='Swaps Volume($USD)'))
 fig.update_yaxes(categoryorder='array', categoryarray=Swaps_Hitmap_Hour_of_Day)
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
