@@ -238,7 +238,25 @@ df = Unstaking_Hitmap_Day_of_Week
 fig = px.density_heatmap(df, x='Hour', y='Day Name', z='Unstaking Volume', histfunc='avg', title='Unstaking Volume Hitmap, Days of Week vs. Hours of Day', nbinsx=24)
 fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title=None, xaxis={'dtick': 1}, coloraxis_colorbar=dict(title='Volume($NEAR)'))
 fig.update_yaxes(categoryorder='array', categoryarray=Unstaking_Hitmap_Day_of_Week)
-st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)        
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+
+c1, c2 = st.columns(2)
+df = Staking_on_each_Day
+
+with c1:      
+        fig = px.bar(df, x='Day Name', y='Total Staking Volume', color='Day Name', title='', log_y=False)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Day', yaxis_title='Volume ($NEAR)', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
+df = Unstaking_on_each_Day        
+with c2:  
+        fig = px.bar(df, x='Day Name', y='Total Unstaking Volume', color='Day Name', title='', log_y=False)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Day', yaxis_title='Volume($NEAR)', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+
+
         
         
         
