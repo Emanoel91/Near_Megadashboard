@@ -161,5 +161,11 @@ with c1:
         fig = px.bar(df, x='Pool', y='Volume', color='Action', title='Top 20 Pools Based on Staked Volume', log_y=True, barmode='group')
         fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Volume($NEAR)', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+df = Staked_Volume_in_Top_Pools_Over_Time        
+with c2:
+        fig = px.bar(df.sort_values(['Date', 'Volume'], ascending=[True, False]), x='Date', y='Volume', color='Pool', title='Staked Volume in Top Pools per Month')
+        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Volume($NEAR)')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
     
     
