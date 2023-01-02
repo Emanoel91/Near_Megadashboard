@@ -266,6 +266,46 @@ with c2:
         fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Volume', yaxis_title='$NEAR', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
+# ----------------------------------------------------------------------------------------------------------------------
+
+df = Staking_Hitmap_Day_of_Week
+fig = px.density_heatmap(df, x='Hour', y='Day Name', z='Staking Count', histfunc='avg', title='Staking Count Hitmap, Days of Week vs. Hours of Day', nbinsx=24)
+fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title=None, xaxis={'dtick': 1}, coloraxis_colorbar=dict(title='Staking Count'))
+fig.update_yaxes(categoryorder='array', categoryarray=Staking_Hitmap_Day_of_Week)
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+df = Unstaking_Hitmap_Day_of_Week
+fig = px.density_heatmap(df, x='Hour', y='Day Name', z='Unstaking Count', histfunc='avg', title='Unstaking Count Hitmap, Days of Week vs. Hours of Day', nbinsx=24)
+fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title=None, xaxis={'dtick': 1}, coloraxis_colorbar=dict(title='Unstaking Count'))
+fig.update_yaxes(categoryorder='array', categoryarray=Unstaking_Hitmap_Day_of_Week)
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+
+c1, c2 = st.columns(2)
+df = Staking_on_each_Day
+
+with c1:      
+        fig = px.bar(df, x='Day Name', y='Total Staking Count', color='Day Name', title='Total Staking Count on each Day', log_y=False)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Day Name', yaxis_title='Stakes', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
+        df = Staking_on_each_Hour        
+        
+        fig = px.bar(df, x='Hour', y='Total Staking Count', color='Total Staking Count', title='Total Staking Count on each Hour', log_y=False)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='', yaxis_title='Stakes', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
+df = Unstaking_on_each_Day        
+with c2:  
+        fig = px.bar(df, x='Day Name', y='Total Unstaking Count', color='Day Name', title='Total Unstaking Count on each Day', log_y=False)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Day Name', yaxis_title='Unstakes', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+        df = Unstaking_on_each_Hour
+        fig = px.bar(df, x='Hour', y='Total Unstaking Count', color='Total Unstaking Count', title='Total Unstaking Count on each Hour', log_y=False)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='', yaxis_title='Unstakes', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
         
         
         
