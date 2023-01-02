@@ -154,6 +154,7 @@ fig.update_layout(title='Daily Share of Users Count (%Normalized)')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
 st.subheader('3️⃣ Top Pools')
+# Volume ----------------------------------------------------------------------------------------------------------------------------------
 df = Top_20_Pools_Based_on_Staked_Volume
 c1, c2 = st.columns(2)
 
@@ -167,5 +168,17 @@ with c2:
         fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Volume($NEAR)')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
-    
+# Pool Overview Based on Number of Staking ----------------------------------------------------------------------------------------------------        
+df = Top_20_Pools_Based_on_Staking_Count
+c1, c2 = st.columns(2)
+
+with c1:      
+        fig = px.bar(df, x='Pool', y='Action Count', color='Action', title='Top 20 Pools Based on Staking Count', log_y=True, barmode='group')
+        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Transaction', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+df = Staking_Count_in_Top_Pools_Over_Time       
+with c2:
+        fig = px.bar(df.sort_values(['Date', 'Staking Count'], ascending=[True, False]), x='Date', y='Staking Count', color='Pool', title='Staking Count in Top Pools per Month')
+        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Transaction')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)    
     
