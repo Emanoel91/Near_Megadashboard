@@ -245,13 +245,13 @@ c1, c2 = st.columns(2)
 df = Staking_on_each_Day
 
 with c1:      
-        fig = px.bar(df, x='Day Name', y='Total Staking Volume', color='Day Name', title='', log_y=False)
+        fig = px.bar(df, x='Day Name', y='Total Staking Volume', color='Day Name', title='Total Staked Volume on each Day', log_y=False)
         fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Day', yaxis_title='Volume ($NEAR)', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
 df = Unstaking_on_each_Day        
 with c2:  
-        fig = px.bar(df, x='Day Name', y='Total Unstaking Volume', color='Day Name', title='', log_y=False)
+        fig = px.bar(df, x='Day Name', y='Total Unstaking Volume', color='Day Name', title='Total Unstaked Volume on each Day', log_y=False)
         fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Day', yaxis_title='Volume($NEAR)', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
