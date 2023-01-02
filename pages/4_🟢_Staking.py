@@ -89,12 +89,14 @@ with c2:
         
 with c3: 
         fig = px.bar(df, x='Action', y='Total Users', color='Action', title='Total Number of Users', log_y=False)
-        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Action', yaxis_title='Users', xaxis={'categoryorder':'total ascending'})
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Action', yaxis_title='User', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
     
     
 st.subheader('2️⃣ Daily Staking & Unstaking')
-df = Daily_Staking_unstaking    
+df = Daily_Staking_unstaking 
+
+# Volume of Actions ------------------------------------------------------------------------------------------------------------------
 
 fig = px.bar(df.sort_values(['Date', 'Action Volume'], ascending=[True, False]), x='Date', y='Action Volume', color='Action', title='Daily Actions Volume')
 fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Volume [$NEAR]')
@@ -112,8 +114,45 @@ for i in df['Action'].unique():
      ))
 fig.update_layout(title='Daily Share of Actions Volume (%Normalized)')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
-    
-    
+
+# Staking & Unstaking Count --------------------------------------------------------------------------------
+
+fig = px.bar(df.sort_values(['Date', 'Action Count'], ascending=[True, False]), x='Date', y='Action Count', color='Action', title='Daily Actions Count')
+fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Transaction')
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+fig = go.Figure()
+for i in df['Action'].unique():
+    fig.add_trace(go.Scatter(
+        name=i,
+        x=df.query("Action == @i")['Date'],
+        y=df.query("Action == @i")['Action Count'],
+        mode='lines',
+        stackgroup='one',
+        groupnorm='percent'
+     ))
+fig.update_layout(title='Daily Share of Actions Count (%Normalized)')
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+     
+# Stakers ----------------------------------------------------------------------------------------------------
+
+fig = px.bar(df.sort_values(['Date', 'Users Count'], ascending=[True, False]), x='Date', y='Users Count', color='Action', title='Daily Users Count')
+fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='User')
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+fig = go.Figure()
+for i in df['Action'].unique():
+    fig.add_trace(go.Scatter(
+        name=i,
+        x=df.query("Action == @i")['Date'],
+        y=df.query("Action == @i")['Users Count'],
+        mode='lines',
+        stackgroup='one',
+        groupnorm='percent'
+     ))
+fig.update_layout(title='Daily Share of Users Count (%Normalized)')
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
     
     
     
