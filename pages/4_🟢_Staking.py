@@ -180,5 +180,60 @@ df = Staking_Count_in_Top_Pools_Over_Time
 with c2:
         fig = px.bar(df.sort_values(['Date', 'Staking Count'], ascending=[True, False]), x='Date', y='Staking Count', color='Pool', title='Staking Count in Top Pools per Month')
         fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Transaction')
-        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)    
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly) 
+        
+st.subheader('4️⃣ Classifications')
+
+c1, c2, c3 = st.columns(3)
+df = Classification_of_Staking_Based_on_Volume
+
+with c1:
+        fig = px.pie(df, values='Staking Count', names='Class', title='Classification of Transactions Based on Staked Volume')
+        fig.update_layout(legend_title='Class', legend_y=0.5)
+        fig.update_traces(textinfo='percent+label', textposition='inside')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
+df = Classification_of_Stakers_Total_Staking_Size        
+with c2:  
+        fig = px.pie(df, values='Stakers Count', names='Class', title='Classification of Stakers Total Staking Size')
+        fig.update_layout(legend_title='Class', legend_y=0.5)
+        fig.update_traces(textinfo='percent+label', textposition='inside')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+    
+df = Classification_of_Stakers_Average_Staking_Size     
+with c3:
+        fig = px.pie(df, values='Stakers Count', names='Class', title='Classification of Stakers Average Staking Size')
+        fig.update_layout(legend_title='Class', legend_y=0.5)
+        fig.update_traces(textinfo='percent+label', textposition='inside')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
+c1, c2, c3 = st.columns(3)
+df = Classification_of_Staking_Based_on_Volume
+
+with c1:      
+        fig = px.bar(df, x='Class', y='Staking Count', color='Class', title='', log_y=False)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Class', yaxis_title='Number of Stakes', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
+df = Classification_of_Stakers_Total_Staking_Size        
+with c2:  
+        fig = px.bar(df, x='Class', y='Stakers Count', color='Class', title='', log_y=False)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Class', yaxis_title='Number of Stakers', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+    
+df = Classification_of_Stakers_Average_Staking_Size    
+with c3: 
+        fig = px.bar(df, x='Class', y='Stakers Count', color='Class', title='', log_y=False)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Class', yaxis_title='Number of Stakers', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     
