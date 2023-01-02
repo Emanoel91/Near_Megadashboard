@@ -252,7 +252,7 @@ with c1:
         df = Staking_on_each_Hour        
         
         fig = px.bar(df, x='Hour', y='Total Staking Volume', color='Total Staking Volume', title='Total Staked Volume on each Hour', log_y=False)
-        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Volume', yaxis_title='Volume ($NEAR)', xaxis={'categoryorder':'total ascending'})
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Volume', yaxis_title='$NEAR', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
 df = Unstaking_on_each_Day        
@@ -263,7 +263,7 @@ with c2:
 
         df = Unstaking_on_each_Hour
         fig = px.bar(df, x='Hour', y='Total Unstaking Volume', color='Total Unstaking Volume', title='Total Unstaked Volume on each Hour', log_y=False)
-        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Volume', yaxis_title='Volume ($NEAR)', xaxis={'categoryorder':'total ascending'})
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Volume', yaxis_title='$NEAR', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
         
