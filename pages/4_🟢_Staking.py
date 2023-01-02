@@ -173,7 +173,7 @@ df = Top_20_Pools_Based_on_Staking_Count
 c1, c2 = st.columns(2)
 
 with c1:      
-        fig = px.bar(df, x='Pool', y='Action Count', color='Action', title='Top 20 Pools Based on Staking Count', log_y=True, barmode='relative')
+        fig = px.bar(df, x='Pool', y='Action Count', color='Action', title='Top 20 Pools Based on Staking Count', log_y=True, barmode='overlay')
         fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Transaction', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 df = Staking_Count_in_Top_Pools_Over_Time       
