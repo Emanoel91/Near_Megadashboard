@@ -56,7 +56,7 @@ def get_data(query1):
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/c7c753cf-1ca3-494c-a38e-73fd125f47d1/data/latest')
     return None  
 
-Daily_Staking/unstaking = get_data('Daily Staking/unstaking')
+Daily_Staking_unstaking = get_data('Daily Staking/unstaking')
 Staking_Overview = get_data('Staking Overview')
 Top_20_Pools_Based_on_Staked_Volume = get_data('Top 20 Pools Based on Staked Volume')
 Staked_Volume_in_Top_Pools_Over_Time = get_data('Staked Volume in Top Pools Over Time')
