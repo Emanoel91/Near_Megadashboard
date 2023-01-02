@@ -227,7 +227,18 @@ with c3:
         fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Class', yaxis_title='Number of Stakers', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)        
         
-        
+st.subheader('5️⃣ Staking & Unstaking Pattern')
+df = Staking_Hitmap_Day_of_Week
+fig = px.density_heatmap(df, x='HOUR', y='Day Name', z='Staking Volume', histfunc='avg', title='Staking Volume Hitmap, Days of Week vs. Hours of Day', nbinsx=24)
+fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title=None, xaxis={'dtick': 1}, coloraxis_colorbar=dict(title='Staking Volume($NEAR)'))
+fig.update_yaxes(categoryorder='array', categoryarray=Staking_Hitmap_Day_of_Week)
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+df = Unstaking_Hitmap_Day_of_Week
+fig = px.density_heatmap(df, x='HOUR', y='Day Name', z='Unstaking Volume', histfunc='avg', title='Unstaking Volume Hitmap, Days of Week vs. Hours of Day', nbinsx=24)
+fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title=None, xaxis={'dtick': 1}, coloraxis_colorbar=dict(title='Unstaking Volume($NEAR)'))
+fig.update_yaxes(categoryorder='array', categoryarray=Unstaking_Hitmap_Day_of_Week)
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)        
         
         
         
