@@ -96,9 +96,9 @@ with c3:
 st.subheader('2️⃣ Daily Staking & Unstaking')
 df = Daily_Staking_unstaking    
 
- fig = px.bar(df.sort_values(['Date', 'Action Volume'], ascending=[True, False]), x='Date', y='Action Volume', color='Action', title='Daily Actions Volume')
- fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Volume [$NEAR]')
- st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+fig = px.bar(df.sort_values(['Date', 'Action Volume'], ascending=[True, False]), x='Date', y='Action Volume', color='Action', title='Daily Actions Volume')
+fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Volume [$NEAR]')
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
     
     
     
