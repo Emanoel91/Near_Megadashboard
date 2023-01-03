@@ -147,3 +147,30 @@ with c3:
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------        
+
+df = Distribution_of_Sellers_By_Number_of_Sold_NFTs 
+c1, c2 = st.columns(2)
+    
+with c1:
+        fig = px.pie(df, values='SELLERS', names='Sales Count', title='Distribution of Sellers By Number of Sold NFTs')
+        fig.update_layout(legend_title='Sales Count', legend_y=0.5)
+        fig.update_traces(textinfo='percent+label', textposition='inside')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
+        fig = px.bar(df, x='Sales Count', y='SELLERS', color='Sales Count', title='', log_y=False)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Sales Count', yaxis_title='Sellers Count', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+    
+df = Distribution_of_Buyers_By_Number_of_Purchased_NFTs    
+with c2:    
+        fig = px.pie(df, values='BUYERS', names='Purchases Count', title='Distribution of Buyers By Number of Purchased NFTs')
+        fig.update_layout(legend_title='Purchases Count', legend_y=0.5)
+        fig.update_traces(textinfo='percent+label', textposition='inside')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
+        fig = px.bar(df, x='Purchases Count', y='BUYERS', color='Purchases Count', title='', log_y=False)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Purchases Count', yaxis_title='Buyers Count', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+    
+    
+    
