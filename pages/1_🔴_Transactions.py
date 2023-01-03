@@ -137,7 +137,7 @@ df = Block_with_Maximum_Transaction_Count
 c1, c2 = st.columns(2)
     
 with c1:
-        st.metric(label='Block_Hash with the Maximum TX Count', value=df['block_hash'])
+        st.metric(label='Block_Hash with the Maximum TX Count', value=df['BLOCK_HASH'])
 with c2:
         st.metric(label='Maximum TX in a Block', value=df['TX_COUNT'])
 
