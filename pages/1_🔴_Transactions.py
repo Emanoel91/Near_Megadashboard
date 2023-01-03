@@ -52,6 +52,8 @@ def get_data(query1):
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/ab4ef9d7-5dac-44c9-9c4c-401a73e5b087/data/latest')
     elif query1 == 'Classification of Transactions Based on TX Signers':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/951de34b-673e-47dd-a85f-0e1b65bd5569/data/latest')
+    elif query1 == 'Number of New Addresses':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/ef7b7b14-4bff-4ce7-a39d-a719d90f6726/data/latest')
     return None
 
 transactions_overview = get_data('Transactions Overview')
@@ -68,6 +70,7 @@ Classification_of_Blocks_Based_on_TX_Count = get_data('Classification of Blocks 
 Block_with_Maximum_Transaction_Count = get_data ('Block Maximum Transaction Count')
 Distribution_of_Transactions_Between_Blocks = get_data('Distribution of Transactions Between Blocks')
 Classification_of_Transactions_Based_on_TX_Signers = get_data('Classification of Transactions Based on TX Signers')
+Number_of_New_Addresses = get_data('Number of New Addresses')
 
 # NEAR Analysis
 st.subheader('1️⃣ Overview')
@@ -188,6 +191,12 @@ fig.update_layout(title_text='Number of Transaction Senders/Receivers')
 fig.update_yaxes(title_text='', secondary_y=False)
 fig.update_yaxes(title_text='', secondary_y=True)
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+# ------------------------------------------------------------------------------------------------------------------------------------------------
+df = Number_of_New_Addresses
+fig = px.area(df, x='Date', y='New Address Count', title='Number of New Addresses')
+fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Address Count')
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
 # ------------------------------------------------------------------------------------------------------------------------------------------------
 df = Classification_of_Transactions_Based_on_TX_Signers
 c1, c2 = st.columns(2)
