@@ -133,9 +133,9 @@ fig = px.area(df, x='Date', y='Blocks Count', title='Daily Blocks Count')
 fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Blocks Count')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
-df = Block_with_Maximum_Transaction_Count
+
 c1, c2 = st.columns(2)
-    
+df = Block_with_Maximum_Transaction_Count    
 with c1:
         st.metric(label='Maximum TX Count in a Block', value=df['Tx Count'])
 
