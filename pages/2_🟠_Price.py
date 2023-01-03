@@ -38,10 +38,6 @@ NEAR_Price = get_data('NEAR Price')
 # NEAR Price Analysis
 
 df = NEAR_Price_per_Day
-        
-fig = px.area(df, x='Date', y='Price', color='CRITERIA', title='NEAR Price per Day (🟢Max 🔴Avg 🔵Min)', log_y=False)
-fig.update_layout(showlegend=False, xaxis_title=None, yaxis_title='$USD')
-st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 fig = px.line(df, x='Date', y='Price', color='CRITERIA', title='NEAR Price per Day', log_y=False)
 fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='$USD', xaxis={'categoryorder':'total ascending'})
