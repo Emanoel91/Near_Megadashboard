@@ -54,6 +54,8 @@ def get_data(query1):
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/951de34b-673e-47dd-a85f-0e1b65bd5569/data/latest')
     elif query1 == 'Number of New Addresses':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/ef7b7b14-4bff-4ce7-a39d-a719d90f6726/data/latest')
+    elif query1 == 'Transactions Hitmap: Day of Week':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/d97d664d-92e3-41ef-9791-025c8fc6ee79/data/latest')
     return None
 
 transactions_overview = get_data('Transactions Overview')
@@ -71,6 +73,7 @@ Block_with_Maximum_Transaction_Count = get_data ('Block Maximum Transaction Coun
 Distribution_of_Transactions_Between_Blocks = get_data('Distribution of Transactions Between Blocks')
 Classification_of_Transactions_Based_on_TX_Signers = get_data('Classification of Transactions Based on TX Signers')
 Number_of_New_Addresses = get_data('Number of New Addresses')
+Transactions_Hitmap_Day_of_Week = get_data('Transactions Hitmap: Day of Week')
 
 # NEAR Analysis
 st.subheader('1️⃣ Overview')
@@ -137,7 +140,13 @@ with c4:
         fig = px.bar(df, x='Status', y='Minimum', color='Minimum', title='📉 Minimum TX Count in a Day')
         fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
-
+# ------------------------------------------------------------------------------------------------------------------------------------------
+df = Transactions_Hitmap_Day_of_Week
+fig = px.density_heatmap(df, x='HOUR', y='Day Name', z='TXs Count', histfunc='avg', title='Transactions Hitmap Day of Week', nbinsx=24)
+fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title=None, xaxis={'dtick': 1}, coloraxis_colorbar=dict(title='TXs Count'))
+fig.update_yaxes(categoryorder='array', categoryarray=Swaps_Hitmap_Day_of_Week)
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+# ------------------------------------------------------------------------------------------------------------------------------------------
 
 df = Daily_Transactions_Data
 
