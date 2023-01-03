@@ -172,5 +172,20 @@ with c2:
         fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Purchases Count', yaxis_title='Buyers Count', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
     
-    
+st.subheader('3️⃣ NFT Marketplaces')
+df = marketplace
+
+# Cover
+c1 , c2, c3 = st.columns(3)
+
+c1.image(Image.open('Images/paras.JPG'))
+c2.image(Image.open('Images/apollo42.JPG'))
+c3.image(Image.open('Images/uniqart.JPG'))
+
+
+
+
+
+
+
     
