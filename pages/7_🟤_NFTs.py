@@ -216,6 +216,13 @@ with c2:
         fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Address', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
+        
+df = Collections
+fig = px.density_heatmap(df, x='PURCHASES', y='VOLUME', z='COLLECTION_NAME', histfunc='avg', title='Top 100 Collections Purchases vs. Volume', nbinsx=24)
+fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title=None, xaxis={'dtick': 1}, coloraxis_colorbar=dict(title='Collections'))
+fig.update_yaxes(categoryorder='array', categoryarray=Collections)
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)        
+
 
 
 
