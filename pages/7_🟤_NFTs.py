@@ -226,7 +226,7 @@ fig = px.scatter(df.sort_values(['SELLERS', 'BUYERS'], ascending=[True, True]), 
 fig.update_layout(legend_title=None, xaxis_title='Sellers Count', yaxis_title='Buyers Count')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
-fig = px.bar(df.sort_values(['COLLECTION_NAME', 'AVG_PRICE'], ascending=[True, True]), x='COLLECTION_NAME', y='AVG_PRICE', color='COLLECTION_NAME', title='🖼Top 100 Collections Average Price')
+fig = px.bar(df.sort_values(['COLLECTION_NAME', 'AVG_PRICE'], ascending=[True, True]), x='COLLECTION_NAME', y='AVG_PRICE', color='COLLECTION_NAME', title='🧿Top 100 Collections Average Price')
 fig.update_layout(legend_title=None, xaxis_title='', yaxis_title='Average Price($USD)')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
     
