@@ -102,9 +102,7 @@ with c2:
         fig.update_layout(showlegend=False, xaxis_title=None, legend_title='', yaxis_title='', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)        
 
-        fig = px.Line(df, x='DATE', y='Average Price', title='NFT Purchases Average Price Over Time', log_y=False)
-        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='', yaxis_title='$USD', xaxis={'categoryorder':'total ascending'})
-        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
         
 st.subheader('3️⃣ Classifications')
 df = Distribution_of_NFT_Purchases_Among_Different_Price 
