@@ -116,14 +116,26 @@ with c1:
         fig = px.pie(df, values='PURCHASES', names='Class', title='Classification of NFT Purchases Among Different Price')
         fig.update_layout(legend_title='Class', legend_y=0.5)
         fig.update_traces(textinfo='percent+label', textposition='inside')
-        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)        
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly) 
+        
+        fig = px.bar(df, x='Class', y='PURCHASES', color='Class', title='', log_y=False)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Class', yaxis_title='Purchases Count', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 with c2:
         fig = px.pie(df, values='SELLERS', names='Class', title='Classification of Sellers Among Different Price')
         fig.update_layout(legend_title='Class', legend_y=0.5)
         fig.update_traces(textinfo='percent+label', textposition='inside')
-        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)        
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)     
+        
+        fig = px.bar(df, x='Class', y='SELLERS', color='Class', title='', log_y=False)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Class', yaxis_title='Sellers Count', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 with c3:        
         fig = px.pie(df, values='BUYERS', names='Class', title='Classification of Buyers Among Different Price')
         fig.update_layout(legend_title='Class', legend_y=0.5)
         fig.update_traces(textinfo='percent+label', textposition='inside')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
+        fig = px.bar(df, x='Class', y='BUYERS', color='Class', title='', log_y=False)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Class', yaxis_title='Buyers Count', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
