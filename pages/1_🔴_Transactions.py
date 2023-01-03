@@ -163,7 +163,7 @@ with c1:
     
 df = Total_Transactions_Count_Over_Hours_of_Day        
 with c2:
-        fig = px.bar(df, x='Hour', y='Total TXs Count', color='Hour', title='Total Transactions Count Over Days of Week', log_y=False)
+        fig = px.bar(df, x='Hour', y='Total TXs Count', color='Total TXs Count', title='Total Transactions Count Over Days of Week', log_y=False)
         fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Hour', yaxis_title='Number of TXs', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 # ------------------------------------------------------------------------------------------------------------------------------------------
