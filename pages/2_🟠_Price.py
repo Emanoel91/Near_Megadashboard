@@ -15,7 +15,7 @@ st.title('🟠 NEAR Price')
 # Cover
 c1 , c2 = st.columns(2)
 
-c1.image(Image.open('Images/near4-logo.JPG'))
+c1.image(Image.open('Images/price2.JPG'))
 
 # dash_style
 with open('style.css')as f:
