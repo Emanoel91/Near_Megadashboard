@@ -89,6 +89,19 @@ with c1:
         fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Action', yaxis_title='$USD', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
+with c2:
+        fig = px.bar(df, x='DATE', y='PURCHASES', title='Number of NFT Purchases Over Time', log_y=False)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='', yaxis_title='', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)        
+         
+        fig = px.bar(df, x='DATE', y='Average Price', title='NFT Purchases Average Price Over Time', log_y=False)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Action', yaxis_title='$USD', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+df = NFT_Daily
+c1, c2 = st.columns(2)
+    
+with c1:
         fig = sp.make_subplots(specs=[[{'secondary_y': True}]])
         fig.add_trace(go.Line(x=df['DATE'], y=df['BUYER'], name='Buyers Count'), secondary_y=False)
         fig.add_trace(go.Line(x=df['DATE'], y=df['SELLERS'], name='Sellers Count'), secondary_y=True)
@@ -98,14 +111,9 @@ with c1:
         st.plotly_chart(fig, use_container_width=False, theme=theme_plotly)
         
 with c2:
-        fig = px.bar(df, x='DATE', y='PURCHASES', title='Number of NFT Purchases Over Time', log_y=False)
-        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='', yaxis_title='', xaxis={'categoryorder':'total ascending'})
-        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)        
-         
         fig = px.bar(df, x='DATE', y='Average Price', title='NFT Purchases Average Price Over Time', log_y=False)
         fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Action', yaxis_title='$USD', xaxis={'categoryorder':'total ascending'})
-        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
-        
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)        
         
 st.subheader('3️⃣ Classifications')
 df = Distribution_of_NFT_Purchases_Among_Different_Price 
