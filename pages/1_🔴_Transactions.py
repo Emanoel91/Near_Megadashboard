@@ -46,7 +46,7 @@ def get_data(query1):
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/8ee9bda4-fdbb-4e85-a2fb-1b472131d536/data/latest')
     elif query1 == 'Classification of Blocks Based on TX Count':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/b72f2b79-46fc-40db-8a64-1738ad8a2ada/data/latest')
-    elif query1 == 'Block with Maximum Transaction Count':
+    elif query1 == 'Block Maximum Transaction Count':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/d1b7ffcf-4b80-42cc-9d39-4978b8fb032a/data/latest')
     return None
 
@@ -61,7 +61,7 @@ Total_Average_Transactions_Fee = get_data('Total/Average Transactions Fee')
 Top_20_TX_Signers_Based_on_Paid_Fees = get_data('Top 20 TX Signers Based on Paid Fees')
 Statistical_Data_Daily_Transaction_Fees = get_data('Statistical Data: Daily Transaction Fees')
 Classification_of_Blocks_Based_on_TX_Count = get_data('Classification of Blocks Based on TX Count')
-Block_with_Maximum_Transaction_Count = get_data(Block with Maximum Transaction Count)
+Block_with_Maximum_Transaction_Count = get_data(Block Maximum Transaction Count)
 
 # NEAR Analysis
 st.subheader('1️⃣ Overview')
