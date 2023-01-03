@@ -218,10 +218,9 @@ with c2:
 
         
 df = Collections
-fig = px.density_heatmap(df, x='PURCHASES', y='VOLUME', z='COLLECTION_NAME', histfunc='avg', title='Top 100 Collections Purchases vs. Volume', nbinsx=24)
-fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title=None, xaxis={'dtick': 1}, coloraxis_colorbar=dict(title='Collections'))
-fig.update_yaxes(categoryorder='array', categoryarray=Collections)
-st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)        
+fig = px.scatter(df.sort_values(['VOLUME', 'PURCHASES'], ascending=[True, True]), x='VOLUME', y='PURCHASES', color='COLLECTION_NAME', title='Staked Volume in Top Pools per Month')
+fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='')
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 
 
