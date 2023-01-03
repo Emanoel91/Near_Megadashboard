@@ -190,7 +190,7 @@ with c1:
         fig.update_traces(textinfo='percent+label', textposition='inside')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
-        fig = px.bar(df, x='Marketplace', y='Purchases', color='Marketplace', title='', log_y=False)
+        fig = px.bar(df, x='Marketplace', y='Purchases', color='Marketplace', title='', log_y=True)
         fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Marketplace', yaxis_title='Purchases Count', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
@@ -200,7 +200,7 @@ with c2:
         fig.update_traces(textinfo='percent+label', textposition='inside')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
-        fig = px.bar(df, x='Marketplace', y='Volume', color='Marketplace', title='', log_y=False)
+        fig = px.bar(df, x='Marketplace', y='Volume', color='Marketplace', title='', log_y=True)
         fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Marketplace', yaxis_title='Volume($USD)', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
     
