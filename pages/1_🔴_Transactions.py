@@ -137,8 +137,6 @@ df = Block_with_Maximum_Transaction_Count
 c1, c2 = st.columns(2)
     
 with c1:
-        
-with c2:
         st.metric(label='Maximum TX Count in a Block', value=df['Tx Count'])
 
 fig = px.line(df, x='Date', y='Average Transaction Count per Block', title='Average Transaction Count per Block', log_y=True)
