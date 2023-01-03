@@ -215,7 +215,7 @@ with c2:
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
         df = Number_of_Sellers_Buyers_in_each_Marketplaces
-        fig = px.bar(df, x='Marketplace', y='Users Count', color='User Type', title='Number of Sellers Buyers in each Marketplaces', log_y=True, barmode='group')
+        fig = px.bar(df, x='Marketplace', y='Users Count', color='User Type', title='Number of Sellers & Buyers in each Marketplaces', log_y=True, barmode='group')
         fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Address', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
