@@ -181,8 +181,29 @@ c1 , c2, c3 = st.columns(3)
 c1.image(Image.open('Images/paras.JPG'))
 c2.image(Image.open('Images/apollo42.JPG'))
 c3.image(Image.open('Images/uniqart.JPG'))
-
-
+ 
+c1, c2 = st.columns(2)
+    
+with c1:
+        fig = px.pie(df, values='Purchases', names='Marketplace', title='Distribution of NFT Purchases Among Marketplaces')
+        fig.update_layout(legend_title='Marketplace', legend_y=0.5)
+        fig.update_traces(textinfo='percent+label', textposition='inside')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
+        fig = px.bar(df, x='Marketplace', y='Purchases', color='Marketplace', title='', log_y=False)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Marketplace', yaxis_title='Purchases Count', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
+with c2:    
+        fig = px.pie(df, values='Volume', names='Marketplace', title='Distribution of NFT Purchases Volume($USD) Among Marketplaces')
+        fig.update_layout(legend_title='Marketplace', legend_y=0.5)
+        fig.update_traces(textinfo='percent+label', textposition='inside')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
+        fig = px.bar(df, x='Marketplace', y='Volume', color='Marketplace', title='', log_y=False)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Marketplace', yaxis_title='Volume($USD)', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+    
 
 
 
