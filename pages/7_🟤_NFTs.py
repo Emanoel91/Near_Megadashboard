@@ -219,7 +219,7 @@ with c2:
         
 df = Collections
 fig = px.scatter(df.sort_values(['VOLUME', 'PURCHASES'], ascending=[True, True]), x='VOLUME', y='PURCHASES', color='COLLECTION_NAME', title='Staked Volume in Top Pools per Month')
-fig.update_layout(legend_title=None, xaxis_title='Purchases Volume($USD)', yaxis_title='Purchases Count', log_x=True, log_y=True)
+fig.update_layout(legend_title=None, xaxis_title='Purchases Volume($USD)', yaxis_title='Purchases Count', log_y=True)
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 
