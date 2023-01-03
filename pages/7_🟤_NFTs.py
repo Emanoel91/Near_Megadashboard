@@ -79,5 +79,18 @@ with c2:
 with c3:
         st.metric(label='Total Number of Buyers', value=df['Total Buyers'])
         st.metric(label='Total Number of Purchased NFTs', value=df['Total NFTs'].round(2))
+        
+st.subheader('2️⃣ Daily Observations')
+df = NFT_Overview
+c1, c2 = st.columns(2)
+    
+with c1:
+        fig = px.bar(df, x='DATE', y='VOLUME', title='NFT Purchases Volume Over Time', log_y=False)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Action', yaxis_title='$USD', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+with c2:
+        fig = px.bar(df, x='DATE', y='PURCHASES', title='Number of NFT Purchases Over Time', log_y=False)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Action', yaxis_title='', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)        
 
     
