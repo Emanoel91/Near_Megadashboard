@@ -194,6 +194,10 @@ with c1:
         fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Marketplace', yaxis_title='Purchases Count', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
+        fig = px.bar(df, x='Marketplace', y='Average Price', color='Average Price', title='Marketplaces Average NFT Purchase Price', log_y=False)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Marketplace', yaxis_title='Price($USD)', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
 with c2:    
         fig = px.pie(df, values='Volume', names='Marketplace', title='Distribution of NFT Purchases Volume($USD) Among Marketplaces')
         fig.update_layout(legend_title='Marketplace', legend_y=0.5)
@@ -203,7 +207,14 @@ with c2:
         fig = px.bar(df, x='Marketplace', y='Volume', color='Marketplace', title='', log_y=True)
         fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Marketplace', yaxis_title='Volume($USD)', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
-    
+        
+        fig = sp.make_subplots(specs=[[{'secondary_y': True}]])
+        fig.add_trace(go.Line(x=df['Marketplace'], y=df['Buyers'], name='Total Buyers Count'), secondary_y=False)
+        fig.add_trace(go.Line(x=df['Marketplace'], y=df['Sellers'], name='Total Sellers Count'), secondary_y=True)
+        fig.update_layout(title_text='Marketplaces Sellers & Buyers')
+        fig.update_yaxes(title_text='', secondary_y=False)
+        fig.update_yaxes(title_text='', secondary_y=False)
+        st.plotly_chart(fig, use_container_width=False, theme=theme_plotly)
 
 
 
