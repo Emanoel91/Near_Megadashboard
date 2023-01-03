@@ -48,6 +48,8 @@ def get_data(query1):
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/5ec4e594-6b6a-4cf3-bdd7-3120c6eaf96f/data/latest')
     elif query1 == 'Top 20 NFT Buyers By Volume':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/e903d543-b4fa-43d1-8a51-b9081031d1e3/data/latest')
+    elif query1 == 'Number of Sellers & Buyers in each Marketplaces ':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/a702da0a-ac29-43f1-9c64-19135cfd9cd4/data/latest')
     return None    
     
 NFT_Overview = get_data('NFT Overview')
@@ -62,6 +64,7 @@ Top_20_NFT_Sellers_By_Sales = get_data('Top 20 NFT Sellers By Sales')
 Top_20_NFT_Sellers_By_Volume = get_data('Top 20 NFT Sellers By Volume')    
 Top_20_NFT_Buyers_By_Purchases = get_data('Top 20 NFT Buyers By Purchases')
 Top_20_NFT_Buyers_By_Volume = get_data('Top 20 NFT Buyers By Volume')
+Number_of_Sellers_Buyers_in_each_Marketplaces = get_data('Number of Sellers & Buyers in each Marketplaces ')
 
 # NFT Analysis
 st.subheader('1️⃣ Overview')
@@ -208,14 +211,10 @@ with c2:
         fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Marketplace', yaxis_title='Volume($USD)', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
-        fig = sp.make_subplots(specs=[[{'secondary_y': True}]])
-        fig.add_trace(go.Bar(x=df['Marketplace'], y=df['Buyers'], name='Buyers'), secondary_y=False)
-        fig.add_trace(go.Bar(x=df['Marketplace'], y=df['Sellers'], name='Sellers'), secondary_y=True)
-        fig.update_layout(title_text='Marketplaces Sellers & Buyers')
-        fig.update_yaxes(title_text='', secondary_y=False)
-        fig.update_yaxes(title_text='', secondary_y=False)
-        st.plotly_chart(fig, use_container_width=False, theme=theme_plotly)
-
+        df = Number_of_Sellers_Buyers_in_each_Marketplaces
+        fig = px.bar(df, x='Marketplace', y='Users Count', color='User Type', title='Number of Sellers Buyers in each Marketplaces', log_y=True, barmode='group')
+        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Address', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 
 
