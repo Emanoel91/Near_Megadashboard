@@ -81,7 +81,7 @@ with c3:
         st.metric(label='Total Number of Purchased NFTs', value=df['Total NFTs'].round(2))
         
 st.subheader('2️⃣ Daily Observations')
-df = NFT_Overview
+df = NFT_Daily
 c1, c2 = st.columns(2)
     
 with c1:
