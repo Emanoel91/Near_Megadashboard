@@ -44,8 +44,8 @@ def get_data(query1):
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/7f93109f-26e2-4472-b1b7-933920522958/data/latest')
     elif query1 == 'Statistical Data: Daily Transaction Fees':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/8ee9bda4-fdbb-4e85-a2fb-1b472131d536/data/latest')
-    elif query1 == 'Block with Maximum Transaction Count':
-              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/d1b7ffcf-4b80-42cc-9d39-4978b8fb032a/data/latest')
+    elif query1 == 'Classification of Blocks Based on TX Count':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/b72f2b79-46fc-40db-8a64-1738ad8a2ada/data/latest')
     return None
 
 transactions_overview = get_data('Transactions Overview')
@@ -58,7 +58,7 @@ Transaction_Fees = get_data('Transaction Fees')
 Total_Average_Transactions_Fee = get_data('Total/Average Transactions Fee')
 Top_20_TX_Signers_Based_on_Paid_Fees = get_data('Top 20 TX Signers Based on Paid Fees')
 Statistical_Data_Daily_Transaction_Fees = get_data('Statistical Data: Daily Transaction Fees')
-Block_with_Maximum_Transaction_Count = get_data('Block with Maximum Transaction Count')
+Classification_of_Blocks_Based_on_TX_Count = get_data('Classification of Blocks Based on TX Count')
 
 # NEAR Analysis
 st.subheader('1️⃣ Overview')
@@ -133,6 +133,20 @@ fig = px.area(df, x='Date', y='Blocks Count', title='Daily Blocks Count')
 fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Blocks Count')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
+df = Classification_of_Blocks_Based_on_TX_Count
+c1, c2 = st.columns(2)
+
+with c1:
+       fig = px.pie(df, values='Block Count', names='Class', title='Classification of Blocks Based on TX Count')
+       fig.update_layout(legend_title='Class', legend_y=0.5)
+       fig.update_traces(textinfo='percent+label', textposition='inside')
+       st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+with c2:    
+       fig = px.bar(df, x='Class', y='Block Count', color='Class', title='', log_y=False)
+       fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Class', yaxis_title='Number of TXs', xaxis={'categoryorder':'total ascending'})
+       st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+df = Daily_Transactions_Data        
 fig = px.line(df, x='Date', y='Average Transaction Count per Block', title='Average Transaction Count per Block', log_y=True)
 fig.update_layout(showlegend=False, xaxis_title=None, yaxis_title='TX per Block', xaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
