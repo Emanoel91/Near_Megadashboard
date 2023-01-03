@@ -15,7 +15,7 @@ st.title('🟤 NFTs')
 # Cover
 c1 , c2 = st.columns(2)
 
-c1.image(Image.open('Images/nft2.JPG'))
+c1.image(Image.open('Images/nft5.JPG'))
 
 # dash_style
 with open('style.css')as f:
