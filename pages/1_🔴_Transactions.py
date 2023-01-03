@@ -142,7 +142,7 @@ with c1:
        fig.update_traces(textinfo='percent+label', textposition='inside')
        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 with c2:    
-       fig = px.bar(df, x='Class', y='Block Count', color='Class', title='', log_y=False)
+       fig = px.bar(df, x='Class', y='Block Count', color='Class', title='', log_y=True)
        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Class', yaxis_title='Number of TXs', xaxis={'categoryorder':'total ascending'})
        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
