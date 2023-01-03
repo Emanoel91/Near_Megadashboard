@@ -218,7 +218,7 @@ with c2:
 
         
 df = Collections
-fig = px.scatter(df.sort_values(['VOLUME', 'PURCHASES'], ascending=[True, True]), x='VOLUME', y='PURCHASES', color='COLLECTION_NAME', title='Staked Volume in Top Pools per Month')
+fig = px.BAR(df.sort_values(['VOLUME', 'PURCHASES'], ascending=[True, True]), x='VOLUME', y='PURCHASES', color='COLLECTION_NAME', title='Staked Volume in Top Pools per Month')
 fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
