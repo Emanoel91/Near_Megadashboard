@@ -98,7 +98,7 @@ with c1:
    fig.update_layout(title='Status of Transactions(%Normalized)')
    st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 with c2:         
-   fig = px.pie(df, values='Transactions Count', names='Status', title='Total Transactions Share')
+   fig = px.pie(df, values='Transactions Count', names='Status', title='Total Transactions Count')
    fig.update_layout(legend_title='Status', legend_y=0.5)
    fig.update_traces(textinfo='percent+label', textposition='inside')
    st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
