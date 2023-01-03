@@ -232,8 +232,7 @@ st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 fig = px.bar(df.sort_values(['COLLECTION_NAME', 'AVG_PRICE'], ascending=[True, True]), x='COLLECTION_NAME', y='AVG_PRICE', color='COLLECTION_NAME', title='🧿Top 100 Collections Average Price')
 fig.update_layout(legend_title=None, xaxis_title='', yaxis_title='Average Price($USD)')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
-
-df =  
+  
 c1, c2 = st.columns(2)
     
 df = NFTs
