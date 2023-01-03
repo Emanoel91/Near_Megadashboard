@@ -95,7 +95,7 @@ with c1:
         fig.update_layout(title_text='Unique NFT Sellers & Buyers Over Time')
         fig.update_yaxes(title_text='', secondary_y=False)
         fig.update_yaxes(title_text='', secondary_y=True)
-        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        st.plotly_chart(fig, use_container_width=False, theme=theme_plotly)
 
 with c2:
         fig = px.bar(df, x='DATE', y='PURCHASES', title='Number of NFT Purchases Over Time', log_y=False)
