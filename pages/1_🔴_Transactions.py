@@ -48,6 +48,8 @@ def get_data(query1):
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/b72f2b79-46fc-40db-8a64-1738ad8a2ada/data/latest')
     elif query1 == 'Block Maximum Transaction Count':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/d1b7ffcf-4b80-42cc-9d39-4978b8fb032a/data/latest')
+    elif query1 == 'Distribution of Transactions Between Blocks':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/ab4ef9d7-5dac-44c9-9c4c-401a73e5b087/data/latest')
     return None
 
 transactions_overview = get_data('Transactions Overview')
@@ -62,6 +64,7 @@ Top_20_TX_Signers_Based_on_Paid_Fees = get_data('Top 20 TX Signers Based on Paid
 Statistical_Data_Daily_Transaction_Fees = get_data('Statistical Data: Daily Transaction Fees')
 Classification_of_Blocks_Based_on_TX_Count = get_data('Classification of Blocks Based on TX Count')
 Block_with_Maximum_Transaction_Count = get_data ('Block Maximum Transaction Count')
+Distribution_of_Transactions_Between_Blocks = get_data('Distribution of Transactions Between Blocks')
 
 # NEAR Analysis
 st.subheader('1️⃣ Overview')
@@ -157,6 +160,11 @@ with c2:
        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Class', yaxis_title='Number of TXs', xaxis={'categoryorder':'total ascending'})
        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
+df = Distribution_of_Transactions_Between_Blocks
+fig = px.scatter(df.sort_values(['TX Count', 'Block Count'], ascending=[True, True]), x='TX Count', y='Block Count', title='Distribution of Transactions Between Blocks', log_x=True)
+fig.update_layout(legend_title=None, xaxis_title='Transactions Count', yaxis_title='Blocks Count')
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
 df = Daily_Transactions_Data        
 fig = px.line(df, x='Date', y='Average Transaction Count per Block', title='Average Transaction Count per Block', log_y=True)
 fig.update_layout(showlegend=False, xaxis_title=None, yaxis_title='TX per Block', xaxis={'categoryorder':'total ascending'})
