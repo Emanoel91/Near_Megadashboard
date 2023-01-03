@@ -50,6 +50,8 @@ def get_data(query1):
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/d1b7ffcf-4b80-42cc-9d39-4978b8fb032a/data/latest')
     elif query1 == 'Distribution of Transactions Between Blocks':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/ab4ef9d7-5dac-44c9-9c4c-401a73e5b087/data/latest')
+    elif query1 == 'Classification of Transactions Based on TX Signers':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/951de34b-673e-47dd-a85f-0e1b65bd5569/data/latest')
     return None
 
 transactions_overview = get_data('Transactions Overview')
@@ -65,6 +67,7 @@ Statistical_Data_Daily_Transaction_Fees = get_data('Statistical Data: Daily Tran
 Classification_of_Blocks_Based_on_TX_Count = get_data('Classification of Blocks Based on TX Count')
 Block_with_Maximum_Transaction_Count = get_data ('Block Maximum Transaction Count')
 Distribution_of_Transactions_Between_Blocks = get_data('Distribution of Transactions Between Blocks')
+Classification_of_Transactions_Based_on_TX_Signers = get_data('Classification of Transactions Based on TX Signers')
 
 # NEAR Analysis
 st.subheader('1️⃣ Overview')
@@ -185,7 +188,20 @@ fig.update_layout(title_text='Number of Transaction Senders/Receivers')
 fig.update_yaxes(title_text='', secondary_y=False)
 fig.update_yaxes(title_text='', secondary_y=True)
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+# ------------------------------------------------------------------------------------------------------------------------------------------------
+df = Classification_of_Transactions_Based_on_TX_Signers
+c1, c2 = st.columns(2)
 
+with c1:
+       fig = px.pie(df, values='TX Signers Count', names='Class', title='Classification of Transactions Based on TX Signers')
+       fig.update_layout(legend_title='Class', legend_y=0.5)
+       fig.update_traces(textinfo='percent+label', textposition='inside')
+       st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+with c2:    
+       fig = px.bar(df, x='Class', y='TX Signers Count', color='Class', title='', log_y=True)
+       fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Class', yaxis_title='Number of TX Signers', xaxis={'categoryorder':'total ascending'})
+       st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+# -------------------------------------------------------------------------------------------------------------------------------------------------
 df = Top_20_TX_Signers_Base_on_Transactions_Count
 c1, c2 = st.columns(2)
     
