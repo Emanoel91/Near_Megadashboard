@@ -107,19 +107,19 @@ df = Statistical_Data_Number_of_Transactions
 c1, c2, c3, c4 = st.columns(4)
     
 with c1:
-        fig = px.bar(df, x='Status', y='Maximum', color='Status', title='Maximum TX Count in a Day')
+        fig = px.bar(df, x='Status', y='Maximum', color='Maximum', title='📈 Maximum TX Count in a Day')
         fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 with c2:
-        fig = px.bar(df, x='Status', y='Average', title='Average # of daily TXs')
+        fig = px.bar(df, x='Status', y='Average', color='Average', title='📊 Average # of daily TXs')
         fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 with c3:
-        fig = px.bar(df, x='Status', y='Median', title='Median # of daily TXs')
+        fig = px.bar(df, x='Status', y='Median', color='Median', title='📊 Median # of daily TXs')
         fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 with c4:
-        fig = px.bar(df, x='Status', y='Minimum', title='Minimum TX Count in a Day')
+        fig = px.bar(df, x='Status', y='Minimum', color='Minimum', title='📉 Minimum TX Count in a Day')
         fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
