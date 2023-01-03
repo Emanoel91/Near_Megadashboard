@@ -209,8 +209,8 @@ with c2:
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
         fig = sp.make_subplots(specs=[[{'secondary_y': True}]])
-        fig.add_trace(go.Line(x=df['Marketplace'], y=df['Buyers'], name='Total Buyers Count'), secondary_y=False)
-        fig.add_trace(go.Line(x=df['Marketplace'], y=df['Sellers'], name='Total Sellers Count'), secondary_y=True)
+        fig.add_trace(go.Bar(x=df['Marketplace'], y=df['Buyers'], name='Total Buyers Count'), secondary_y=False)
+        fig.add_trace(go.Bar(x=df['Marketplace'], y=df['Sellers'], name='Total Sellers Count'), secondary_y=True)
         fig.update_layout(title_text='Marketplaces Sellers & Buyers')
         fig.update_yaxes(title_text='', secondary_y=False)
         fig.update_yaxes(title_text='', secondary_y=False)
