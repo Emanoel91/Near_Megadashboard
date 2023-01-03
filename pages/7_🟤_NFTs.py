@@ -218,13 +218,15 @@ with c2:
 
         
 df = Collections
-fig = px.scatter(df.sort_values(['VOLUME', 'PURCHASES'], ascending=[True, True]), x='VOLUME', y='PURCHASES', color='COLLECTION_NAME', title='Top 100 Collections Purchases vs. Volume', log_x=True, log_y=True)
+fig = px.scatter(df.sort_values(['VOLUME', 'PURCHASES'], ascending=[True, True]), x='VOLUME', y='PURCHASES', color='COLLECTION_NAME', title='💎Top 100 Collections Purchases vs. Volume', log_x=True, log_y=True)
 fig.update_layout(legend_title=None, xaxis_title='Purchases Volume($USD)', yaxis_title='Purchases Count')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
-fig = px.scatter(df.sort_values(['SELLERS', 'BUYERS'], ascending=[True, True]), x='SELLERS', y='BUYERS', color='COLLECTION_NAME', title='Top 100 Collections Sellers vs. Buyers')
+fig = px.scatter(df.sort_values(['SELLERS', 'BUYERS'], ascending=[True, True]), x='SELLERS', y='BUYERS', color='COLLECTION_NAME', title='🎴Top 100 Collections Sellers vs. Buyers')
 fig.update_layout(legend_title=None, xaxis_title='Sellers Count', yaxis_title='Buyers Count')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
-
+fig = px.bar(df.sort_values(['COLLECTION_NAME', 'AVG_PRICE'], ascending=[True, True]), x='COLLECTION_NAME', y='AVG_PRICE', color='COLLECTION_NAME', title='🖼Top 100 Collections Average Price')
+fig.update_layout(legend_title=None, xaxis_title='Collection Name', yaxis_title='Average Price($USD)')
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
     
