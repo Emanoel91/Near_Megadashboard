@@ -43,6 +43,10 @@ fig = px.area(df, x='Date', y='Price', color='CRITERIA', title='NEAR Price per D
 fig.update_layout(showlegend=False, xaxis_title=None, yaxis_title='$USD')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
+fig = px.bar(df, x='Date', y='Price', color='CRITERIA', title='NEAR Price per Day', log_y=False, barmode='group')
+fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='$USD', xaxis={'categoryorder':'total ascending'})
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
 df = Range_of_Price_Changes
 
 fig = px.bar(df, x='Date', y='RoPC', title='Range of Price Changes(RoPC)', log_y=False)
