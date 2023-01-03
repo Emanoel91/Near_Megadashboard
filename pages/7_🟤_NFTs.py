@@ -101,7 +101,10 @@ with c2:
         fig = px.bar(df, x='DATE', y='PURCHASES', title='Number of NFT Purchases Over Time', log_y=False)
         fig.update_layout(showlegend=False, xaxis_title=None, legend_title='', yaxis_title='', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)        
-
+         
+        fig = px.bar(df, x='DATE', y='Average Price', title='NFT Purchases Average Price Over Time', log_y=False)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Action', yaxis_title='$USD', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
         
 st.subheader('3️⃣ Classifications')
