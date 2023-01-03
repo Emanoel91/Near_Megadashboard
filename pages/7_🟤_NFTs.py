@@ -50,6 +50,8 @@ def get_data(query1):
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/e903d543-b4fa-43d1-8a51-b9081031d1e3/data/latest')
     elif query1 == 'Number of Sellers & Buyers in each Marketplaces ':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/a702da0a-ac29-43f1-9c64-19135cfd9cd4/data/latest')
+    elif query1 == 'Top 20 NFTs By Volume':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/a4a35a6f-2857-4c1d-bf5f-99b62771ca04/data/latest')
     return None    
     
 NFT_Overview = get_data('NFT Overview')
@@ -60,6 +62,7 @@ Distribution_of_Buyers_By_Number_of_Purchased_NFTs = get_data('Distribution of B
 marketplace = get_data('marketplace')    
 Collections = get_data('Collections')
 NFTs = get_data('NFTs')
+Top_20_NFTs_By_Volume = get_data('Top 20 NFTs By Volume')
 Top_20_NFT_Sellers_By_Sales = get_data('Top 20 NFT Sellers By Sales')
 Top_20_NFT_Sellers_By_Volume = get_data('Top 20 NFT Sellers By Volume')    
 Top_20_NFT_Buyers_By_Purchases = get_data('Top 20 NFT Buyers By Purchases')
@@ -229,4 +232,41 @@ st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 fig = px.bar(df.sort_values(['COLLECTION_NAME', 'AVG_PRICE'], ascending=[True, True]), x='COLLECTION_NAME', y='AVG_PRICE', color='COLLECTION_NAME', title='🧿Top 100 Collections Average Price')
 fig.update_layout(legend_title=None, xaxis_title='', yaxis_title='Average Price($USD)')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+df =  
+c1, c2 = st.columns(2)
+    
+df = NFTs
+with c1:
+        fig = px.bar(df, x='NFT_NAME', y='PURCHASES', color='PURCHASES', title='Top 20 NFTs Based on Purchases Count', log_y=True)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='NFT_NAME', yaxis_title='Purchases Count', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly) 
+        
+        df = Top_20_NFT_Sellers_By_Sales
+        fig = px.bar(df, x='SELLER', y='SALES', color='SALES', title='Top 20 NFT Sellers Based on Sales Count', log_y=True)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='SELLER', yaxis_title='Sales Count', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
+        df = Top_20_NFT_Buyers_By_Purchases
+        fig = px.bar(df, x='BUYER', y='PURCHASES', color='PURCHASES', title='Top 20 NFT Buyers Based on Purchases Count', log_y=True)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='BUYER', yaxis_title='Purchases Count', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+df = Top_20_NFTs_By_Volume
+with c2:
+        fig = px.bar(df, x='NFT_NAME', y='VOLUME', color='VOLUME', title='Top 20 NFTs Based on Purchases Volume', log_y=True)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='NFT_NAME', yaxis_title='Volume($USD)', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)  
+        
+        df = Top_20_NFT_Sellers_By_Volume
+        fig = px.bar(df, x='SELLER', y='VOLUME', color='VOLUME', title='Top 20 NFT Sellers Based on Sales Volume', log_y=True)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='SELLER', yaxis_title='Sales Volume($USD)', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
+        df = Top_20_NFT_Buyers_By_Volume
+        fig = px.bar(df, x='BUYER', y='VOLUME', color='VOLUME', title='Top 20 NFT Buyers Based on Purchases Volume', log_y=True)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='BUYER', yaxis_title='Purchases Volume($USD)', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+
     
