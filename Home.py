@@ -73,7 +73,7 @@ st.subheader('📖 Guidance')
 st.write(
     """
 - Most of the charts are displayed on the daily time frame. Only the charts related to the activity of the top users are displayed in the monthly time frame.
-- The charts that show the volume index are some in terms of '$USD' and others in terms of '$NEAR'. (Note the labels on the charts.)
+- The charts that show the volume index are some in terms of 'USD' and others in terms of 'NEAR'. (Note the labels on the charts.)
 - For a better understanding of the charts, complete explanations about the metrics are collected at the end of each page. (If the chart is unclear to you, you can refer to this explanation)
     """
 )
