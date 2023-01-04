@@ -82,9 +82,9 @@ fig.update_layout(legend_title='Status', legend_y=0.5)
 fig.update_traces(textinfo='percent+label', textposition='inside')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 # --------------------------------------------------------------------------------------------------------------------------------
-fig = px.bar(df, x='STATUS', y='Transfers Count', color='Transfers Count', title='', log_y=True, barmode='group')
-fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Transfers', xaxis={'categoryorder':'total ascending'})
-st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+# fig = px.bar(df, x='STATUS', y='Transfers Count', color='Transfers Count', title='', log_y=True, barmode='group')
+# fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Transfers', xaxis={'categoryorder':'total ascending'})
+# st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 # ---------------------------------------------------------------------------------------------------------------------------------
 fig = sp.make_subplots(specs=[[{'secondary_y': True}]])
 fig.add_trace(go.Bar(x=df['Date'], y=df['Senders Count'], name='Senders'), secondary_y=False)
