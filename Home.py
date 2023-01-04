@@ -11,7 +11,7 @@ c1, c2 = st.columns(2)
 
 c1.image(Image.open('Images/near2-logo.png'))
 
-
+st.subheader('Purposes of Dashboard')
 st.write("")
 st.write("")
 st.write("")
