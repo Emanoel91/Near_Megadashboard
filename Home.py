@@ -69,7 +69,7 @@ crypto world, all information about this fascinating topic is accessible to user
     """
 )
 
-st.subheader('🧠 Methodology')
+st.subheader('📖 Guidance')
 st.write(
     """
 comments
