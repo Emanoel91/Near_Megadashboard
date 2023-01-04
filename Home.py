@@ -1,9 +1,18 @@
-# Libraries
+# Descriptions:
+# Help Metrics DAO create the ultimate collection of on-chain analytics, data, and insights with our new Megadashboards challenge! These are serious challenges that 
+# require plenty of work — and offer increased payouts in return. Read on for more info:
+# We’re putting together the ultimate analytics tool for the NEAR ecosystem, a dazzling dashboard full of glittering insights — and we need your help!
+# Create a dashboard that offers a holistic view of the NEAR ecosystem, including activity, supply, staking, and development. Your dashboard should focus on providing 
+# everything a newcomer or experienced user should know, organized and presented in a way that is simple to understand, easy to navigate, and understandable and 
+#valuable for novices and experienced users alike.
+
+
+# 📚 Libraries
 import streamlit as st
 from PIL import Image
 
-# Layout
-st.set_page_config(page_title='Near Megadashboard', page_icon=':bar_chart:', layout='wide')
+# Title
+st.set_page_config(page_title='Near Megadashboard', page_icon=':high_voltage:', layout='wide')
 st.title('Near Ⓜegadashboard')
 
 # Content
