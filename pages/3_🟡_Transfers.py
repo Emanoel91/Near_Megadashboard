@@ -54,6 +54,8 @@ def get_data(query3):
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/8cda0b43-0826-4599-80be-0ab26dbfb447/data/latest')
     elif query3 == 'Share of Users':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/59485509-0f80-434f-a649-6f6606cdb888/data/latest')
+    elif query3 == 'Number of Unique Senders & Receivers':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/2aeba64e-1462-47ba-bcb3-600bba69cc65/data/latest')
     return None
 
 Transfers = get_data('Transfers')
@@ -71,6 +73,7 @@ Receiving_Volume_of_Top_Receivers_per_Month = get_data('Receiving Volume of Top 
 Sending_Count_of_Top_Senders_per_Month = get_data('Sending Count of Top Senders per Month')
 Receiving_Count_of_Top_Receivers_per_Month = get_data('Receiving Count of Top Receivers per Month')
 Share_of_Users = get_data('Share of Users')
+Number_of_Unique_Senders_Receivers = get_data('Number of Unique Senders & Receivers')
 
 st.subheader('1️⃣ Transfers Overview')
 df = Statistical_Data_Transfers
@@ -113,15 +116,11 @@ with c3:
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 # --------------------------------------------------------------------------------------------------------------------------------
 c1, c2 = st.columns(2)
-df = Transfers
+df = Number_of_Unique_Senders_Receivers
 with c1:
-        fig = sp.make_subplots(specs=[[{'secondary_y': True}]])
-        fig.add_trace(go.Bar(x=df['Date'], y=df['Senders Count'], name='Senders'), secondary_y=False)
-        fig.add_trace(go.Bar(x=df['Date'], y=df['Receivers Count'], name='Receivers'), secondary_y=True)
-        fig.update_layout(title_text='Number of Unique Senders/Receivers')
-        fig.update_yaxes(title_text='', secondary_y=False)
-        fig.update_yaxes(title_text='', secondary_y=True)
-        st.plotly_chart(fig, use_container_width=False, theme=theme_plotly)
+        fig = px.bar(df, x='Date', y='User Count', color='User Type', title='Number of Unique Senders & Receivers')
+        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Address Count')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
 df = Share_of_Users        
 with c2:
