@@ -145,8 +145,8 @@ with c1:
         fig.update_traces(textinfo='percent+label', textposition='inside')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
-        fig = px.bar(df, x='CLASS', y='Tx Count', color='CLASS', title='')
-        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Volume($NEAR)')
+        fig = px.bar(df, x='CLASS', y='Tx Count', color='CLASS', title='', log_y=True)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='CLASS', yaxis_title='Number of Transactions', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
 df = Classification_of_Senders_Based_on_Sending_Volume
@@ -156,8 +156,8 @@ with c2:
         fig.update_traces(textinfo='percent+label', textposition='inside')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
-        fig = px.bar(df, x='CLASS', y='Senders Count', color='CLASS', title='')
-        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Senders')
+        fig = px.bar(df, x='CLASS', y='Senders Count', color='CLASS', title='', log_y=True)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='CLASS', yaxis_title='Number of Senders', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
 df = Classification_of_Receivers_Based_on_Receiving_Volume
@@ -167,8 +167,8 @@ with c3:
         fig.update_traces(textinfo='percent+label', textposition='inside')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
-        fig = px.bar(df, x='CLASS', y='Receivers Count', color='CLASS', title='')
-        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Receivers')
+        fig = px.bar(df, x='CLASS', y='Receivers Count', color='CLASS', title='', log_y=True)
+        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='CLASS', yaxis_title='Number of Receivers', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 
