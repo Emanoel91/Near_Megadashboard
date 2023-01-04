@@ -12,7 +12,7 @@ import streamlit as st
 from PIL import Image
 
 # Title
-st.set_page_config(page_title='Near Megadashboard', page_icon=':chart_increasing:', layout='wide')
+st.set_page_config(page_title='Near Megadashboard', page_icon=':chart_with_upwards_trend:', layout='wide')
 st.title('Near Ⓜegadashboard')
 
 # Content
