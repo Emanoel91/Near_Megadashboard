@@ -122,12 +122,13 @@ with c1:
         fig.update_yaxes(title_text='', secondary_y=False)
         fig.update_yaxes(title_text='', secondary_y=True)
         st.plotly_chart(fig, use_container_width=False, theme=theme_plotly)
+        
+df = Share_of_Users        
 with c2:
-df = Share_of_Users
-fig = px.pie(df, values='User Count', names='User Type', title='Share of Users')
-fig.update_layout(legend_title='CLASS', legend_y=0.5)
-fig.update_traces(textinfo='percent+label', textposition='inside')
-st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        fig = px.pie(df, values='User Count', names='User Type', title='Share of Users')
+        fig.update_layout(legend_title='CLASS', legend_y=0.5)
+        fig.update_traces(textinfo='percent+label', textposition='inside')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 st.subheader('3️⃣ Top Addresses')
 df = Top_20_Senders_based_on_Sending_Volume
