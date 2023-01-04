@@ -291,13 +291,9 @@ c1, c2 = st.columns(2)
     
 with c1:
         st.metric(label='Total Transactions Fee($NEAR)', value=df['Total Transactions Fee'])
-        st.metric(label='Averag Transactions Fee($NEAR)', value=df['Averag Transactions Fee'].round(2))
-        
-df = Statistical_Data_Daily_Transaction_Fees        
+                
 with c2:
-        fig = px.bar(df, x='CRITERIA', y='Fee', color='Fee', title='Statistical Data: Daily Transaction Fees')
-        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='$NEAR')
-        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        st.metric(label='Averag Transactions Fee($NEAR)', value=df['Averag Transactions Fee'])
         
 df = Top_20_TX_Signers_Based_on_Paid_Fees
 c1, c2 = st.columns(2)
@@ -307,13 +303,15 @@ with c1:
         fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='$NEAR')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
-df = Monthly_Transaction_Fees_of_Top_TX_Signers
+df = Statistical_Data_Daily_Transaction_Fees        
 with c2:
-        fig = px.bar(df, x='Date', y='TXs Fee', color='TX Signer', title='Monthly Transaction Fees of Top TX Signers', log_y=False)
-        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Fee($NEAR)')
+        fig = px.bar(df, x='CRITERIA', y='Fee', color='Fee', title='Statistical Data: Daily Transaction Fees')
+        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='$NEAR')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
     
 
-
-
+df = Monthly_Transaction_Fees_of_Top_TX_Signers
+fig = px.bar(df, x='Date', y='TXs Fee', color='TX Signer', title='Monthly Transaction Fees of Top TX Signers', log_y=False)
+fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Fee($NEAR)')
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
   
