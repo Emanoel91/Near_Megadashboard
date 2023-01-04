@@ -11,23 +11,25 @@ c1, c2 = st.columns(2)
 
 c1.image(Image.open('Images/near2-logo.png'))
 
-st.subheader('Purposes of Dashboard')
+st.subheader('📃 Introduction')
 
 
+st.write(
+    """
+Today, if someone wants to use a simple application or game launched on the blockchain platform, he has to go through many steps; Therefore, the Near network has 
+put its main focus on the usability and user-friendliness of its platform; Developers and programmers and end users of products launched on the Near platform should 
+feel better and more comfortable when using it. This network is very similar to Ethereum in terms of idea and is a platform for launching decentralized applications.
+    """
+)
+
+st.subheader('🎯 Purposes of Dashboard')
 st.write(
     """
 comments
     """
 )
 
-st.subheader('Purposes of Dashboard')
-st.write(
-    """
-comments
-    """
-)
-
-st.subheader('Methodology')
+st.subheader('🧠 Methodology')
 st.write(
     """
 comments
