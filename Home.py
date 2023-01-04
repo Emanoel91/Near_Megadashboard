@@ -60,7 +60,12 @@ the process of developing and creating various programs easy for developers, but
 st.subheader('🎯 Purposes of Dashboard')
 st.write(
     """
-comments
+In this dashboard, an overview of the Near ecosystem from various aspects is displayed for users. In this dashboard, users can monitor the status of Near network 
+transactions. Follow the price status of the native coin of this network i.e. NEAR and the stable coin of this chain i.e. USN. On the other hand, they can check 
+transfers between different addresses. Staking is when users lock crypto assets for a set period of time to help support the operation of a blockchain. In this 
+dashboard, the status of staking in the Near network can also be seen by users. Swapping refers to exchanging one coin or token for another. If users want to know the 
+status of swaps in various DEXs on the Near network, they can refer to the "Swap" page in this dashboard. Finally, since NFTs are one of the most popular topics in the
+crypto world, all information about this fascinating topic is accessible to users on the "NFTs" page.
     """
 )
 
