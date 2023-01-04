@@ -78,9 +78,25 @@ st.write(
     """
 )
 
+st.subheader('📖 Guidance')
+st.write(
+    """
+- Most of the charts are displayed on the daily time frame. Only the charts related to the activity of the top users are displayed in the monthly time frame.
+- The charts that show the volume index are some in terms of 'USD' and others in terms of 'NEAR'. (Note the labels on the charts.)
+- For a better understanding of the charts, complete explanations about the metrics are collected at the end of each page. (If the chart is unclear to you, you can refer to this explanation)
+    """
+)
+
+st.write(
+    """
+🤝 thanks to:
+- [Mo_Defi](https://twitter.com/Mo_Defi) and [pinehearst](https://twitter.com/pinehearst_) for using some of their queries. ([Flipside World Cup: Crosschain Defi Monitoring](https://app.flipsidecrypto.com/dashboard/flipside-world-cup-crosschain-defi-monitoring-dxlso0) & [The City of NEAR](https://app.flipsidecrypto.com/dashboard/xG8L9i))
+- [Ali Taslimi](https://twitter.com/AliTslm) for getting ideas from his awesome dashboard [Cross Chain Monitoring Tool](https://cross-chain-monitoring.streamlit.app/)
+    """
+)
 c1, c2, c3 = st.columns(3)
 with c1:
-    st.info('**Analyst: [@Astiran91](https://twitter.com/Astiran91)**', icon="📌")
+    st.info('**Analyst: [Emanoel](https://twitter.com/Astiran91)**', icon="📌")
    
 with c2:
     st.info('**Database: [Flipside Crypto](https://flipsidecrypto.xyz/)**', icon="📚")
