@@ -85,7 +85,7 @@ with c1:
 
 with c2:
         st.metric(label='Total Transfers Count', value=df['Transfers Count'])
-        st.metric(label='Unique Senders Count', value=df['Senders Count'].round(2))
+        st.metric(label='Unique Signers Count', value=df['Senders Count'].round(2))
         
 st.subheader('2️⃣ Daily Transfers')
 df = Transfers
@@ -118,7 +118,7 @@ with c3:
 c1, c2 = st.columns(2)
 df = Number_of_Unique_Senders_Receivers
 with c1:
-        fig = px.bar(df, x='Date', y='User Count', color='User Type', title='Number of Unique Senders & Receivers')
+        fig = px.bar(df, x='Date', y='User Count', color='User Type', title='Number of Unique Signers & Receivers')
         fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Address Count')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
