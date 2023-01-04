@@ -268,14 +268,14 @@ df = Monthly_Transactions_Count_of_Top_TX_Signers
 c1, c2 = st.columns(2)
     
 with c1:
-        fig = px.bar(df, x='Date', y='TXs Count', color='TX Signer', title='Monthly Transactions Count of Top TX Signers', log_y=False, barmode='group')
+        fig = px.bar(df, x='Date', y='TXs Count', color='TX Signer', title='Monthly Transactions Count of Top TX Signers', log_y=False)
         fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Transaction', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
 df = Monthly_Transactions_Count_of_Top_TX_Receivers       
         
 with c2:
-        fig = px.bar(df, x='Date', y='TXs Count', color='TX Receiver', title='Monthly Transactions Count of Top TX Receivers', log_y=False, barmode='group')
+        fig = px.bar(df, x='Date', y='TXs Count', color='TX Receiver', title='Monthly Transactions Count of Top TX Receivers', log_y=False)
         fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Transaction')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 # --------------------------------------------------------------------------------------------------------------------------------------------------        
