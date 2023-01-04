@@ -56,6 +56,12 @@ def get_data(query3):
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/59485509-0f80-434f-a649-6f6606cdb888/data/latest')
     elif query3 == 'Number of Unique Senders & Receivers':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/2aeba64e-1462-47ba-bcb3-600bba69cc65/data/latest')
+    elif query3 == 'Transfers Hitmap: Day of Week':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/475ce9c1-aa07-4a27-b8ad-b19cd9b877fb/data/latest')
+    elif query3 == 'Total Transfers Volume Over Days of Week':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/d80b7582-d6fb-40e8-b5dd-aa54b9e70e69/data/latest')
+    elif query3 == 'Total Transfers Volume Over Hours of Day':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/de752500-973a-4a07-9247-aa6106d2e77f/data/latest')
     return None
 
 Transfers = get_data('Transfers')
@@ -74,6 +80,9 @@ Sending_Count_of_Top_Senders_per_Month = get_data('Sending Count of Top Senders 
 Receiving_Count_of_Top_Receivers_per_Month = get_data('Receiving Count of Top Receivers per Month')
 Share_of_Users = get_data('Share of Users')
 Number_of_Unique_Senders_Receivers = get_data('Number of Unique Senders & Receivers')
+Transfers_Hitmap_Day_of_Week = get_data('Transfers Hitmap: Day of Week')
+Total_Transfers_Volume_Over_Days_of_Week = get_data('Total Transfers Volume Over Days of Week')
+Total_Transfers_Volume_Over_Hours_of_Day = get_data('Total Transfers Volume Over Hours of Day')
 
 st.subheader('1️⃣ Transfers Overview')
 df = Statistical_Data_Transfers
@@ -129,6 +138,12 @@ with c2:
         fig.update_traces(textinfo='percent+label', textposition='inside')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
+df = Transfers_Hitmap_Day_of_Week
+fig = px.density_heatmap(df, x='Hour', y='Day Name', z='Transfers Volume', histfunc='avg', title='Transfers Hitmap Day of Week', nbinsx=24)
+fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title=None, xaxis={'dtick': 1}, coloraxis_colorbar=dict(title='Transfers Volume'))
+fig.update_yaxes(categoryorder='array', categoryarray=Transfers_Hitmap_Day_of_Week)
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
 st.subheader('3️⃣ Top Addresses')
 df = Top_20_Senders_based_on_Sending_Volume
 c1, c2 = st.columns(2)
