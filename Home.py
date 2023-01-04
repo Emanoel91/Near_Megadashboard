@@ -44,4 +44,10 @@ with c2:
     st.info('**Database: [Flipside Crypto](https://flipsidecrypto.xyz/)**', icon="📚")
 with c3:
     st.info('**Provided for: [MetricsDao](https://metricsdao.xyz/)**', icon="💡")
+    
+c1, c2 = st.columns(2)
+
+c1.image(Image.open('Images/analyst.JPG'))
+c2.image(Image.open('Images/flipside.JPG'))
+c3.image(Image.open('Images/metricsdao.JPG'))
 
