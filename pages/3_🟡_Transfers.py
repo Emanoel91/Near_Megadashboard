@@ -52,6 +52,8 @@ def get_data(query3):
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/30a2c8e0-b588-4003-9141-cbb66895216d/data/latest')
     elif query3 == 'Receiving Count of Top Receivers per Month':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/8cda0b43-0826-4599-80be-0ab26dbfb447/data/latest')
+    elif query3 == 'Share of Users':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/59485509-0f80-434f-a649-6f6606cdb888/data/latest')
     return None
 
 Transfers = get_data('Transfers')
@@ -68,6 +70,7 @@ Sending_Volume_of_Top_Senders_per_Month = get_data('Sending Volume of Top Sender
 Receiving_Volume_of_Top_Receivers_per_Month = get_data('Receiving Volume of Top Receivers per Month')
 Sending_Count_of_Top_Senders_per_Month = get_data('Sending Count of Top Senders per Month')
 Receiving_Count_of_Top_Receivers_per_Month = get_data('Receiving Count of Top Receivers per Month')
+Share_of_Users = get_data('Share of Users')
 
 st.subheader('1️⃣ Transfers Overview')
 df = Statistical_Data_Transfers
@@ -109,14 +112,22 @@ with c3:
         fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='$NEAR', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 # --------------------------------------------------------------------------------------------------------------------------------
+c1, c2 = st.columns(2)
 df = Transfers
-fig = sp.make_subplots(specs=[[{'secondary_y': True}]])
-fig.add_trace(go.Bar(x=df['Date'], y=df['Senders Count'], name='Senders'), secondary_y=False)
-fig.add_trace(go.Bar(x=df['Date'], y=df['Receivers Count'], name='Receivers'), secondary_y=True)
-fig.update_layout(title_text='Number of Unique Senders/Receivers')
-fig.update_yaxes(title_text='', secondary_y=False)
-fig.update_yaxes(title_text='', secondary_y=True)
-st.plotly_chart(fig, use_container_width=False, theme=theme_plotly)
+with c1:
+        fig = sp.make_subplots(specs=[[{'secondary_y': True}]])
+        fig.add_trace(go.Bar(x=df['Date'], y=df['Senders Count'], name='Senders'), secondary_y=False)
+        fig.add_trace(go.Bar(x=df['Date'], y=df['Receivers Count'], name='Receivers'), secondary_y=True)
+        fig.update_layout(title_text='Number of Unique Senders/Receivers')
+        fig.update_yaxes(title_text='', secondary_y=False)
+        fig.update_yaxes(title_text='', secondary_y=True)
+        st.plotly_chart(fig, use_container_width=False, theme=theme_plotly)
+with c2:
+df = Share_of_Users
+fig = px.pie(df, values='User Count', names='User Type', title='Share of Users')
+fig.update_layout(legend_title='CLASS', legend_y=0.5)
+fig.update_traces(textinfo='percent+label', textposition='inside')
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 st.subheader('3️⃣ Top Addresses')
 df = Top_20_Senders_based_on_Sending_Volume
