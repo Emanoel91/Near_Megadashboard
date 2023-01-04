@@ -97,7 +97,7 @@ with c3:
         fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='$NEAR', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 # --------------------------------------------------------------------------------------------------------------------------------
-
+df = Transfers
 fig = sp.make_subplots(specs=[[{'secondary_y': True}]])
 fig.add_trace(go.Bar(x=df['Date'], y=df['Senders Count'], name='Senders'), secondary_y=False)
 fig.add_trace(go.Bar(x=df['Date'], y=df['Receivers Count'], name='Receivers'), secondary_y=True)
