@@ -66,4 +66,10 @@ with c1:
 with c2:
         st.metric(label='ATH', value=df['ATH'])
 with c3:
-        st.metric(label='Max RoPC', value=df['Max RoPC'])  
+        st.metric(label='Max RoPC', value=df['Max RoPC']) 
+        
+# USN Price Analysis
+st.subheader('1️⃣ USN Price Overview') 
+c1 , c2 = st.columns(2)
+c1.image(Image.open('Images/USN2.JPG'))
+
