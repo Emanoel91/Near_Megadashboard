@@ -44,6 +44,14 @@ def get_data(query3):
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/0f7931af-1972-4eeb-a650-c43f13a9407d/data/latest')
     elif query3 == 'Transfers Status':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/0f5ed59e-1c80-4c76-9aeb-80dcd98a1e87/data/latest')
+    elif query3 == 'Sending Volume of Top Senders per Month':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/9766d23e-c03a-420b-9ef3-d4f4715fb8c0/data/latest')
+    elif query3 == 'Receiving Volume of Top Receivers per Month':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/3a02bbeb-a037-456d-935f-b1aebcc9b82a/data/latest')
+    elif query3 == 'Sending Count of Top Senders per Month':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/30a2c8e0-b588-4003-9141-cbb66895216d/data/latest')
+    elif query3 == 'Receiving Count of Top Receivers per Month':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/8cda0b43-0826-4599-80be-0ab26dbfb447/data/latest')
     return None
 
 Transfers = get_data('Transfers')
@@ -56,6 +64,10 @@ Classification_of_Transfers_Based_on_Volume = get_data('Classification of Transf
 Classification_of_Senders_Based_on_Sending_Volume = get_data('Classification of Senders Based on Sending Volume')
 Classification_of_Receivers_Based_on_Receiving_Volume = get_data('Classification of Receivers Based on Receiving Volume')
 Transfers_Status = get_data('Transfers Status')
+Sending_Volume_of_Top_Senders_per_Month = get_data('Sending Volume of Top Senders per Month')
+Receiving_Volume_of_Top_Receivers_per_Month = get_data('Receiving Volume of Top Receivers per Month')
+Sending_Count_of_Top_Senders_per_Month = get_data('Sending Count of Top Senders per Month')
+Receiving_Count_of_Top_Receivers_per_Month = get_data('Receiving Count of Top Receivers per Month')
 
 st.subheader('1️⃣ Transfers Overview')
 df = Statistical_Data_Transfers
@@ -120,6 +132,17 @@ with c2:
         fig = px.bar(df, x='Receiver', y='Receiving Volume', color='Receiving Volume', title='Top 20 Receivers based on Receiving Volume')
         fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='$NEAR')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+# ------------------------------------------------------------------------------------------------------------------------------------------------        
+df = Sending_Volume_of_Top_Senders_per_Month
+fig = px.bar(df, x='Date', y='Volume', color='Sender Address', title='Sending Volume of Top Senders per Month', log_y=False)
+fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='$NEAR')
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+df = Receiving_Volume_of_Top_Receivers_per_Month
+fig = px.bar(df, x='Date', y='Volume', color='Receiver Address', title='Receiving Volume of Top Receivers per Month', log_y=False)
+fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='$NEAR')
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)        
+# -------------------------------------------------------------------------------------------------------------------------------------------------        
         
 df = Top_20_Senders_Based_on_Sending_Count
 c1, c2 = st.columns(2)
@@ -133,7 +156,18 @@ df = Top_20_Receivers_based_on_Receiving_Count
 with c2:
         fig = px.bar(df, x='Receiver', y='Receiving Count', color='Receiving Count', title='Top 20 Receivers based on Receiving Count')
         fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='')
-        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)                
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+# ---------------------------------------------------------------------------------------------------------------------------------------------------
+df = Sending_Count_of_Top_Senders_per_Month
+fig = px.bar(df, x='Date', y='Sending Count', color='Sender Address', title='Sending Count of Top Senders per Month', log_y=False)
+fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Sending Count')
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+df = Receiving_Count_of_Top_Receivers_per_Month
+fig = px.bar(df, x='Date', y='Receiving Count', color='Receiver Address', title='Receiving Count of Top Receivers per Month', log_y=False)
+fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Receiving Count')
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+# -----------------------------------------------------------------------------------------------------------------------------------------------------        
 
 st.subheader('4️⃣ Classifications')        
 df = Classification_of_Transfers_Based_on_Volume
