@@ -40,8 +40,10 @@ NEAR_Price_Metric = get_data('NEAR Price Metric')
 
 # NEAR Price Analysis
 st.subheader('1️⃣ NEAR Price Overview')
-df = NEAR_Price_per_Day
+c1 , c2 = st.columns(2)
+c1.image(Image.open('Images/NEAR7.JPG'))
 
+df = NEAR_Price_per_Day
 fig = px.line(df, x='Date', y='Price', color='CRITERIA', title='NEAR Price per Day', log_y=False)
 fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='$USD', xaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
@@ -69,7 +71,7 @@ with c3:
         st.metric(label='Max RoPC', value=df['Max RoPC']) 
         
 # USN Price Analysis
-st.subheader('1️⃣ USN Price Overview') 
+st.subheader('2️⃣ USN Price Overview') 
 c1 , c2 = st.columns(2)
 c1.image(Image.open('Images/USN2.JPG'))
 
