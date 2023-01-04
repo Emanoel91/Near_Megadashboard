@@ -39,7 +39,7 @@ NEAR_Price = get_data('NEAR Price')
 NEAR_Price_Metric = get_data('NEAR Price Metric')
 
 # NEAR Price Analysis
-
+st.subheader('1️⃣ NEAR Price Overview')
 df = NEAR_Price_per_Day
 
 fig = px.line(df, x='Date', y='Price', color='CRITERIA', title='NEAR Price per Day', log_y=False)
