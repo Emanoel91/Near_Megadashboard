@@ -60,6 +60,12 @@ def get_data(query1):
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/446128c4-fd51-413a-9a5a-c7712dedc5e2/data/latest')
     elif query1 == 'Total Transactions Count Over Hours of Day':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/3d42455d-a0e6-40e6-81b7-bc27ce1a6661/data/latest')
+    elif query1 == 'Monthly Transactions Count of Top TX Signers':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/e8a73aa1-98cc-4575-9815-ce37d26dbe6f/data/latest')
+    elif query1 == 'Monthly Transactions Count of Top TX Receivers':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/e77292ca-6973-4ace-a7a9-313057508618/data/latest')
+    elif query1 == 'Monthly Transaction Fees of Top TX Signers':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/f9474172-0568-4605-a0f6-571ed3b20b9c/data/latest')
     return None
 
 transactions_overview = get_data('Transactions Overview')
@@ -80,6 +86,9 @@ Number_of_New_Addresses = get_data('Number of New Addresses')
 Transactions_Hitmap_Day_of_Week = get_data('Transactions Hitmap: Day of Week')
 Total_Transactions_Count_Over_Days_of_Week = get_data('Total Transactions Count Over Days of Week')
 Total_Transactions_Count_Over_Hours_of_Day = get_data('Total Transactions Count Over Hours of Day')
+Monthly_Transactions_Count_of_Top_TX_Signers = get_data('Monthly Transactions Count of Top TX Signers')
+Monthly_Transactions_Count_of_Top_TX_Receivers = get_data('Monthly Transactions Count of Top TX Receivers')
+Monthly_Transaction_Fees_of_Top_TX_Signers = get_data('Monthly Transaction Fees of Top TX Signers')
 
 # NEAR Analysis
 st.subheader('1️⃣ Overview')
@@ -254,7 +263,22 @@ with c2:
         fig = px.bar(df, x='TX Receiver', y='TXs Count', color='TXs Count', title='Top 20 TX Receivers Base on Transactions Count')
         fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+df = Monthly_Transactions_Count_of_Top_TX_Signers
+c1, c2 = st.columns(2)
+    
+with c1:
+        fig = px.bar(df, x='Date', y='TXs Count', color='TX Signer', title='Monthly Transactions Count of Top TX Signers', log_y=False, barmode='group')
+        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Transaction', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
+df = Monthly_Transactions_Count_of_Top_TX_Receivers       
+        
+with c2:
+        fig = px.bar(df, x='Date', y='TXs Count', color='TX Receiver', title='Monthly Transactions Count of Top TX Receivers')
+        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Transaction')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+# --------------------------------------------------------------------------------------------------------------------------------------------------        
 st.subheader('3️⃣ Transaction Fees')
 df = Transaction_Fees
 
