@@ -42,6 +42,8 @@ def get_data(query3):
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/b56338db-194a-4399-ab91-2ef4e7f14e08/data/latest')
     elif query3 == 'Classification of Receivers Based on Receiving Volume':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/0f7931af-1972-4eeb-a650-c43f13a9407d/data/latest')
+    elif query3 == 'Transfers Status':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/0f5ed59e-1c80-4c76-9aeb-80dcd98a1e87/data/latest')
     return None
 
 Transfers = get_data('Transfers')
@@ -53,6 +55,7 @@ Top_20_Receivers_based_on_Receiving_Count = get_data('Top 20 Receivers based on 
 Classification_of_Transfers_Based_on_Volume = get_data('Classification of Transfers Based on Volume')
 Classification_of_Senders_Based_on_Sending_Volume = get_data('Classification of Senders Based on Sending Volume')
 Classification_of_Receivers_Based_on_Receiving_Volume = get_data('Classification of Receivers Based on Receiving Volume')
+Transfers_Status = get_data('Transfers Status')
 
 st.subheader('1️⃣ Transfers Overview')
 df = Statistical_Data_Transfers
@@ -77,15 +80,24 @@ fig = px.bar(df, x='Date', y='Transfers Count', color='STATUS', title='Daily Tra
 fig.update_layout(showlegend=False, xaxis_title=None, legend_title='STATUS', yaxis_title='', xaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
     
-fig = px.pie(df, values='Transfers Count', names='STATUS', title='Share of Transfers Count')
-fig.update_layout(legend_title='Status', legend_y=0.5)
-fig.update_traces(textinfo='percent+label', textposition='inside')
-st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+c1, c2, c3 = st.columns(3)
+    
+with c1:
+        fig = px.pie(df, values='Transfers Count', names='STATUS', title='Share of Transfers Count')
+        fig.update_layout(legend_title='Status', legend_y=0.5)
+        fig.update_traces(textinfo='percent+label', textposition='inside')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+df = Transfers_Status
+with c2:
+        fig = px.bar(df, x='Status', y='Transfers Count', color='Transfers Count', title='Total Transfers Count', log_y=True)
+        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Transfers', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+with c3:        
+        fig = px.bar(df, x='Status', y='Volume', color='Volume', title='Total Transfers Volume', log_y=True)
+        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='$NEAR', xaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 # --------------------------------------------------------------------------------------------------------------------------------
-# fig = px.bar(df, x='STATUS', y='Transfers Count', color='Transfers Count', title='', log_y=True, barmode='group')
-# fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Transfers', xaxis={'categoryorder':'total ascending'})
-# st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
-# ---------------------------------------------------------------------------------------------------------------------------------
+
 fig = sp.make_subplots(specs=[[{'secondary_y': True}]])
 fig.add_trace(go.Bar(x=df['Date'], y=df['Senders Count'], name='Senders'), secondary_y=False)
 fig.add_trace(go.Bar(x=df['Date'], y=df['Receivers Count'], name='Receivers'), secondary_y=True)
