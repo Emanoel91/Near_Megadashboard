@@ -38,6 +38,9 @@ shards of the network will not check this transaction. This idea makes the capac
 3️⃣ Sharding technology is also used by other protocols and for this reason Near protocol is not the first network. In many networks that use sharding, relatively 
 complex hardware equipment is needed to set up a node; Therefore, fewer people are able to set up nodes in these networks; But the Near protocol uses the cloud space 
 of the host to launch the node.
+
+4️⃣ Unlike other layer 1 networks such as Avalanche, which adopted Solidity to make it easier to integrate with Ethereum, NEAR became a developer-first network with support 
+for WebAssembly (WASM).
     """
 )
 
