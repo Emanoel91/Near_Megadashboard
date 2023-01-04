@@ -41,6 +41,10 @@ of the host to launch the node.
 
 4️⃣ Unlike other layer 1 networks such as Avalanche, which adopted Solidity to make it easier to integrate with Ethereum, NEAR became a developer-first network with support 
 for WebAssembly (WASM).
+
+5️⃣ The NEAR protocol does not follow Polkadot, BSC, or Solana networks that use 64-character public keys; Rather, by abandoning the use of public keys for wallets, 
+the wallets of this network are the first wallets in which people's addresses are the same as their profile names. Therefore, the Near network not only aims to make 
+the process of developing and creating various programs easy for developers, but also users can easily benefit from its services.
     """
 )
 
