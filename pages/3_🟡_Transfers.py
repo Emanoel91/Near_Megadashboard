@@ -143,6 +143,19 @@ fig = px.density_heatmap(df, x='Hour', y='Day Name', z='Transfers Volume', histf
 fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title=None, xaxis={'dtick': 1}, coloraxis_colorbar=dict(title='Transfers Volume'))
 fig.update_yaxes(categoryorder='array', categoryarray=Transfers_Hitmap_Day_of_Week)
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+c1, c2 = st.columns(2)
+df = Total_Transfers_Volume_Over_Days_of_Week
+with c1:
+        fig = px.bar(df, x='Day Name', y='Total Volume', color='Day Name', title='Total Transfers Volume Over Days of Week', log_y=False)
+        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='$NEAR')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+    
+df = Total_Transfers_Volume_Over_Hours_of_Day    
+with c2:    
+        fig = px.bar(df, x='Hour', y='Total Volume', color='Total Volume', title='Total Transfers Volume Over Hours of Day', log_y=False)
+        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='$NEAR')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
 st.subheader('3️⃣ Top Addresses')
 df = Top_20_Senders_based_on_Sending_Volume
