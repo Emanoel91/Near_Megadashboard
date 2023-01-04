@@ -93,3 +93,13 @@ df = Amount_of_Price_Changes_Relative_to_the_Peg_Value
 fig = px.bar(df, x='Date', y='Price Changes', title='Amount of Price Changes Relative to the Peg Value', log_y=False)
 fig.update_layout(showlegend=False, xaxis_title=None, yaxis_title=None)
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+df = USN_Price
+c1, c2, c3 = st.columns(3)
+    
+with c1:
+        st.metric(label='Current Price', value=df['Current Price'])
+with c2:
+        st.metric(label='Maximum Price', value=df['Maximum Price'])
+with c3:
+        st.metric(label='Minimum Price', value=df['Minimum Price']) 
