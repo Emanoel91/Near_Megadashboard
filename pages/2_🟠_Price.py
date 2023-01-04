@@ -9,7 +9,7 @@ from PIL import Image
 theme_plotly = None # None or streamlit
 
 # Structure
-st.set_page_config(page_title='NEAR Price - Near Megadashboard', page_icon=':orange_circle:', layout='wide')
+st.set_page_config(page_title='NEAR Price - Near Megadashboard', page_icon=':chart_with_upwards_trend:', layout='wide')
 st.title('🟠 NEAR Price')
 
 # Cover
