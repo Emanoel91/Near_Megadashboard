@@ -27,7 +27,9 @@ The main goal of the NEAR network is to create an infrastructure for creating a 
 people's personal information. Countries cannot ban some programs and destroy people's business in this system. A world of freedom where everyone can act freely. 
 Of course, this goal of the Near network is not a new concept; In fact, Satoshi Nakamoto also pursued the same goal by introducing Bitcoin in 2008. But Bitcoin has 
 created this freedom only in the financial sphere. But like many other networks, Near seeks to expand this freedom to other aspects of human life.
-
+###### 👌 Near protocol features
+1️⃣ The Ethereum network is a slow and expensive protocol. Developers have a speed limit to use this network, and on the other hand, the transaction fees in this network is relatively high.
+The reason why Ethereum has launched the Ethereum 2 network is to increase the speed of transactions and reduce network fees. So the Ethereum network has these problems. The Near network solves this problem by using sharding and the speed of transactions in this network is high and the transaction fees are low.
     """
 )
 
