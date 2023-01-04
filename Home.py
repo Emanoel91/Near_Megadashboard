@@ -28,8 +28,11 @@ people's personal information. Countries cannot ban some programs and destroy pe
 Of course, this goal of the Near network is not a new concept; In fact, Satoshi Nakamoto also pursued the same goal by introducing Bitcoin in 2008. But Bitcoin has 
 created this freedom only in the financial sphere. But like many other networks, Near seeks to expand this freedom to other aspects of human life.
 ###### 👌 Near protocol features
-1️⃣ The Ethereum network is a slow and expensive protocol. Developers have a speed limit to use this network, and on the other hand, the transaction fees in this network is relatively high.
-The reason why Ethereum has launched the Ethereum 2 network is to increase the speed of transactions and reduce network fees. So the Ethereum network has these problems. The Near network solves this problem by using sharding and the speed of transactions in this network is high and the transaction fees are low.
+1️⃣ The speed of transactions in Near network is high and the transaction fees are low. The reason for this is that Near protocol uses sharding technology.
+2️⃣ Scalability is an important concept in the blockchain world. Near protocol uses sharding technology to solve the scalability problem. In this model, a transaction 
+does not need to be checked by all network nodes. With sharding, a network is transformed into several parallel networks that check transactions simultaneously, so t
+hat each transaction is checked in a shard. As a result, only nodes present in a shard will check and confirm this transaction, and other nodes present in other 
+shards of the network will not check this transaction. This idea makes the capacity of the network increase significantly.
     """
 )
 
