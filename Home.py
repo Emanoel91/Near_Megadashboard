@@ -39,7 +39,7 @@ comments
 
 c1, c2, c3 = st.columns(3)
 with c1:
-    st.info('**Developer/Analyst: [@Astiran91](https://twitter.com/Astiran91)**', icon="📌")
+    st.info('**Analyst: [@Astiran91](https://twitter.com/Astiran91)**', icon="📌")
     c1.image(Image.open('Images/analyst.JPG'))
 with c2:
     st.info('**Database: [Flipside Crypto](https://flipsidecrypto.xyz/)**', icon="📚")
