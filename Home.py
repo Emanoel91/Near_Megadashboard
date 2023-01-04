@@ -7,11 +7,10 @@ st.set_page_config(page_title='Near Megadashboard', page_icon=':bar_chart:', lay
 st.title('Near Ⓜegadashboard')
 
 # Content
-c1, c2, c3 = st.columns(3)
+c1, c2 = st.columns(2)
 
-c1.image(Image.open('Images/flipsidecrypto-logo.png'))
-c2.image(Image.open('Images/near2-logo.png'))
-c3.image(Image.open('Images/near-logo.JPG'))
+c1.image(Image.open('Images/near2-logo.png'))
+
 
 st.write("")
 st.write("")
