@@ -29,17 +29,25 @@ def get_data(query2):
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/6644dd6a-7aaf-4e0e-84d5-bd39f6a6c47c/data/latest')
     elif query2 == 'NEAR Price':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/1c8db165-7910-4ded-b01b-21c65d831e48/data/latest')
+    elif query2 == 'NEAR Price Metric':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/9359a7c6-ab99-41f5-a87b-51ee140d8086/data/latest')
     return None
 
 NEAR_Price_per_Day = get_data('NEAR Price per Day')
 Range_of_Price_Changes = get_data('Range of Price Changes')
 NEAR_Price = get_data('NEAR Price')
+NEAR_Price_Metric = get_data('NEAR Price Metric')
 
 # NEAR Price Analysis
 
 df = NEAR_Price_per_Day
 
 fig = px.line(df, x='Date', y='Price', color='CRITERIA', title='NEAR Price per Day', log_y=False)
+fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='$USD', xaxis={'categoryorder':'total ascending'})
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+df = NEAR_Price_Metric
+fig = px.line(df, x='Day', y='Price', color='TYPE', title='NEAR Price per Day', log_y=False)
 fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='$USD', xaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
