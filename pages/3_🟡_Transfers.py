@@ -145,12 +145,20 @@ with c1:
         fig.update_traces(textinfo='percent+label', textposition='inside')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
+        fig = px.bar(df, x='CLASS', y='Tx Count', color='CLASS', title='')
+        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Volume($NEAR)')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
 df = Classification_of_Senders_Based_on_Sending_Volume
 with c2:
         fig = px.pie(df, values='Senders Count', names='CLASS', title='Classification of Senders Based on Sending Volume')
         fig.update_layout(legend_title='CLASS', legend_y=0.5)
         fig.update_traces(textinfo='percent+label', textposition='inside')
-        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)    
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
+        fig = px.bar(df, x='CLASS', y='Senders Count', color='CLASS', title='')
+        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Senders')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
 df = Classification_of_Receivers_Based_on_Receiving_Volume
 with c3:
@@ -159,7 +167,9 @@ with c3:
         fig.update_traces(textinfo='percent+label', textposition='inside')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
-
+        fig = px.bar(df, x='CLASS', y='Receivers Count', color='CLASS', title='')
+        fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Receivers')
+        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 
 
