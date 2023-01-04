@@ -111,8 +111,8 @@ with c3:
 # --------------------------------------------------------------------------------------------------------------------------------
 df = Transfers
 fig = sp.make_subplots(specs=[[{'secondary_y': True}]])
-fig.add_trace(go.bar(x=df['Date'], y=df['Senders Count'], name='Senders'), secondary_y=False)
-fig.add_trace(go.bar(x=df['Date'], y=df['Receivers Count'], name='Receivers'), secondary_y=True)
+fig.add_trace(go.Bar(x=df['Date'], y=df['Senders Count'], name='Senders'), secondary_y=False)
+fig.add_trace(go.Bar(x=df['Date'], y=df['Receivers Count'], name='Receivers'), secondary_y=True)
 fig.update_layout(title_text='Number of Unique Senders/Receivers')
 fig.update_yaxes(title_text='', secondary_y=False)
 fig.update_yaxes(title_text='', secondary_y=True)
