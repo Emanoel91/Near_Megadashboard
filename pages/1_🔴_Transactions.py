@@ -214,6 +214,8 @@ fig = px.line(df, x='Date', y='Average Transaction Count per Block', title='Aver
 fig.update_layout(showlegend=False, xaxis_title=None, yaxis_title='TX per Block', xaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
+st.subheader('3️⃣ Activity of Addresses')
+df = Daily_Transactions_Data
 fig = sp.make_subplots(specs=[[{'secondary_y': True}]])
 fig.add_trace(go.Bar(x=df['Date'], y=df['Average Transactions Count per Sender'], name='TX per Sender'), secondary_y=False)
 fig.add_trace(go.Line(x=df['Date'], y=df['Average Transactions Count per Receiver'], name='TX per Receiver'), secondary_y=True)
@@ -279,7 +281,7 @@ with c2:
         fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Transaction')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 # --------------------------------------------------------------------------------------------------------------------------------------------------        
-st.subheader('3️⃣ Transaction Fees')
+st.subheader('4️⃣ Transaction Fees')
 df = Transaction_Fees
 
 fig = px.area(df, x='Date', y='Transactions Fee', title='Daily Transaction Fees')
