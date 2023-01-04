@@ -23,6 +23,10 @@ The Near protocol is similar to the Ethereum network; With the difference that t
 The NEAR protocol provides a platform where programmers can freely present their programs. With such programs, we will have a better world where people are fully in control of their assets, be it money, personal 
 information, etc.
 ###### 🤔 What is the purpose of creating the Near protocol?
+The main goal of the NEAR network is to create an infrastructure for creating a new Internet. In the new internet, it will be harder for big companies to access 
+people's personal information. Countries cannot ban some programs and destroy people's business in this system. A world of freedom where everyone can act freely. 
+Of course, this goal of the Near network is not a new concept; In fact, Satoshi Nakamoto also pursued the same goal by introducing Bitcoin in 2008. But Bitcoin has 
+created this freedom only in the financial sphere. But like many other networks, Near seeks to expand this freedom to other aspects of human life.
 
     """
 )
