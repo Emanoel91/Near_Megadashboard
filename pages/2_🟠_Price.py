@@ -31,12 +31,21 @@ def get_data(query2):
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/1c8db165-7910-4ded-b01b-21c65d831e48/data/latest')
     elif query2 == 'NEAR Price Metric':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/9359a7c6-ab99-41f5-a87b-51ee140d8086/data/latest')
+    elif query2 == 'USN Price per Day':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/ad7914c8-6f6a-48ba-9e04-51bc259f6dbf/data/latest')
+    elif query2 == 'Amount of Price Changes Relative to the Peg Value':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/a9e04198-fff5-4ff4-9103-c8d24c0dc58a/data/latest')
+    elif query2 == 'USN Price':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/0006171a-78d9-4f49-b2b7-7bcd2ffddcc9/data/latest')
     return None
 
 NEAR_Price_per_Day = get_data('NEAR Price per Day')
 Range_of_Price_Changes = get_data('Range of Price Changes')
 NEAR_Price = get_data('NEAR Price')
 NEAR_Price_Metric = get_data('NEAR Price Metric')
+USN_Price_per_Day = get_data('USN Price per Day')
+Amount_of_Price_Changes_Relative_to_the_Peg_Value = get_data('Amount of Price Changes Relative to the Peg Value')
+USN_Price = get_data('USN Price')
 
 # NEAR Price Analysis
 st.subheader('1️⃣ NEAR Price Overview')
@@ -75,3 +84,12 @@ st.subheader('2️⃣ USN Price Overview')
 c1 , c2 = st.columns(2)
 c1.image(Image.open('Images/USN2.JPG'))
 
+df = USN_Price_per_Day
+fig = px.line(df, x='Date', y='Price', color='CRITERIA', title='USN Price per Day', log_y=False)
+fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='$USD', xaxis={'categoryorder':'total ascending'})
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+df = Amount_of_Price_Changes_Relative_to_the_Peg_Value
+fig = px.bar(df, x='Date', y='Price Changes', title='Amount of Price Changes Relative to the Peg Value', log_y=False)
+fig.update_layout(showlegend=False, xaxis_title=None, yaxis_title=None)
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
