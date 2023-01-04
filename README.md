@@ -1,4 +1,4 @@
-# 📊 Near_Megadashboard 
+# 📈 Near Megadashboard 
 ## MetricsDao: 
 #### 🔗https://metricsdao.xyz/
 ## Flipsidecrypto:
