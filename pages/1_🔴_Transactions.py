@@ -275,7 +275,7 @@ with c1:
 df = Monthly_Transactions_Count_of_Top_TX_Receivers       
         
 with c2:
-        fig = px.bar(df, x='Date', y='TXs Count', color='TX Receiver', title='Monthly Transactions Count of Top TX Receivers')
+        fig = px.bar(df, x='Date', y='TXs Count', color='TX Receiver', title='Monthly Transactions Count of Top TX Receivers', log_y=False, barmode='group')
         fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Transaction')
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 # --------------------------------------------------------------------------------------------------------------------------------------------------        
