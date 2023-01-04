@@ -34,6 +34,10 @@ created this freedom only in the financial sphere. But like many other networks,
 does not need to be checked by all network nodes. With sharding, a network is transformed into several parallel networks that check transactions simultaneously, so t
 hat each transaction is checked in a shard. As a result, only nodes present in a shard will check and confirm this transaction, and other nodes present in other 
 shards of the network will not check this transaction. This idea makes the capacity of the network increase significantly.
+
+3️⃣ Sharding technology is also used by other protocols and for this reason Near protocol is not the first network. In many networks that use sharding, relatively 
+complex hardware equipment is needed to set up a node; Therefore, fewer people are able to set up nodes in these networks; But the Near protocol uses the cloud space 
+of the host to launch the node.
     """
 )
 
