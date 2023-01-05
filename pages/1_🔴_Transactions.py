@@ -66,6 +66,10 @@ def get_data(query1):
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/e77292ca-6973-4ace-a7a9-313057508618/data/latest')
     elif query1 == 'Monthly Transaction Fees of Top TX Signers':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/f9474172-0568-4605-a0f6-571ed3b20b9c/data/latest')
+    elif query1 == 'Time interval between the first and last transaction':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/5ebca19e-d680-4cd7-8fcf-6958ab206e09/data/latest')
+        elif query1 == 'Distribution of the number of activity days':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/974f933f-18f2-4e70-bf3e-0c9320776524/data/latest')
     return None
 
 transactions_overview = get_data('Transactions Overview')
@@ -89,6 +93,8 @@ Total_Transactions_Count_Over_Hours_of_Day = get_data('Total Transactions Count 
 Monthly_Transactions_Count_of_Top_TX_Signers = get_data('Monthly Transactions Count of Top TX Signers')
 Monthly_Transactions_Count_of_Top_TX_Receivers = get_data('Monthly Transactions Count of Top TX Receivers')
 Monthly_Transaction_Fees_of_Top_TX_Signers = get_data('Monthly Transaction Fees of Top TX Signers')
+Time_interval_between_the_first_and_last_transaction = get_data('Time interval between the first and last transaction')
+Distribution_of_the_number_of_activity_days = get_data('Distribution of the number of activity days')
 
 # NEAR Analysis
 st.subheader('1️⃣ Overview')
@@ -233,7 +239,16 @@ df = Number_of_New_Addresses
 fig = px.area(df, x='Date', y='New Address Count', title='Number of New Addresses')
 fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Address Count')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+# ------------------------------------------------------------------------------------------------------------------------------------------------
+df = Time_interval_between_the_first_and_last_transaction
+fig = px.scatter(df.sort_values(['Difference', 'Total Address'], ascending=[True, True]), x='Difference', y='Total Address', title='Time interval between the first and last transaction', log_x=True)
+fig.update_layout(legend_title=None, xaxis_title='Time interval', yaxis_title='Address Count')
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
+df = Distribution_of_the_number_of_activity_days
+fig = px.scatter(df.sort_values(['Days Active', 'Total Address'], ascending=[True, True]), x='Days Active', y='Total Address', title='Distribution of the number of activity days', log_x=True)
+fig.update_layout(legend_title=None, xaxis_title='Days Count', yaxis_title='Address Count')
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 # ------------------------------------------------------------------------------------------------------------------------------------------------
 df = Classification_of_Transactions_Based_on_TX_Signers
 c1, c2 = st.columns(2)
