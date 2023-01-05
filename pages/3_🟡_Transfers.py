@@ -64,6 +64,8 @@ def get_data(query3):
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/de752500-973a-4a07-9247-aa6106d2e77f/data/latest')
     elif query3 == 'Near Holders':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/fdad0fcb-8a54-4484-8016-9379f89aa0b5/data/latest')
+    elif query3 == 'Top 20 $NEAR address balances':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/e1618e01-1f40-4e93-9ede-3a9b4e3dd9c4/data/latest')
     return None
 
 Transfers = get_data('Transfers')
@@ -86,6 +88,7 @@ Transfers_Hitmap_Day_of_Week = get_data('Transfers Hitmap: Day of Week')
 Total_Transfers_Volume_Over_Days_of_Week = get_data('Total Transfers Volume Over Days of Week')
 Total_Transfers_Volume_Over_Hours_of_Day = get_data('Total Transfers Volume Over Hours of Day')
 Near_Holders = get_data('Near Holders')
+Top_20_NEAR_address_balances = get_data('Top 20 $NEAR address balances')
 
 st.subheader('1️⃣ Transfers Overview')
 df = Statistical_Data_Transfers
@@ -265,5 +268,9 @@ with c2:
        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='CLASS', yaxis_title='Number of Holders', xaxis={'categoryorder':'total ascending'})
        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
+df = Top_20_NEAR_address_balances     
+fig = px.bar(df, x='Receiver', y='Balance', color='Balance', title='Top 20 $NEAR addresses balances', log_y=True)
+fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Balance', yaxis_title='$NEAR', xaxis={'categoryorder':'total ascending'})
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 
