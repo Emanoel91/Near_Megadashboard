@@ -16,7 +16,16 @@ st.title('🔴 Transactions')
 c1 , c2 = st.columns(2)
 
 c1.image(Image.open('Images/transactions.JPG'))
-c2.image(Image.open('Images/Partition.JPG'))
+with c2:
+        
+st.write(
+    """
+- ###### Overview
+- ###### Daily Transactions
+- ###### Activity of Addresses
+- ###### Transaction Fees
+    """
+)
 
 # dash_style
 with open('style.css')as f:
