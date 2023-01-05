@@ -16,6 +16,16 @@ st.title('🟢 Staking')
 c1 , c2 = st.columns(2)
 
 c1.image(Image.open('Images/staking2.JPG'))
+with c2: 
+        st.write(
+            """
+            - ###### Overview
+            - ###### Daily Staking & Unstaking
+            - ###### Top Pools
+            - ###### Classifications
+            - ###### Staking & Unstaking Pattern
+            """
+            )
 
 # dash_style
 with open('style.css')as f:
