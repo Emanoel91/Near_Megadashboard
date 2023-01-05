@@ -11,8 +11,10 @@
 import streamlit as st
 from PIL import Image
 
+logo = PIL.Image.open('near3-logo.png')
+
 # Title
-st.set_page_config(page_title='Near Megadashboard', page_icon=':chart_with_upwards_trend:', layout='wide')
+st.set_page_config(page_title='Near Megadashboard', page_icon=logo, layout='wide')
 st.title('Near Ⓜegadashboard')
 
 # Content
