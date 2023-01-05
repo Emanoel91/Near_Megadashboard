@@ -16,6 +16,16 @@ st.title('🟡 Transfers')
 c1 , c2 = st.columns(2)
 
 c1.image(Image.open('Images/transfer2.JPG'))
+with c2: 
+        st.write(
+            """
+            - ###### Transfers Overview
+            - ###### Daily Transfers
+            - ###### Top Addresses
+            - ###### Classifications
+            - ###### NEAR Holders
+            """
+            )
 
 # dash_style
 with open('style.css')as f:
