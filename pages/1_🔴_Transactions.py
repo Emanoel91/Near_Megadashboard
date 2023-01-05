@@ -304,7 +304,7 @@ fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Fee($NEAR)')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 df = Max_Avg_Median_Min_Transaction_Fees
-fig = px.bar(df, x='Date', y='Fee', color='Criteria', title='Max/Avg/Median/Min Transaction Fees', log_y=False)
+fig = px.line(df, x='Date', y='Fee', color='Criteria', title='Max/Avg/Median/Min Transaction Fees', log_y=False)
 fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='($NEAR)')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
