@@ -70,6 +70,8 @@ def get_data(query1):
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/5ebca19e-d680-4cd7-8fcf-6958ab206e09/data/latest')
     elif query1 == 'Distribution of the number of activity days':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/974f933f-18f2-4e70-bf3e-0c9320776524/data/latest')
+    elif query1 == 'Max/Avg/Median/Min Transaction Fees':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/f571f0fc-9187-402e-85e0-f4b73dd52ac3/data/latest')
     return None
 
 transactions_overview = get_data('Transactions Overview')
@@ -95,6 +97,7 @@ Monthly_Transactions_Count_of_Top_TX_Receivers = get_data('Monthly Transactions 
 Monthly_Transaction_Fees_of_Top_TX_Signers = get_data('Monthly Transaction Fees of Top TX Signers')
 Time_interval_between_the_first_and_last_transaction = get_data('Time interval between the first and last transaction')
 Distribution_of_the_number_of_activity_days = get_data('Distribution of the number of activity days')
+Max_Avg_Median_Min_Transaction_Fees = get_data('Max/Avg/Median/Min Transaction Fees')
 
 # NEAR Analysis
 st.subheader('1️⃣ Overview')
@@ -300,6 +303,11 @@ fig = px.area(df, x='Date', y='Transactions Fee', title='Total Daily Transaction
 fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Fee($NEAR)')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
+df = Max_Avg_Median_Min_Transaction_Fees
+fig = px.bar(df, x='Date', y='Fee', color='Criteria', title='Max/Avg/Median/Min Transaction Fees', log_y=False)
+fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='($NEAR)')
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
 df = Total_Average_Transactions_Fee
 c1, c2 = st.columns(2)
     
