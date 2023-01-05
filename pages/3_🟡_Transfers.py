@@ -261,7 +261,7 @@ with c1:
        fig.update_traces(textinfo='percent+label', textposition='inside')
        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 with c2:
-       fig = px.bar(df, x='Balance Group', y='Holders Count', color='Balance Group', title='', log_y=False)
+       fig = px.bar(df, x='Balance Group', y='Holders Count', color='Balance Group', title='', log_y=True)
        fig.update_layout(showlegend=False, xaxis_title=None, legend_title='CLASS', yaxis_title='Number of Holders', xaxis={'categoryorder':'total ascending'})
        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
