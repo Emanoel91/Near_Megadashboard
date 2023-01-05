@@ -68,7 +68,7 @@ def get_data(query1):
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/f9474172-0568-4605-a0f6-571ed3b20b9c/data/latest')
     elif query1 == 'Time interval between the first and last transaction':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/5ebca19e-d680-4cd7-8fcf-6958ab206e09/data/latest')
-        elif query1 == 'Distribution of the number of activity days':
+    elif query1 == 'Distribution of the number of activity days':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/974f933f-18f2-4e70-bf3e-0c9320776524/data/latest')
     return None
 
