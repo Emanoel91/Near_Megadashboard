@@ -16,6 +16,13 @@ st.title('🟠 NEAR Price')
 c1 , c2 = st.columns(2)
 
 c1.image(Image.open('Images/price2.JPG'))
+with c2: 
+        st.write(
+            """
+            - ###### NEAR Price Overviw
+            - ###### USN Price Overview
+            """
+            )
 
 # dash_style
 with open('style.css')as f:
