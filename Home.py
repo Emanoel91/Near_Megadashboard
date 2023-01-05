@@ -78,13 +78,7 @@ st.write(
     """
 )
 
-st.write(
-    """
-###### 🤝 thanks to:
-- [Mo_Defi](https://twitter.com/Mo_Defi) and [pinehearst](https://twitter.com/pinehearst_) for using some of their queries. ([Flipside World Cup: Crosschain Defi Monitoring](https://app.flipsidecrypto.com/dashboard/flipside-world-cup-crosschain-defi-monitoring-dxlso0) & [The City of NEAR](https://app.flipsidecrypto.com/dashboard/xG8L9i))
-- [Ali Taslimi](https://twitter.com/AliTslm) for getting ideas from his awesome dashboard [Cross Chain Monitoring Tool](https://cross-chain-monitoring.streamlit.app/)
-    """
-)
+
 c1, c2, c3 = st.columns(3)
 with c1:
     st.info('**Analyst: [Emanoel](https://twitter.com/Astiran91)**', icon="📌")
