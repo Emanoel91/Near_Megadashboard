@@ -269,7 +269,7 @@ with c2:
        st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
 df = Top_20_NEAR_address_balances     
-fig = px.bar(df, x='Receiver', y='Balance', color='Balance', title='Top 20 $NEAR addresses balances', log_y=True)
+fig = px.bar(df, x='Receiver', y='Balance', color='Balance', title='Top 20 Holders with the most Balances', log_y=True)
 fig.update_layout(showlegend=False, xaxis_title=None, legend_title='Balance', yaxis_title='$NEAR', xaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
