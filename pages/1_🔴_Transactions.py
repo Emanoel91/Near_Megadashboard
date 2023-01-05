@@ -246,7 +246,7 @@ fig.update_layout(legend_title=None, xaxis_title='Time interval', yaxis_title='A
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 df = Distribution_of_the_number_of_activity_days
-fig = px.scatter(df.sort_values(['Days Active', 'Total Address'], ascending=[True, True]), x='Days Active', y='Total Address', title='Distribution of the number of activity days', log_x=True)
+fig = px.scatter(df.sort_values(['Days Active', 'Total Address'], ascending=[True, True]), x='Days Active', y='Total Address', title='Distribution of the number of activity days', log_x=True, log_y=True)
 fig.update_layout(legend_title=None, xaxis_title='Days Count', yaxis_title='Address Count')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 # ------------------------------------------------------------------------------------------------------------------------------------------------
