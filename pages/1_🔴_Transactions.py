@@ -241,7 +241,7 @@ fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Address Coun
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 # ------------------------------------------------------------------------------------------------------------------------------------------------
 df = Time_interval_between_the_first_and_last_transaction
-fig = px.scatter(df.sort_values(['Difference', 'Total Address'], ascending=[True, True]), x='Difference', y='Total Address', title='Time interval between the first and last transaction', log_x=True)
+fig = px.scatter(df.sort_values(['Difference', 'Total Address'], ascending=[True, True]), x='Difference', y='Total Address', title='Time interval between the first and last transaction', log_x=True, log_y=True)
 fig.update_layout(legend_title=None, xaxis_title='Time interval', yaxis_title='Address Count')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
