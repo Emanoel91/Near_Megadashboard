@@ -296,7 +296,7 @@ with c2:
 st.subheader('4️⃣ Transaction Fees')
 df = Transaction_Fees
 
-fig = px.area(df, x='Date', y='Transactions Fee', title='Daily Transaction Fees')
+fig = px.area(df, x='Date', y='Transactions Fee', title='Total Daily Transaction Fees')
 fig.update_layout(legend_title=None, xaxis_title=None, yaxis_title='Fee($NEAR)')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
