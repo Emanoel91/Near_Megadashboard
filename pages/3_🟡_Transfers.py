@@ -62,6 +62,8 @@ def get_data(query3):
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/d80b7582-d6fb-40e8-b5dd-aa54b9e70e69/data/latest')
     elif query3 == 'Total Transfers Volume Over Hours of Day':
               return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/de752500-973a-4a07-9247-aa6106d2e77f/data/latest')
+    elif query3 == 'Near Holders':
+              return pd.read_json('https://node-api.flipsidecrypto.com/api/v2/queries/fdad0fcb-8a54-4484-8016-9379f89aa0b5/data/latest')
     return None
 
 Transfers = get_data('Transfers')
@@ -83,6 +85,7 @@ Number_of_Unique_Senders_Receivers = get_data('Number of Unique Senders & Receiv
 Transfers_Hitmap_Day_of_Week = get_data('Transfers Hitmap: Day of Week')
 Total_Transfers_Volume_Over_Days_of_Week = get_data('Total Transfers Volume Over Days of Week')
 Total_Transfers_Volume_Over_Hours_of_Day = get_data('Total Transfers Volume Over Hours of Day')
+Near_Holders = get_data('Near Holders')
 
 st.subheader('1️⃣ Transfers Overview')
 df = Statistical_Data_Transfers
@@ -243,7 +246,21 @@ with c3:
         fig = px.bar(df, x='CLASS', y='Receivers Count', color='CLASS', title='', log_y=True)
         fig.update_layout(showlegend=False, xaxis_title=None, legend_title='CLASS', yaxis_title='Number of Receivers', xaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
+        
 
+        
+        
+st.subheader('4️⃣ $NEAR Holders')       
+df = Near_Holders       
+fig = px.pie(df, values='Holders Count', names='Balance Group', title='Classification of Holders Based on $NEAR Balance')
+fig.update_layout(legend_title='Balance Group', legend_y=0.5)
+fig.update_traces(textinfo='percent+label', textposition='inside')
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
+fig = px.bar(df, x='Balance Group', y='Holders Count', color='Balance Group', title='', log_y=False)
+fig.update_layout(showlegend=False, xaxis_title=None, legend_title='CLASS', yaxis_title='Number of Holders', xaxis={'categoryorder':'total ascending'})
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+        
 
 
