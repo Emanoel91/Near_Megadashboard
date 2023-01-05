@@ -252,15 +252,18 @@ with c3:
         
         
 st.subheader('4️⃣ $NEAR Holders')       
-df = Near_Holders       
-fig = px.pie(df, values='Holders Count', names='Balance Group', title='Classification of Holders Based on $NEAR Balance')
-fig.update_layout(legend_title='Balance Group', legend_y=0.5)
-fig.update_traces(textinfo='percent+label', textposition='inside')
-st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
-
-fig = px.bar(df, x='Balance Group', y='Holders Count', color='Balance Group', title='', log_y=False)
-fig.update_layout(showlegend=False, xaxis_title=None, legend_title='CLASS', yaxis_title='Number of Holders', xaxis={'categoryorder':'total ascending'})
-st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+df = Near_Holders
+c1, c2 = st.columns(2)
+    
+with c1:
+       fig = px.pie(df, values='Holders Count', names='Balance Group', title='Classification of Holders Based on $NEAR Balance')
+       fig.update_layout(legend_title='Balance Group', legend_y=0.5)
+       fig.update_traces(textinfo='percent+label', textposition='inside')
+       st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+with c2:
+       fig = px.bar(df, x='Balance Group', y='Holders Count', color='Balance Group', title='', log_y=False)
+       fig.update_layout(showlegend=False, xaxis_title=None, legend_title='CLASS', yaxis_title='Number of Holders', xaxis={'categoryorder':'total ascending'})
+       st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
         
 
 
