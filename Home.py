@@ -11,10 +11,10 @@
 import streamlit as st
 from PIL import Image
 
-near_chain = PIL.Image.open('near_chain_2.png')
+near = PIL.Image.open('near_chain_2.png')
 
 # Title
-st.set_page_config(page_title='Near Megadashboard', page_icon=near_chain, layout='wide')
+st.set_page_config(page_title='Near Megadashboard', page_icon=near , layout='wide')
 st.title('Near Ⓜegadashboard')
 
 # Content
