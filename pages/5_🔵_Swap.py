@@ -16,18 +16,27 @@ st.title('🔵 Swap')
 c1 , c2 = st.columns(2)
 
 c1.image(Image.open('Images/swap2.JPG'))
-with c2: 
+with c2:
+        st.subheader('📄 ***List of contents***')
         st.write(
-            """
-            - ###### Overview
-            - ###### Daily Swaps
-            - ###### Classifications
-            - ###### Stablecoin Swaps
-            - ###### NEAR DEXs
-            - ###### Swapped Token
-            - ###### Swaps Pattern
-            """
-            )
+                    """
+                    1️⃣ **Overview**
+             
+                    2️⃣ **Daily Swaps**
+                    
+                    3️⃣ **Classifications**
+                    
+                    4️⃣ **Stablecoin Swaps**
+                    
+                    5️⃣ **NEAR DEXs**
+                    
+                    6️⃣ Swapped Token
+                    
+                    7️⃣ Swaps Pattern
+            
+                    """
+                )
+       
 
 # dash_style
 with open('style.css')as f:
