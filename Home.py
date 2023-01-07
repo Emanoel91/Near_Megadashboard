@@ -9,6 +9,7 @@
 
 # 📚 Libraries
 import streamlit as st
+import PIL
 from PIL import Image
 
 near = PIL.Image.open('near_chain_2.png')
