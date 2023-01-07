@@ -20,10 +20,13 @@ c1.image(Image.open('Images/transactions.JPG'))
 with c2: 
         st.write(
             """
-            1️⃣ ###### Overview
-            2️⃣ ###### Daily Transactions
-            3️⃣ ###### Activity of Addresses
-            4️⃣ ###### Transaction Fees
+            1️⃣ ######Overview
+            
+            2️⃣ #### Daily Transactions
+            
+            3️⃣ #### Activity of Addresses
+            
+            4️⃣ #### Transaction Fees
             """
             )
 
