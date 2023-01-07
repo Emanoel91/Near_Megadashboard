@@ -19,17 +19,19 @@ c1.image(Image.open('Images/transactions.JPG'))
 
 with c2: 
         st.subheader('📄 ***List of contents***')
-        st.write(
-            """
-            1️⃣ **Overview**
+        c1 , c2 = st.columns(2)
+        with c1:
+                st.write(
+                    """
+                    1️⃣ **Overview**
+             
+                    2️⃣ **Daily Transactions**
             
-            2️⃣ **Daily Transactions**
+                    3️⃣ **Activity of Addresses**
             
-            3️⃣ **Activity of Addresses**
-            
-            4️⃣ **Transaction Fees**
-            """
-            )
+                    4️⃣ **Transaction Fees**
+                    """
+                  )
 
 # dash_style
 with open('style.css')as f:
