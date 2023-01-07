@@ -16,14 +16,16 @@ st.title('🟠 NEAR Price')
 c1 , c2 = st.columns(2)
 
 c1.image(Image.open('Images/price2.JPG'))
-with c2: 
+with c2:
+        st.subheader('📄 ***List of contents***')
         st.write(
-            """
-            - ###### NEAR Price Overviw
-            - ###### USN Price Overview
-            """
-            )
-
+                    """
+                    1️⃣ **NEAR Price Overviw**
+             
+                    2️⃣ **USN Price Overview**
+            
+                    """
+               
 # dash_style
 with open('style.css')as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html = True)
