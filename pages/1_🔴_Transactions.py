@@ -18,6 +18,7 @@ c1 , c2 = st.columns(2)
 c1.image(Image.open('Images/transactions.JPG'))
 
 with c2: 
+        st.subheader('📄 ***List of contents***')
         st.write(
             """
             1️⃣ **Overview**
