@@ -17,16 +17,22 @@ c1 , c2 = st.columns(2)
 
 c1.image(Image.open('Images/staking2.JPG'))
 with c2: 
+        st.subheader('📄 ***List of contents***')
         st.write(
-            """
-            - ###### Overview
-            - ###### Daily Staking & Unstaking
-            - ###### Top Pools
-            - ###### Classifications
-            - ###### Staking & Unstaking Pattern
-            """
-            )
-
+                    """
+                    1️⃣ **Overview**
+             
+                    2️⃣ **Daily Staking & Unstaking**
+                    
+                    3️⃣ **Top Pools**
+                    
+                    4️⃣ **Classifications**
+                    
+                    5️⃣ **Staking & Unstaking Pattern**
+            
+                    """
+                )
+        
 # dash_style
 with open('style.css')as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html = True)
