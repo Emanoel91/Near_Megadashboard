@@ -17,16 +17,22 @@ c1 , c2 = st.columns(2)
 
 c1.image(Image.open('Images/transfer2.JPG'))
 with c2: 
+        st.subheader('📄 ***List of contents***')
         st.write(
-            """
-            - ###### Transfers Overview
-            - ###### Daily Transfers
-            - ###### Top Addresses
-            - ###### Classifications
-            - ###### NEAR Holders
-            """
-            )
-
+                    """
+                    1️⃣ **Transfers Overview**
+             
+                    2️⃣ **Daily Transfers**
+                    
+                    3️⃣ **Top Addresses**
+                    
+                    4️⃣ **Classifications**
+                    
+                    5️⃣ **NEAR Holders**
+            
+                    """
+                )
+        
 # dash_style
 with open('style.css')as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html = True)
