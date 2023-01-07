@@ -30,14 +30,6 @@ with c2:
                                 
                     """
                 )
-        st.write(
-            """
-            - ###### Overview
-            - ###### Daily 
-            - ###### Classifications
-            - ###### 
-            """
-            )
 
 # dash_style
 with open('style.css')as f:
