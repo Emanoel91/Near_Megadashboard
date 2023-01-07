@@ -25,6 +25,7 @@ with c2:
                     2️⃣ **USN Price Overview**
             
                     """
+                )
                
 # dash_style
 with open('style.css')as f:
