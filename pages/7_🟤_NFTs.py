@@ -17,12 +17,25 @@ c1 , c2 = st.columns(2)
 
 c1.image(Image.open('Images/nft5.JPG'))
 with c2: 
+        st.subheader('📄 ***List of contents***')
+        st.write(
+                    """
+                    1️⃣ **Overview**
+             
+                    2️⃣ **Daily Observations**
+                    
+                    3️⃣ **Classifications**
+                    
+                    4️⃣ **NFT Marketplace**
+                                
+                    """
+                )
         st.write(
             """
             - ###### Overview
-            - ###### Daily Observations
+            - ###### Daily 
             - ###### Classifications
-            - ###### NFT Marketplace
+            - ###### 
             """
             )
 
