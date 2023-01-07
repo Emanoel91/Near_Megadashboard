@@ -30,9 +30,9 @@ with c2:
                     
                     5️⃣ **NEAR DEXs**
                     
-                    6️⃣ Swapped Token
+                    6️⃣ **Swapped Token**
                     
-                    7️⃣ Swaps Pattern
+                    7️⃣ **Swaps Pattern**
             
                     """
                 )
