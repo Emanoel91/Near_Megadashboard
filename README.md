@@ -1,4 +1,4 @@
-# 📈 Activity of Near Developers 
+# 📈 Near Megadashboard 
 ## MetricsDao: 
 #### 🔗https://metricsdao.xyz/
 ## Flipsidecrypto:
